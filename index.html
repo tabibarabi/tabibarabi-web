@@ -14,7 +14,7 @@
             --primary-color: #0d6efd;
             --accent-color: #ffc107;
             --dark-color: #212529;
-            --light-bg: #f8f9fa;
+            --whatsapp-color: #25d366;
         }
         body {
             font-family: 'Cairo', sans-serif;
@@ -127,16 +127,45 @@
             margin: 5px;
             font-size: 0.9rem;
         }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/201026485012?text=السلام عليكم، أريد الاستفسار عن تسجيل عيادة في طبيب عربي" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-stethoscope"></i> طبيب عربي
             </a>
-            <div class="d-flex">
+            <div class="d-flex gap-2">
                 <a href="#join" class="btn btn-outline-primary rounded-pill fw-bold">سجل كطبيب</a>
             </div>
         </div>
@@ -245,9 +274,14 @@
                             <span><i class="fas fa-check"></i> أرقام الحجز والواتساب</span>
                             <span><i class="fas fa-check"></i> لوكيشن جوجل</span>
                         </div>
-                        <a href="mailto:founder@tabibarabi.com?subject=تسجيل طبيب جديد&body=الاسم:%0D%0Aالتخصص:%0D%0Aالعنوان:%0D%0Aرقم الهاتف:%0D%0Aتفاصيل أخرى:" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold text-dark">
-                            <i class="fas fa-paper-plane me-2"></i> أرسل البيانات بالإيميل
-                        </a>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="mailto:founder@tabibarabi.com?subject=تسجيل طبيب جديد&body=الاسم:%0D%0Aالتخصص:%0D%0Aالعنوان:%0D%0Aرقم الهاتف:%0D%0Aتفاصيل أخرى:" class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-dark mb-2 mb-md-0">
+                                <i class="fas fa-envelope me-2"></i> إرسال إيميل
+                            </a>
+                            <a href="https://wa.me/201026485012?text=السلام عليكم، أريد الاستفسار عن تسجيل عيادة في طبيب عربي" target="_blank" class="btn btn-success btn-lg rounded-pill px-4 fw-bold text-white">
+                                <i class="fab fa-whatsapp me-2"></i> تواصل واتساب
+                            </a>
+                        </div>
                         <p class="mt-3 small text-white-50">أو تواصل معنا لإضافة شعار عيادتك وصور المكان</p>
                     </div>
                 </div>
