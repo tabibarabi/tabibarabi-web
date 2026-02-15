@@ -3,112 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طبيب عربي | Tabib Arabi - Coming Soon</title>
+    <title>طبيب عربي | Tabib Arabi - رفيق صحتك الذكي</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        :root {
+            --primary-color: #0d6efd; /* أزرق طبي */
+            --secondary-color: #20c997; /* أخضر هادئ */
+            --dark-color: #2c3e50;
+        }
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #2c3e50;
+            overflow-x: hidden;
         }
-        .main-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 600px;
-            width: 90%;
+        
+        /* Navbar */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: white;
         }
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #0d6efd; /* Medical Blue */
-            margin-bottom: 1rem;
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
         }
-        .logo i {
-            color: #dc3545; /* Medical Cross Red */
+
+        /* Hero Section (الجزء العلوي) */
+        .hero-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
         }
-        p.lead {
+        .hero-title {
+            font-weight: 800;
+            color: var(--dark-color);
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
             color: #6c757d;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            margin: 20px 0;
         }
-        .btn-primary {
-            background-color: #0d6efd;
+        
+        /* Mockup Image (صورة الموبايل) */
+        .app-mockup {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border: 8px solid black;
+            transition: transform 0.3s;
+        }
+        .app-mockup:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Features Section */
+        .feature-card {
             border: none;
-            padding: 10px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: transform 0.2s;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
         }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            background-color: #0b5ed7;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .features {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 0.9rem;
-            color: #495057;
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
         }
-        .feature-item i {
-            color: #198754;
-            margin-left: 5px;
+
+        /* Call to Action */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
         }
     </style>
 </head>
 <body>
-    
 
-    <div class="container d-flex justify-content-center">
-        <div class="main-card">
-            <div class="logo">
-                <i class="fas fa-heartbeat"></i> طبيب عربي
-            </div>
-            
-            <h1 class="mb-3">نحن نبني مستقبل الرعاية الصحية</h1>
-            <p class="lead">
-                منصة طبية ذكية تجمع أفضل الأطباء في مصر والوطن العربي.
-                <br>
-                <strong>قريباً جداً على Google Play & App Store</strong>
-            </p>
-
-            <a href="mailto:founder@tabibarabi.com" class="btn btn-primary shadow">
-                <i class="fas fa-envelope me-2"></i> تواصل معنا
-            </a>
-
-            <hr class="my-4">
-
-            <div class="features">
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i> حجز ذكي
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i> استشارات عن بُعد
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i> ملف طبي موحد
-                </div>
-            </div>
-            
-            <div class="mt-4 text-muted small">
-                &copy; 2026 Tabib Arabi. All rights reserved.
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-heartbeat text-danger"></i> طبيب عربي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">المميزات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doctors">للأطباء</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+                </ul>
+                <a href="#download" class="btn btn-primary rounded-pill px-4">حمل التطبيق</a>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-end">
+                    <span class="badge bg-success mb-3 px-3 py-2 rounded-pill">قريباً في مصر</span>
+                    <h1 class="hero-title">الرعاية الصحية<br>بمفهوم جديد وذكي</h1>
+                    <p class="hero-subtitle">
+                        تطبيق "طبيب عربي" يجمع بين سهولة الحجز، الاستشارات عن بُعد، والذكاء الاصطناعي لمتابعة حالتك الصحية.
+                    </p>
+                    <div class="d-flex gap-2 justify-content-center justify-content-lg-end">
+                        <button class="btn btn-dark btn-lg rounded-pill"><i class="fab fa-google-play me-2"></i> Google Play</button>
+                        <button class="btn btn-outline-dark btn-lg rounded-pill"><i class="fab fa-apple me-2"></i> App Store</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b5bbb695?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="App Preview" class="app-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">لماذا تختار طبيب عربي؟</h2>
+                <p class="text-muted">حلول ذكية للمريض والطبيب</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-check feature-icon"></i>
+                        <h3>حجز فوري</h3>
+                        <p class="text-muted">احجز موعدك مع أفضل الأطباء في منطقتك بضغطة زر وبدون انتظار.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-user-md feature-icon"></i>
+                        <h3>استشارات AI</h3>
+                        <p class="text-muted">مساعد ذكي يحلل الأعراض ويوجهك للتخصص المناسب (قريباً).</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-file-medical feature-icon"></i>
+                        <h3>ملف طبي موحد</h3>
+                        <p class="text-muted">تاريخك المرضي، الروشتات، والتحاليل في مكان واحد آمن.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="doctors" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-3 shadow mb-4" alt="Doctor">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">هل أنت طبيب؟ انضم إلينا</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> إدارة كاملة للعيادة والحجوزات.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> ملف إلكتروني لكل مريض.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> نظام تسويق ذكي لزيادة عدد المرضى.</li>
+                    </ul>
+                    <a href="mailto:ceo@tabibarabi.com" class="btn btn-primary mt-3">سجل عيادتك الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="mb-4">كن أول من يجرب المستقبل</h2>
+            <p class="mb-4 lead">التطبيق قيد التطوير حالياً. سجل اهتمامك ليصلك إشعار فور الإطلاق.</p>
+            <a href="mailto:founder@tabibarabi.com" class="btn btn-light btn-lg rounded-pill px-5 text-primary fw-bold">
+                <i class="fas fa-envelope me-2"></i> تواصل مع المؤسس
+            </a>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-3">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2026 Tabib Arabi. جميع الحقوق محفوظة.</p>
+            <small>Designed by The Founder</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
