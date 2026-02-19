@@ -29,9 +29,7 @@
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: var(--whatsapp-color); color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: white; }
 
-        /* ========================================================= */
-        /* تصميمات كروت الأطباء (جديد) */
-        /* ========================================================= */
+        /* تصميمات كروت الأطباء */
         .doctor-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; height: 100%; display: flex; flex-direction: column;}
         .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .doc-header { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f8f9fa; }
@@ -45,16 +43,17 @@
         .doc-detail i { width: 20px; color: #95a5a6; margin-left: 5px; }
         .doc-price { font-weight: bold; color: #e74c3c; font-size: 1rem; }
         .doc-footer { padding: 15px; background: #fcfcfc; border-top: 1px solid #eee; display: flex; gap: 10px; }
-        .btn-call { flex: 1; background: #0077B6; color: white; font-weight: bold; border-radius: 8px; }
-        .btn-call:hover { background: #005f92; color: white;}
-        .btn-whats { flex: 1; background: var(--whatsapp-color); color: white; font-weight: bold; border-radius: 8px; }
-        .btn-whats:hover { background: #1ebe57; color: white; }
+        .btn-call { flex: 1; background: #0077B6; color: white; font-weight: bold; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; padding: 8px;}
+        .btn-call:hover { background: #005f92; color: white; text-decoration: none;}
+        .btn-whats { flex: 1; background: var(--whatsapp-color); color: white; font-weight: bold; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; padding: 8px;}
+        .btn-whats:hover { background: #1ebe57; color: white; text-decoration: none;}
         .tier-badge { position: absolute; top: 10px; left: 10px; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: white;}
         .tier-gold { background: linear-gradient(45deg, #FFD700, #FDB931); }
         .tier-silver { background: linear-gradient(45deg, #bdc3c7, #95a5a6); }
         
         #searchBar { border-radius: 50px; padding: 15px 25px; border: 2px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
         #searchBar:focus { border-color: var(--primary-color); box-shadow: 0 5px 20px rgba(13, 110, 253, 0.2); outline: none;}
+        #btnLoadMore { border-radius: 50px; padding: 10px 30px; font-weight: bold; display: none; margin: 20px auto; }
     </style>
 </head>
 <body>
@@ -128,6 +127,8 @@
             <div class="row g-4" id="doctorsContainer">
                 </div>
             
+            <button id="btnLoadMore" class="btn btn-outline-primary mt-4">عرض المزيد <i class="fas fa-chevron-down ms-1"></i></button>
+
             <div id="noResults" class="text-center my-5 d-none">
                 <i class="fas fa-search-minus fa-4x text-muted mb-3"></i>
                 <h4 class="text-muted">عفواً، لا يوجد طبيب مطابق لبحثك.</h4>
@@ -135,8 +136,23 @@
         </div>
     </section>
 
-    <section id="how-it-works" class="py-5 mt-3 bg-white">
-        </section>
+    <section id="join" class="join-us text-center py-5" style="background-color: var(--dark-color); color: white;">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="fw-bold mb-4">جاهز تكون جزء من المستقبل؟</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="p-4 rounded-3 border border-secondary" style="background: rgba(255,255,255,0.05);">
+                        <p class="lead mb-4">أرسل بياناتك (الاسم - التخصص - العنوان - الهاتف) وسيب الباقي علينا.</p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="https://wa.me/201026485012" target="_blank" class="btn btn-success btn-lg rounded-pill px-4 fw-bold text-white mb-2">
+                                <i class="fab fa-whatsapp me-2"></i> تواصل عبر الواتساب للتسجيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="text-center py-4 bg-dark border-top border-secondary text-secondary">
         <div class="container">
@@ -149,44 +165,44 @@
     <script>AOS.init({ duration: 800, once: true });</script>
 
     <script type="module">
-        // استيراد مكتبات فايربيز
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-        // ⚠️ هام جداً: ضع بيانات مشروعك هنا (Firebase Config)
         const firebaseConfig = {
-  apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
-  authDomain: "tabibarabi.firebaseapp.com",
-  databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
-  projectId: "tabibarabi",
-  storageBucket: "tabibarabi.firebasestorage.app",
-  messagingSenderId: "588623616986",
-  appId: "1:588623616986:web:e95b644f1a64780817fee3",
-  measurementId: "G-475QDZWSGT"
-};
+            apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
+            authDomain: "tabibarabi.firebaseapp.com",
+            databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
+            projectId: "tabibarabi",
+            storageBucket: "tabibarabi.firebasestorage.app",
+            messagingSenderId: "588623616986",
+            appId: "1:588623616986:web:e95b644f1a64780817fee3",
+            measurementId: "G-475QDZWSGT"
+        };
 
-        // تهيئة فايربيز
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const doctorsRef = ref(db, 'doctors');
 
-        let allDoctors = []; // مصفوفة لتخزين كل الأطباء
+        let allDoctors = [];
+        let currentDisplayedList = []; // القائمة التي يتم عرضها حالياً (سواء كل الأطباء أو نتيجة بحث)
+        let displayLimit = 12; // عدد الكروت في البداية
+        const BATCH_SIZE = 12; // كم كارت يظهر عند الضغط على "عرض المزيد"
 
-        // جلب البيانات من فايربيز (Realtime)
+        const container = document.getElementById('doctorsContainer');
+        const btnLoadMore = document.getElementById('btnLoadMore');
+        const searchBar = document.getElementById('searchBar');
+        const noResults = document.getElementById('noResults');
+
         onValue(doctorsRef, (snapshot) => {
             allDoctors = [];
             const now = Date.now();
 
             if (snapshot.exists()) {
-                // المرور على شجرة البيانات (دولة -> محافظة -> طبيب)
                 snapshot.forEach((countryNode) => {
                     countryNode.forEach((cityNode) => {
                         cityNode.forEach((docNode) => {
                             const doc = docNode.val();
-                            
-                            // فلترة الأطباء النشطين فقط والغير منتهيين
-                            if (doc && doc.isActive && doc.expiryDate && doc.expiryDate > now) {
-                                // إضافة المفاتيح الناقصة
+                            if (doc && doc.isActive && doc.expiryDate && doc.expiryDate > now && doc.name) {
                                 doc.key = docNode.key;
                                 doc.city = cityNode.key;
                                 allDoctors.push(doc);
@@ -195,46 +211,43 @@
                     });
                 });
 
-                // ترتيب الأطباء (الأولوية > اللايكات > تاريخ الانتهاء) تماماً مثل تطبيق الأندرويد
+                // الترتيب حسب الأولوية > اللايكات > تاريخ الانتهاء
                 allDoctors.sort((a, b) => {
                     const priorityDiff = (b.sortingPriority || 1) - (a.sortingPriority || 1);
                     if (priorityDiff !== 0) return priorityDiff;
-                    
                     const likesDiff = (b.statsLikes || 0) - (a.statsLikes || 0);
                     if (likesDiff !== 0) return likesDiff;
-
                     return (b.expiryDate || 0) - (a.expiryDate || 0);
                 });
 
-                // تحديث العداد الحي في واجهة الموقع
                 document.getElementById('liveDoctorsCount').innerText = allDoctors.length;
-
-                // إخفاء الـ Loader وعرض الأطباء
                 document.getElementById('loader').classList.add('d-none');
-                renderDoctors(allDoctors);
-            } else {
-                document.getElementById('loader').classList.add('d-none');
-                document.getElementById('noResults').classList.remove('d-none');
+                
+                // في البداية، القائمة المعروضة هي كل الأطباء
+                currentDisplayedList = allDoctors;
+                displayLimit = BATCH_SIZE; // إعادة التعيين
+                renderDoctors();
             }
         });
 
-        // دالة رسم كروت الأطباء في الـ HTML
-        function renderDoctors(doctorsList) {
-            const container = document.getElementById('doctorsContainer');
+        // دالة الرسم مع نظام التقطيع (Pagination)
+        function renderDoctors() {
             container.innerHTML = '';
-
-            if (doctorsList.length === 0) {
-                document.getElementById('noResults').classList.remove('d-none');
+            
+            if (currentDisplayedList.length === 0) {
+                noResults.classList.remove('d-none');
+                btnLoadMore.style.display = 'none';
                 return;
             } else {
-                document.getElementById('noResults').classList.add('d-none');
+                noResults.classList.add('d-none');
             }
 
-            doctorsList.forEach(doc => {
-                // التعامل مع الصورة
-                let imgSrc = doc.imageUrl && doc.imageUrl !== 'default' ? doc.imageUrl : 'https://cdn-icons-png.flaticon.com/512/3774/3774299.png';
+            // تحديد كم طبيب سنعرض (من 0 إلى limit)
+            const doctorsToShow = currentDisplayedList.slice(0, displayLimit);
+
+            doctorsToShow.forEach(doc => {
+                let imgSrc = doc.imageUrl && doc.imageUrl !== 'default' ? doc.imageUrl : 'appicon.jpg';
                 
-                // التعامل مع الباقة (VIP)
                 let badgeHtml = '';
                 if (doc.subscriptionTier === 'Gold') {
                     badgeHtml = `<span class="tier-badge tier-gold"><i class="fas fa-crown"></i> ذهبي</span>`;
@@ -242,15 +255,16 @@
                     badgeHtml = `<span class="tier-badge tier-silver"><i class="fas fa-star"></i> فضي</span>`;
                 }
 
-                // السعر
                 let priceText = doc.price > 0 ? `${doc.price} ج.م` : 'غير محدد';
+                let docPhone = doc.mobile ? doc.mobile.replace(/\s+/g, '') : '';
+                let whatsLink = docPhone.startsWith('+') ? docPhone : '+2' + docPhone;
 
                 const cardHtml = `
                     <div class="col-md-6 col-lg-4">
                         <div class="doctor-card position-relative">
                             ${badgeHtml}
                             <div class="doc-header">
-                                <img src="${imgSrc}" class="doc-img" alt="${doc.name}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3774/3774299.png'">
+                                <img src="${imgSrc}" class="doc-img" alt="${doc.name}" onerror="this.src='appicon.jpg'">
                                 <div class="doc-info">
                                     <h3 class="doc-name">${doc.name}</h3>
                                     <p class="doc-spec">${doc.speciality}</p>
@@ -263,25 +277,51 @@
                                 <div class="doc-detail"><i class="fas fa-money-bill-wave"></i> سعر الكشف: <span class="doc-price ms-1">${priceText}</span></div>
                             </div>
                             <div class="doc-footer">
-                                <a href="https://wa.me/${doc.mobile.replace('+', '').replace(' ', '')}" target="_blank" class="btn btn-whats"><i class="fab fa-whatsapp"></i> واتساب</a>
-                                <a href="tel:${doc.mobile}" class="btn btn-call"><i class="fas fa-phone-alt"></i> اتصال</a>
+                                <a href="https://wa.me/${whatsLink}" target="_blank" class="btn btn-whats" onclick="logAction('${doc.key}', 'whatsapp')"><i class="fab fa-whatsapp me-1"></i> واتساب</a>
+                                <a href="tel:${doc.mobile}" class="btn btn-call" onclick="logAction('${doc.key}', 'call')"><i class="fas fa-phone-alt me-1"></i> اتصال</a>
                             </div>
                         </div>
                     </div>
                 `;
                 container.innerHTML += cardHtml;
             });
+
+            // إظهار أو إخفاء زر "عرض المزيد"
+            if (displayLimit < currentDisplayedList.length) {
+                btnLoadMore.style.display = 'block';
+            } else {
+                btnLoadMore.style.display = 'none';
+            }
         }
 
-        // تفعيل محرك البحث اللحظي
-        document.getElementById('searchBar').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            const filtered = allDoctors.filter(doc => {
-                const searchString = `${doc.name} ${doc.speciality} ${doc.city} ${doc.detailedAddress}`.toLowerCase();
-                return searchString.includes(query);
-            });
-            renderDoctors(filtered);
+        // زر عرض المزيد
+        btnLoadMore.addEventListener('click', () => {
+            displayLimit += BATCH_SIZE;
+            renderDoctors();
         });
+
+        // محرك البحث
+        searchBar.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query === '') {
+                currentDisplayedList = allDoctors;
+            } else {
+                currentDisplayedList = allDoctors.filter(doc => {
+                    const searchString = `${doc.name} ${doc.speciality} ${doc.city} ${doc.detailedAddress}`.toLowerCase();
+                    return searchString.includes(query);
+                });
+            }
+            
+            displayLimit = BATCH_SIZE; // إعادة التعيين عند البحث الجديد
+            renderDoctors();
+        });
+
+        // دالة وهمية لتسجيل النقرات (إذا أردت تفعيل الإحصائيات من الويب لاحقاً)
+        window.logAction = function(docKey, actionType) {
+            console.log("Action recorded:", actionType, "for", docKey);
+            // يمكنك هنا مستقبلاً كتابة كود لتحديث Firebase بزيادة العداد
+        }
 
     </script>
 </body>
