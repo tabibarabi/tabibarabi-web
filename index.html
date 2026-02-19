@@ -82,7 +82,9 @@
                     <img id="modalImg" src="appicon.jpg" class="modal-doc-img mb-3" alt="صورة الطبيب" onclick="openImageViewer(this.src)">
                     <h3 id="modalName" class="fw-bold mb-1">...</h3>
                     <p id="modalSpec" class="text-primary fw-bold mb-1">...</p>
-                    <p id="modalDegree" class="text-muted small mb-4">...</p>
+                    <p id="modalDegree" class="text-muted small mb-2">...</p>
+                    
+                    <div id="modalLikesContainer" class="badge bg-success mb-3 d-none px-3 py-2"><i class="fas fa-thumbs-up me-1"></i> <span id="modalLikes"></span></div>
                     
                     <div class="text-start bg-light p-4 rounded-3 text-muted mb-3">
                         <div id="modalBioContainer" class="mb-3">
@@ -93,14 +95,20 @@
                         <div class="mb-2"><i class="fas fa-map-marker-alt text-primary me-2"></i> <strong class="text-dark">العنوان:</strong> <span id="modalAddress">...</span></div>
                         <div class="mb-2"><i class="far fa-clock text-primary me-2"></i> <strong class="text-dark">المواعيد:</strong> <span id="modalHours">...</span></div>
                         <div class="mb-2"><i class="fas fa-money-bill-wave text-danger me-2"></i> <strong class="text-dark">سعر الكشف:</strong> <span id="modalPrice" class="text-danger fw-bold">...</span></div>
+                        <div class="mb-2 d-none" id="modalPhone2Container"><i class="fas fa-mobile-alt text-primary me-2"></i> <strong class="text-dark">رقم إضافي:</strong> <span id="modalPhone2" dir="ltr">...</span></div>
                     </div>
 
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 mb-2">
                         <a href="#" id="modalBtnWhats" target="_blank" class="btn btn-success flex-grow-1 py-2 fw-bold"><i class="fab fa-whatsapp fs-5 me-1"></i> حجز واتساب</a>
                         <a href="#" id="modalBtnCall" class="btn btn-primary flex-grow-1 py-2 fw-bold"><i class="fas fa-phone-alt fs-5 me-1"></i> اتصال بالعيادة</a>
                     </div>
+                    
+                    <div class="mt-2 d-none" id="modalFbContainer">
+                        <a href="#" id="modalBtnFb" target="_blank" class="btn btn-primary w-100 mb-2 fw-bold" style="background-color: #1877F2; border-color: #1877F2;"><i class="fab fa-facebook fs-5 me-1"></i> زيارة صفحة الفيسبوك</a>
+                    </div>
+                    
                     <div class="mt-2 d-none" id="modalMapContainer">
-                        <a href="#" id="modalBtnMap" target="_blank" class="btn btn-outline-secondary w-100"><i class="fas fa-map-marked-alt me-1"></i> عرض موقع العيادة على الخريطة</a>
+                        <a href="#" id="modalBtnMap" target="_blank" class="btn btn-outline-secondary w-100 fw-bold"><i class="fas fa-map-marked-alt me-1"></i> عرض موقع العيادة على الخريطة</a>
                     </div>
                 </div>
             </div>
@@ -267,17 +275,17 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-        // الـ Config الخاص بك
+        // ⚠️ ضع بياناتك الحقيقية هنا
         const firebaseConfig = {
-            apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
-            authDomain: "tabibarabi.firebaseapp.com",
-            databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
-            projectId: "tabibarabi",
-            storageBucket: "tabibarabi.firebasestorage.app",
-            messagingSenderId: "588623616986",
-            appId: "1:588623616986:web:e95b644f1a64780817fee3",
-            measurementId: "G-475QDZWSGT"
-        };
+  apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
+  authDomain: "tabibarabi.firebaseapp.com",
+  databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
+  projectId: "tabibarabi",
+  storageBucket: "tabibarabi.firebasestorage.app",
+  messagingSenderId: "588623616986",
+  appId: "1:588623616986:web:e95b644f1a64780817fee3",
+  measurementId: "G-475QDZWSGT"
+};
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
@@ -356,8 +364,10 @@
                 let priceText = doc.price > 0 ? `${doc.price} ج.م` : 'غير محدد';
                 let docPhone = doc.mobile ? doc.mobile.replace(/\s+/g, '') : '';
                 let whatsLink = docPhone.startsWith('+') ? docPhone : '+2' + docPhone;
+                
+                // إضافة جملة التوصيات في الكارت من الخارج
+                let likesHtml = doc.statsLikes > 0 ? `<div class="mt-2 text-success small fw-bold"><i class="fas fa-thumbs-up me-1"></i> ${doc.statsLikes} مريض ينصح بهذا الطبيب</div>` : '';
 
-                // تم إضافة onclick لفتح النافذة
                 const cardHtml = `
                     <div class="col-md-6 col-lg-4">
                         <div class="doctor-card position-relative" onclick="openProfile('${doc.key}')">
@@ -374,6 +384,7 @@
                                 <div class="doc-detail"><i class="fas fa-map-marker-alt"></i> ${doc.city} - ${doc.detailedAddress}</div>
                                 <div class="doc-detail"><i class="far fa-clock"></i> ${doc.workingHours || 'تواصل لمعرفة المواعيد'}</div>
                                 <div class="doc-detail"><i class="fas fa-money-bill-wave"></i> سعر الكشف: <span class="doc-price ms-1">${priceText}</span></div>
+                                ${likesHtml}
                             </div>
                             <div class="doc-footer" onclick="event.stopPropagation();">
                                 <a href="https://wa.me/${whatsLink}" target="_blank" class="btn btn-whats"><i class="fab fa-whatsapp me-1"></i> واتساب</a>
@@ -411,7 +422,7 @@
             renderDoctors();
         });
 
-        // دالة فتح بروفايل الطبيب في النافذة المنبثقة
+        // دالة فتح بروفايل الطبيب بكامل تفاصيله
         window.openProfile = function(docKey) {
             const doc = allDoctors.find(d => d.key === docKey);
             if (!doc) return;
@@ -422,6 +433,15 @@
             document.getElementById('modalSpec').innerText = doc.speciality;
             document.getElementById('modalDegree').innerText = doc.degree || '';
             
+            // عدد التوصيات في النافذة
+            const likesContainer = document.getElementById('modalLikesContainer');
+            if (doc.statsLikes > 0) {
+                likesContainer.classList.remove('d-none');
+                document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
+            } else {
+                likesContainer.classList.add('d-none');
+            }
+
             // النبذة
             if(doc.bio && doc.bio.trim() !== "") {
                 document.getElementById('modalBioContainer').classList.remove('d-none');
@@ -434,10 +454,30 @@
             document.getElementById('modalHours').innerText = doc.workingHours || 'تواصل لمعرفة المواعيد';
             document.getElementById('modalPrice').innerText = doc.price > 0 ? `${doc.price} ج.م` : 'غير محدد';
 
+            // الرقم الإضافي
+            const phone2Container = document.getElementById('modalPhone2Container');
+            if (doc.secondMobile && doc.secondMobile.trim() !== "") {
+                phone2Container.classList.remove('d-none');
+                document.getElementById('modalPhone2').innerText = doc.secondMobile;
+            } else {
+                phone2Container.classList.add('d-none');
+            }
+
+            // أزرار الاتصال
             let docPhone = doc.mobile ? doc.mobile.replace(/\s+/g, '') : '';
             let whatsLink = docPhone.startsWith('+') ? docPhone : '+2' + docPhone;
             document.getElementById('modalBtnWhats').href = `https://wa.me/${whatsLink}`;
             document.getElementById('modalBtnCall').href = `tel:${doc.mobile}`;
+
+            // رابط الفيسبوك
+            const fbContainer = document.getElementById('modalFbContainer');
+            const fbBtn = document.getElementById('modalBtnFb');
+            if (doc.facebookLink && doc.facebookLink.trim() !== "") {
+                fbContainer.classList.remove('d-none');
+                fbBtn.href = doc.facebookLink;
+            } else {
+                fbContainer.classList.add('d-none');
+            }
 
             // رابط الخريطة
             const mapContainer = document.getElementById('modalMapContainer');
