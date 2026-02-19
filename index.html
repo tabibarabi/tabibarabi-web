@@ -3,23 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>طبيب عربي | دليل أطباء مصر - أرقام وعناوين العيادات والمستشفيات</title>
+    <meta name="description" content="أكبر دليل طبي مجاني في مصر. ابحث عن أفضل دكتور في منطقتك. اعرف سعر الكشف، المواعيد، ورقم العيادة، وتواصل مع الطبيب مباشرة واتساب أو تليفون.">
     
-    <meta name="description" content="أكبر دليل طبي مجاني في مصر. ابحث عن أفضل دكتور في منطقتك (القاهرة، الجيزة، الإسكندرية، الفيوم، وجميع المحافظات). اعرف سعر الكشف، المواعيد، ورقم العيادة، وتواصل مع الطبيب مباشرة واتساب أو تليفون.">
-    
-    <meta name="keywords" content="طبيب عربي, Tabib Arabi, دليل أطباء مصر, حجز دكتور, رقم عيادة, عنوان دكتور, دكتور باطنة, دكتور أسنان, دكتور أطفال, دكتور عظام, معامل تحاليل, مراكز أشعة, مستشفيات مصر, سعر الكشف, مواعيد العيادات, الفيوم, القاهرة, الجيزة">
-    
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tabibarabi.com/">
-    <meta property="og:title" content="طبيب عربي - دليلك للوصول لأفضل دكتور في مصر">
-    <meta property="og:description" content="انتشار أوسع، حجز أسهل، وبيانات متكاملة. اعرف مواعيد وسعر كشف أي دكتور وتواصل معاه فوراً.">
-    <meta property="og:image" content="header.jpg"> 
-
-    <link rel="icon" href="appicon.jpg" type="image/jpeg">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,119 +18,53 @@
             --dark-color: #212529;
             --whatsapp-color: #25d366;
         }
-        body {
-            font-family: 'Cairo', sans-serif;
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Cairo', sans-serif; overflow-x: hidden; background-color: #f8f9fa; }
         
-        /* Navbar Tweaks */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); 
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-        }
+        .navbar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(0,0,0,0.05); }
+        .hero { padding: 100px 0 60px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); position: relative; }
+        .stats-strip { background: var(--primary-color); color: white; padding: 40px 0; margin-top: -30px; border-radius: 20px; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3); }
+        .step-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; position: relative; z-index: 1; border: none;}
+        .step-card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--primary-color); }
+        .step-number { font-size: 4rem; font-weight: 800; color: #f1f3f5; position: absolute; top: 10px; left: 20px; z-index: -1; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: var(--whatsapp-color); color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: white; }
 
-        /* Hero Section */
-        .hero {
-            padding: 100px 0 60px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px; left: -50px;
-            width: 300px; height: 300px;
-            background: rgba(13, 110, 253, 0.1);
-            border-radius: 50%;
-            z-index: 0;
-        }
+        /* ========================================================= */
+        /* تصميمات كروت الأطباء (جديد) */
+        /* ========================================================= */
+        .doctor-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; height: 100%; display: flex; flex-direction: column;}
+        .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .doc-header { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f8f9fa; }
+        .doc-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); }
+        .doc-info { margin-right: 15px; flex-grow: 1; }
+        .doc-name { font-weight: 700; font-size: 1.1rem; color: #2c3e50; margin: 0; }
+        .doc-spec { color: var(--primary-color); font-size: 0.9rem; font-weight: 600; margin: 0; }
+        .doc-degree { font-size: 0.8rem; color: #7f8c8d; margin-top: 3px; }
+        .doc-body { padding: 15px; flex-grow: 1; }
+        .doc-detail { display: flex; align-items: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; }
+        .doc-detail i { width: 20px; color: #95a5a6; margin-left: 5px; }
+        .doc-price { font-weight: bold; color: #e74c3c; font-size: 1rem; }
+        .doc-footer { padding: 15px; background: #fcfcfc; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        .btn-call { flex: 1; background: #0077B6; color: white; font-weight: bold; border-radius: 8px; }
+        .btn-call:hover { background: #005f92; color: white;}
+        .btn-whats { flex: 1; background: var(--whatsapp-color); color: white; font-weight: bold; border-radius: 8px; }
+        .btn-whats:hover { background: #1ebe57; color: white; }
+        .tier-badge { position: absolute; top: 10px; left: 10px; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: white;}
+        .tier-gold { background: linear-gradient(45deg, #FFD700, #FDB931); }
+        .tier-silver { background: linear-gradient(45deg, #bdc3c7, #95a5a6); }
         
-        /* Stats Strip */
-        .stats-strip {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 0;
-            margin-top: -30px;
-            border-radius: 20px;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
-        }
-
-        /* How it works */
-        .step-card {
-            border: none;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-        .step-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 5px solid var(--primary-color);
-        }
-        .step-number {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #f1f3f5;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            z-index: -1;
-        }
-
-        /* FAQ Accordion */
-        .accordion-button:not(.collapsed) {
-            background-color: #e7f1ff;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        .accordion-button:focus {
-            box-shadow: none;
-            border-color: rgba(13,110,253,0.25);
-        }
-
-        /* Floating WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px; height: 60px;
-            bottom: 30px; right: 30px;
-            background-color: var(--whatsapp-color);
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(10deg);
-            color: white;
-        }
+        #searchBar { border-radius: 50px; padding: 15px 25px; border: 2px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+        #searchBar:focus { border-color: var(--primary-color); box-shadow: 0 5px 20px rgba(13, 110, 253, 0.2); outline: none;}
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/201026485012?text=السلام عليكم، أرغب في الانضمام لتطبيق طبيب عربي.%0A%0Aيرجى تسجيل البيانات التالية:%0A- الاسم:%20%0A- التخصص:%20%0A- نبذة عن الطبيب:%20%0A- المحافظة:%20%0A- العنوان التفصيلي:%20%0A- مواعيد الكشف:%20%0A- رقم الواتساب:%20%0A- رقم الاتصال:%20%0A- رابط فيسبوك:%20%0A- رابط جوجل مابس:%20%0A- سعر الكشف:%20" class="whatsapp-float" target="_blank" data-aos="fade-left">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="appicon.jpg" alt="Logo" width="45" height="45" class="d-inline-block align-text-top rounded-circle">
+                <img src="appicon.jpg" alt="Logo" width="45" height="45" class="d-inline-block align-text-top rounded-circle" onerror="this.src='https://via.placeholder.com/45'">
                 <div class="d-flex flex-column flex-md-row align-items-md-center gap-1">
                     <span class="fw-bold text-primary" style="font-size: 1.2rem;">طبيب عربي</span>
-                    <span class="text-muted d-none d-md-block mx-1">|</span>
-                    <span class="text-secondary small text-uppercase fw-semibold d-none d-md-block" style="letter-spacing: 1px;">Tabib Arabi</span>
                 </div>
             </a>
             <div>
@@ -159,22 +79,15 @@
         <div class="container">
             <div class="row align-items-center flex-row-reverse">
                 <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-end" data-aos="fade-left">
-                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">
-                        <i class="fas fa-map-marker-alt me-1"></i> نغطي جميع محافظات مصر
-                    </span>
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> نغطي جميع محافظات مصر</span>
                     <h1 class="display-4 fw-bolder mb-3">عيادتك أقرب للمريض<br><span class="text-primary">بخطوة واحدة</span></h1>
-                    <p class="lead text-muted mb-4">
-                        أول دليل طبي ذكي يربطك بالمريض مباشرة. اعرض خدماتك، مواعيدك، وسعر الكشف، واستقبل الحجوزات عبر الواتساب بدون وسيط.
-                    </p>
+                    <p class="lead text-muted mb-4">أول دليل طبي ذكي يربطك بالمريض مباشرة. اعرض خدماتك واستقبل الحجوزات عبر الواتساب بدون وسيط.</p>
                     <div class="d-flex gap-2 justify-content-center justify-content-lg-end">
-                        <a href="#join" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold">ابدأ الآن مجاناً</a>
-                        <a href="#how-it-works" class="btn btn-link text-dark text-decoration-none d-flex align-items-center">
-                            <i class="far fa-play-circle fa-2x me-2 text-primary"></i> كيف يعمل؟
-                        </a>
+                        <a href="#search-section" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold">ابحث عن طبيب الآن</a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="tabibarabi_header.jpg" class="img-fluid rounded-4 shadow-lg border border-5 border-white" alt="تطبيق طبيب عربي">
+                <div class="col-lg-6 text-center" data-aos="zoom-in">
+                    <img src="tabibarabi_header.jpg" class="img-fluid rounded-4 shadow-lg border border-5 border-white" alt="تطبيق طبيب عربي" onerror="this.style.display='none'">
                 </div>
             </div>
         </div>
@@ -185,163 +98,191 @@
             <div class="col-lg-10">
                 <div class="stats-strip text-center" data-aos="fade-up">
                     <div class="row">
-                        <div class="col-4 border-end border-white-50">
-                            <h2 class="fw-bold mb-0">+27</h2>
-                            <small>محافظة</small>
-                        </div>
-                        <div class="col-4 border-end border-white-50">
-                            <h2 class="fw-bold mb-0">100%</h2>
-                            <small>مجاني للأطباء</small>
-                        </div>
-                        <div class="col-4">
-                            <h2 class="fw-bold mb-0">24/7</h2>
-                            <small>دعم فني</small>
-                        </div>
+                        <div class="col-4 border-end border-white-50"><h2 class="fw-bold mb-0">+27</h2><small>محافظة</small></div>
+                        <div class="col-4 border-end border-white-50"><h2 class="fw-bold mb-0">100%</h2><small>مجاني للأطباء</small></div>
+                        <div class="col-4"><h2 class="fw-bold mb-0" id="liveDoctorsCount">...</h2><small>طبيب مسجل</small></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="how-it-works" class="py-5 mt-5">
+    <section id="search-section" class="py-5 mt-4">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="fw-bold">انضم إلينا في 3 خطوات بسيطة</h2>
-                <p class="text-muted">مش محتاج تكون خبير تكنولوجي، الموضوع أسهل مما تتخيل</p>
+                <h2 class="fw-bold text-primary">دليل الأطباء الشامل</h2>
+                <p class="text-muted">ابحث بالاسم، التخصص، أو المحافظة لتجد أقرب طبيب لك</p>
+                
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-8">
+                        <input type="text" id="searchBar" class="form-control form-control-lg text-center" placeholder="🔍 اكتب اسم دكتور، تخصص، أو مدينة (مثال: باطنة الفيوم)...">
+                    </div>
+                </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-card h-100">
-                        <span class="step-number">01</span>
-                        <i class="fas fa-file-signature fa-3x text-primary mb-3"></i>
-                        <h4>سجل بياناتك</h4>
-                        <p class="text-muted">أرسل اسمك، تخصصك، وعنوان العيادة عبر الواتساب أو الإيميل.</p>
-                    </div>
+
+            <div id="loader" class="text-center my-5">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+                <h5 class="mt-3 text-muted">جاري تحميل بيانات الأطباء...</h5>
+            </div>
+
+            <div class="row g-4" id="doctorsContainer">
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-card h-100">
-                        <span class="step-number">02</span>
-                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                        <h4>مراجعة وتفعيل</h4>
-                        <p class="text-muted">فريقنا هيراجع البيانات ويتأكد منها، وهنعملك بروفايل احترافي.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-card h-100">
-                        <span class="step-number">03</span>
-                        <i class="fas fa-rocket fa-3x text-danger mb-3"></i>
-                        <h4>انتشار فوري</h4>
-                        <p class="text-muted">اسمك هيظهر لآلاف المرضى في منطقتك، واستقبل حجوزاتك مباشرة.</p>
-                    </div>
-                </div>
+            
+            <div id="noResults" class="text-center my-5 d-none">
+                <i class="fas fa-search-minus fa-4x text-muted mb-3"></i>
+                <h4 class="text-muted">عفواً، لا يوجد طبيب مطابق لبحثك.</h4>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center mb-5" data-aos="fade-up">
-                        <h2 class="fw-bold">أسئلة شائعة</h2>
-                    </div>
-                    <div class="accordion shadow-sm rounded-3 overflow-hidden" id="faqAccordion" data-aos="fade-up">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    هل التسجيل مجاني فعلاً؟
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <strong>نعم، التسجيل مجاني 100% لفترة محدودة.</strong> هدفنا بناء أكبر قاعدة بيانات طبية في مصر، ولا نخصم أي عمولات من كشف الطبيب.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    كيف يتم الحجز؟ هل تتدخلون فيه؟
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    نحن حلقة وصل فقط. نوفر للمريض زر "اتصال" أو "واتساب" ليتواصل معك أو مع السكرتارية مباشرة. لا نتدخل في إدارة مواعيدك.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    هل يمكنني تعديل بياناتي لاحقاً؟
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    بالتأكيد. يمكنك في أي وقت التواصل معنا لتعديل المواعيد، السعر، أو تغيير عنوان العيادة وسيتم التحديث فوراً.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="join" class="join-us text-center py-5" style="background-color: var(--dark-color); color: white;">
-        <div class="container" data-aos="zoom-in">
-            <h2 class="fw-bold mb-4">جاهز تكون جزء من المستقبل؟</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="p-4 rounded-3 border border-secondary" style="background: rgba(255,255,255,0.05);">
-                        <p class="lead mb-4">أرسل بياناتك (الاسم - التخصص - العنوان - الهاتف) وسيب الباقي علينا.</p>
-                        <div class="d-grid gap-2 d-md-block">
-                            <a href="mailto:founder@tabibarabi.com?subject=تسجيل بيانات طبيب جديد&body=مرحباً فريق طبيب عربي،%0D%0A%0D%0Aأرجو إضافة بياناتي للتطبيق:%0D%0A---------------------------%0D%0Aالاسم:%20%0D%0Aالتخصص:%20%0D%0Aنبذة عن الطبيب:%20%0D%0Aالمحافظة:%20%0D%0Aالعنوان التفصيلي:%20%0D%0Aمواعيد الكشف:%20%0D%0Aرقم الواتساب:%20%0D%0Aرقم الاتصال:%20%0D%0Aرابط فيسبوك:%20%0D%0Aرابط جوجل مابس:%20%0D%0Aسعر الكشف:%20%0D%0A---------------------------%0D%0A%0D%0Aمرفق الصور (الشعار أو الصورة الشخصية)." class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-dark mb-2">
-    <i class="fas fa-envelope me-2"></i> إرسال إيميل
-</a>
-                            <a href="https://wa.me/201026485012?text=السلام عليكم، أرغب في الانضمام لتطبيق طبيب عربي.%0A%0Aيرجى تسجيل البيانات التالية:%0A- الاسم:%20%0A- التخصص:%20%0A- نبذة عن الطبيب:%20%0A- المحافظة:%20%0A- العنوان التفصيلي:%20%0A- مواعيد الكشف:%20%0A- رقم الواتساب:%20%0A- رقم الاتصال:%20%0A- رابط فيسبوك:%20%0A- رابط جوجل مابس:%20%0A- سعر الكشف:%20" target="_blank" class="btn btn-success btn-lg rounded-pill px-4 fw-bold text-white mb-2">
-                                <i class="fab fa-whatsapp me-2"></i> إرسال واتساب
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="how-it-works" class="py-5 mt-3 bg-white">
+        </section>
 
     <footer class="text-center py-4 bg-dark border-top border-secondary text-secondary">
         <div class="container">
-            <div class="mb-3">
-                <a href="https://www.facebook.com/profile.php?id=61585799724440" target="_blank" class="text-secondary me-3 text-decoration-none">
-                    <i class="fab fa-facebook fa-lg"></i>
-                </a>
-                <div class="mb-3">
-            <a href="privacy.html" class="text-light text-decoration-underline small">سياسة الخصوصية</a>
-        </div>
-                
-            </div>
             <p class="mb-0 small">&copy; 2026 Tabib Arabi. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // تشغيل مكتبة الانيميشن
-        AOS.init({
-            duration: 800, // سرعة الحركة
-            once: true // الحركة تحصل مرة واحدة بس
+    <script>AOS.init({ duration: 800, once: true });</script>
+
+    <script type="module">
+        // استيراد مكتبات فايربيز
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // ⚠️ هام جداً: ضع بيانات مشروعك هنا (Firebase Config)
+        const firebaseConfig = {
+  apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
+  authDomain: "tabibarabi.firebaseapp.com",
+  databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
+  projectId: "tabibarabi",
+  storageBucket: "tabibarabi.firebasestorage.app",
+  messagingSenderId: "588623616986",
+  appId: "1:588623616986:web:e95b644f1a64780817fee3",
+  measurementId: "G-475QDZWSGT"
+};
+
+        // تهيئة فايربيز
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const doctorsRef = ref(db, 'doctors');
+
+        let allDoctors = []; // مصفوفة لتخزين كل الأطباء
+
+        // جلب البيانات من فايربيز (Realtime)
+        onValue(doctorsRef, (snapshot) => {
+            allDoctors = [];
+            const now = Date.now();
+
+            if (snapshot.exists()) {
+                // المرور على شجرة البيانات (دولة -> محافظة -> طبيب)
+                snapshot.forEach((countryNode) => {
+                    countryNode.forEach((cityNode) => {
+                        cityNode.forEach((docNode) => {
+                            const doc = docNode.val();
+                            
+                            // فلترة الأطباء النشطين فقط والغير منتهيين
+                            if (doc && doc.isActive && doc.expiryDate && doc.expiryDate > now) {
+                                // إضافة المفاتيح الناقصة
+                                doc.key = docNode.key;
+                                doc.city = cityNode.key;
+                                allDoctors.push(doc);
+                            }
+                        });
+                    });
+                });
+
+                // ترتيب الأطباء (الأولوية > اللايكات > تاريخ الانتهاء) تماماً مثل تطبيق الأندرويد
+                allDoctors.sort((a, b) => {
+                    const priorityDiff = (b.sortingPriority || 1) - (a.sortingPriority || 1);
+                    if (priorityDiff !== 0) return priorityDiff;
+                    
+                    const likesDiff = (b.statsLikes || 0) - (a.statsLikes || 0);
+                    if (likesDiff !== 0) return likesDiff;
+
+                    return (b.expiryDate || 0) - (a.expiryDate || 0);
+                });
+
+                // تحديث العداد الحي في واجهة الموقع
+                document.getElementById('liveDoctorsCount').innerText = allDoctors.length;
+
+                // إخفاء الـ Loader وعرض الأطباء
+                document.getElementById('loader').classList.add('d-none');
+                renderDoctors(allDoctors);
+            } else {
+                document.getElementById('loader').classList.add('d-none');
+                document.getElementById('noResults').classList.remove('d-none');
+            }
         });
+
+        // دالة رسم كروت الأطباء في الـ HTML
+        function renderDoctors(doctorsList) {
+            const container = document.getElementById('doctorsContainer');
+            container.innerHTML = '';
+
+            if (doctorsList.length === 0) {
+                document.getElementById('noResults').classList.remove('d-none');
+                return;
+            } else {
+                document.getElementById('noResults').classList.add('d-none');
+            }
+
+            doctorsList.forEach(doc => {
+                // التعامل مع الصورة
+                let imgSrc = doc.imageUrl && doc.imageUrl !== 'default' ? doc.imageUrl : 'https://cdn-icons-png.flaticon.com/512/3774/3774299.png';
+                
+                // التعامل مع الباقة (VIP)
+                let badgeHtml = '';
+                if (doc.subscriptionTier === 'Gold') {
+                    badgeHtml = `<span class="tier-badge tier-gold"><i class="fas fa-crown"></i> ذهبي</span>`;
+                } else if (doc.subscriptionTier === 'Silver') {
+                    badgeHtml = `<span class="tier-badge tier-silver"><i class="fas fa-star"></i> فضي</span>`;
+                }
+
+                // السعر
+                let priceText = doc.price > 0 ? `${doc.price} ج.م` : 'غير محدد';
+
+                const cardHtml = `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="doctor-card position-relative">
+                            ${badgeHtml}
+                            <div class="doc-header">
+                                <img src="${imgSrc}" class="doc-img" alt="${doc.name}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3774/3774299.png'">
+                                <div class="doc-info">
+                                    <h3 class="doc-name">${doc.name}</h3>
+                                    <p class="doc-spec">${doc.speciality}</p>
+                                    <p class="doc-degree mb-0 text-truncate" title="${doc.degree}">${doc.degree}</p>
+                                </div>
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-detail"><i class="fas fa-map-marker-alt"></i> ${doc.city} - ${doc.detailedAddress}</div>
+                                <div class="doc-detail"><i class="far fa-clock"></i> ${doc.workingHours || 'تواصل لمعرفة المواعيد'}</div>
+                                <div class="doc-detail"><i class="fas fa-money-bill-wave"></i> سعر الكشف: <span class="doc-price ms-1">${priceText}</span></div>
+                            </div>
+                            <div class="doc-footer">
+                                <a href="https://wa.me/${doc.mobile.replace('+', '').replace(' ', '')}" target="_blank" class="btn btn-whats"><i class="fab fa-whatsapp"></i> واتساب</a>
+                                <a href="tel:${doc.mobile}" class="btn btn-call"><i class="fas fa-phone-alt"></i> اتصال</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        // تفعيل محرك البحث اللحظي
+        document.getElementById('searchBar').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const filtered = allDoctors.filter(doc => {
+                const searchString = `${doc.name} ${doc.speciality} ${doc.city} ${doc.detailedAddress}`.toLowerCase();
+                return searchString.includes(query);
+            });
+            renderDoctors(filtered);
+        });
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
