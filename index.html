@@ -154,6 +154,12 @@
                         <div class="mb-2 d-none" id="modalPhone2Container"><i class="fas fa-mobile-alt text-primary me-2"></i> <strong class="text-dark">رقم إضافي:</strong> <span id="modalPhone2" dir="ltr">...</span></div>
                     </div>
 
+                    <div class="text-center mb-3 mt-2">
+                        <button id="modalBtnLike" class="btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm">
+                            <i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب
+                        </button>
+                    </div>
+
                     <div class="d-flex gap-2 mb-2">
                         <a href="#" id="modalBtnWhats" target="_blank" class="btn btn-success flex-grow-1 py-2 fw-bold"><i class="fab fa-whatsapp fs-5 me-1"></i> حجز واتساب</a>
                         <a href="#" id="modalBtnCall" class="btn btn-primary flex-grow-1 py-2 fw-bold"><i class="fas fa-phone-alt fs-5 me-1"></i> اتصال بالعيادة</a>
@@ -587,6 +593,91 @@
             }
         };
 
+        window.likeDoctor = function(docKey, country, city) {
+            // التحقق إذا كان المستخدم قد قام بعمل لايك مسبقاً من هذا المتصفح
+            let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
+            if (likedDocs.includes(docKey)) return;
+
+            // حفظ اللايك في المتصفح لمنع التكرار
+            likedDocs.push(docKey);
+            localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
+
+            // إرسال اللايك لقاعدة البيانات
+            const updates = {};
+            updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
+            update(ref(db), updates).then(() => {
+                // تحديث العداد محلياً فوراً ليراه المريض
+                const doc = allDoctors.find(d => d.key === docKey);
+                if(doc) {
+                    doc.statsLikes = (doc.statsLikes || 0) + 1;
+                    
+                    // تحديث شارة النافذة المنبثقة
+                    const likesContainer = document.getElementById('modalLikesContainer');
+                    likesContainer.classList.remove('d-none');
+                    document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
+                    
+                    // تحويل شكل زر اللايك إلى (تمت التوصية)
+                    const likeBtn = document.getElementById('modalBtnLike');
+                    likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
+                    likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
+                    likeBtn.disabled = true;
+
+                    // إعادة رسم الكروت في الخلفية لتحديث الرقم من الخارج أيضاً
+                    renderDoctors();
+                }
+            }).catch(err => console.error("Error liking:", err));
+        };
+
+        <div class="text-center mb-3 mt-2">
+                        <button id="modalBtnLike" class="btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm">
+                            <i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب
+                        </button>
+                    </div>
+
+                    <div class="d-flex gap-2 mb-2">
+                        <a href="#" id="modalBtnWhats" target="_blank" class="btn btn-success flex-grow-1 py-2 fw-bold"><i class="fab fa-whatsapp fs-5 me-1"></i> حجز واتساب</a>
+                        ```
+
+3. انزل لأسفل الملف إلى الجافاسكريبت `<script type="module">`، وقم بتحديث دالة `window.openProfile`، وأضف دالة اللايك الجديدة بداخل السكربت. 
+**استبدل دالة `window.openProfile` القديمة بهذا الكود الكامل (الذي يتضمن آلية اللايك):**
+
+```javascript
+        // دالة إعطاء اللايك (التوصية)
+        window.likeDoctor = function(docKey, country, city) {
+            // التحقق إذا كان المستخدم قد قام بعمل لايك مسبقاً من هذا المتصفح
+            let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
+            if (likedDocs.includes(docKey)) return;
+
+            // حفظ اللايك في المتصفح لمنع التكرار
+            likedDocs.push(docKey);
+            localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
+
+            // إرسال اللايك لقاعدة البيانات
+            const updates = {};
+            updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
+            update(ref(db), updates).then(() => {
+                // تحديث العداد محلياً فوراً ليراه المريض
+                const doc = allDoctors.find(d => d.key === docKey);
+                if(doc) {
+                    doc.statsLikes = (doc.statsLikes || 0) + 1;
+                    
+                    // تحديث شارة النافذة المنبثقة
+                    const likesContainer = document.getElementById('modalLikesContainer');
+                    likesContainer.classList.remove('d-none');
+                    document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
+                    
+                    // تحويل شكل زر اللايك إلى (تمت التوصية)
+                    const likeBtn = document.getElementById('modalBtnLike');
+                    likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
+                    likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
+                    likeBtn.disabled = true;
+
+                    // إعادة رسم الكروت في الخلفية لتحديث الرقم من الخارج أيضاً
+                    renderDoctors();
+                }
+            }).catch(err => console.error("Error liking:", err));
+        };
+
         window.openProfile = function(docKey) {
             const doc = allDoctors.find(d => d.key === docKey);
             if (!doc) return;
@@ -605,6 +696,23 @@
                 document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
             } else {
                 likesContainer.classList.add('d-none');
+            }
+
+            // فحص حالة اللايك لزر التوصية
+            const likeBtn = document.getElementById('modalBtnLike');
+            let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
+            if (likedDocs.includes(doc.key)) {
+                // المريض أعطى لايك مسبقاً
+                likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
+                likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
+                likeBtn.disabled = true;
+                likeBtn.onclick = null;
+            } else {
+                // المريض لم يعطِ لايك بعد
+                likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
+                likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
+                likeBtn.disabled = false;
+                likeBtn.onclick = () => window.likeDoctor(doc.key, doc.country, doc.city);
             }
 
             if(doc.bio && doc.bio.trim() !== "") {
@@ -670,6 +778,7 @@
     </script>
 </body>
 </html>
+
 
 
 
