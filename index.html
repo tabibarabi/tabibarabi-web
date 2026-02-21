@@ -185,7 +185,7 @@
                     <span class="fw-bold text-primary" style="font-size: 1.2rem;">طبيب عربي</span>
                 </div>
             </a>
-           <div class="d-flex gap-2">
+            <div class="d-flex gap-2">
                 <a href="articles.html" class="btn btn-link text-dark text-decoration-none fw-bold d-none d-md-block">
                     <i class="fas fa-book-medical text-primary me-1"></i> المدونة
                 </a>
@@ -355,14 +355,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // بيانات الآلة الكاتبة العلوية (للمرضى)
             const topMessages = [
                 "ابحث عن أشطر دكتور في جميع التخصصات بسهولة..",
                 "اعرف مواعيد العيادة وأسعار الكشف قبل ما تروح..",
                 "تواصل مع العيادة واحجز موعدك بضغطة زر.."
             ];
             
-            // بيانات الآلة الكاتبة السفلية (للأطباء)
             const bottomMessages = [
                 "هل أنت طبيب، معمل تحاليل، مركز أشعة، أو مستشفى؟",
                 "سواء كنت اسماً عريقاً أو تبدأ رحلة نجاحك.. مكانك هنا.",
@@ -395,18 +393,17 @@
 
                     if (!isDeleting && charIndex === currentMessage.length) {
                         isDeleting = true;
-                        currentSpeed = pauseTime; // الانتظار بعد اكتمال الجملة
+                        currentSpeed = pauseTime;
                     } else if (isDeleting && charIndex === 0) {
                         isDeleting = false;
                         messageIndex = (messageIndex + 1) % messages.length;
-                        currentSpeed = 500; // الانتظار قبل الجملة الجديدة
+                        currentSpeed = 500;
                     }
                     setTimeout(type, currentSpeed);
                 }
                 setTimeout(type, 1000);
             }
 
-            // تشغيل الاثنين معاً
             initTypewriter("typewriter-top", topMessages, 70, 30, 2500);
             initTypewriter("typewriter-bottom", bottomMessages, 80, 40, 3000);
         });
@@ -594,85 +591,28 @@
         };
 
         window.likeDoctor = function(docKey, country, city) {
-            // التحقق إذا كان المستخدم قد قام بعمل لايك مسبقاً من هذا المتصفح
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
             if (likedDocs.includes(docKey)) return;
 
-            // حفظ اللايك في المتصفح لمنع التكرار
             likedDocs.push(docKey);
             localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
 
-            // إرسال اللايك لقاعدة البيانات
             const updates = {};
             updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
             update(ref(db), updates).then(() => {
-                // تحديث العداد محلياً فوراً ليراه المريض
                 const doc = allDoctors.find(d => d.key === docKey);
                 if(doc) {
                     doc.statsLikes = (doc.statsLikes || 0) + 1;
                     
-                    // تحديث شارة النافذة المنبثقة
                     const likesContainer = document.getElementById('modalLikesContainer');
                     likesContainer.classList.remove('d-none');
                     document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
                     
-                    // تحويل شكل زر اللايك إلى (تمت التوصية)
                     const likeBtn = document.getElementById('modalBtnLike');
                     likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
                     likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
                     likeBtn.disabled = true;
 
-                    // إعادة رسم الكروت في الخلفية لتحديث الرقم من الخارج أيضاً
-                    renderDoctors();
-                }
-            }).catch(err => console.error("Error liking:", err));
-        };
-
-        <div class="text-center mb-3 mt-2">
-                        <button id="modalBtnLike" class="btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm">
-                            <i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب
-                        </button>
-                    </div>
-
-                    <div class="d-flex gap-2 mb-2">
-                        <a href="#" id="modalBtnWhats" target="_blank" class="btn btn-success flex-grow-1 py-2 fw-bold"><i class="fab fa-whatsapp fs-5 me-1"></i> حجز واتساب</a>
-                        ```
-
-3. انزل لأسفل الملف إلى الجافاسكريبت `<script type="module">`، وقم بتحديث دالة `window.openProfile`، وأضف دالة اللايك الجديدة بداخل السكربت. 
-**استبدل دالة `window.openProfile` القديمة بهذا الكود الكامل (الذي يتضمن آلية اللايك):**
-
-```javascript
-        // دالة إعطاء اللايك (التوصية)
-        window.likeDoctor = function(docKey, country, city) {
-            // التحقق إذا كان المستخدم قد قام بعمل لايك مسبقاً من هذا المتصفح
-            let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
-            if (likedDocs.includes(docKey)) return;
-
-            // حفظ اللايك في المتصفح لمنع التكرار
-            likedDocs.push(docKey);
-            localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
-
-            // إرسال اللايك لقاعدة البيانات
-            const updates = {};
-            updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
-            update(ref(db), updates).then(() => {
-                // تحديث العداد محلياً فوراً ليراه المريض
-                const doc = allDoctors.find(d => d.key === docKey);
-                if(doc) {
-                    doc.statsLikes = (doc.statsLikes || 0) + 1;
-                    
-                    // تحديث شارة النافذة المنبثقة
-                    const likesContainer = document.getElementById('modalLikesContainer');
-                    likesContainer.classList.remove('d-none');
-                    document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
-                    
-                    // تحويل شكل زر اللايك إلى (تمت التوصية)
-                    const likeBtn = document.getElementById('modalBtnLike');
-                    likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
-                    likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
-                    likeBtn.disabled = true;
-
-                    // إعادة رسم الكروت في الخلفية لتحديث الرقم من الخارج أيضاً
                     renderDoctors();
                 }
             }).catch(err => console.error("Error liking:", err));
@@ -698,17 +638,14 @@
                 likesContainer.classList.add('d-none');
             }
 
-            // فحص حالة اللايك لزر التوصية
             const likeBtn = document.getElementById('modalBtnLike');
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
             if (likedDocs.includes(doc.key)) {
-                // المريض أعطى لايك مسبقاً
                 likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
                 likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
                 likeBtn.disabled = true;
                 likeBtn.onclick = null;
             } else {
-                // المريض لم يعطِ لايك بعد
                 likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
                 likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
                 likeBtn.disabled = false;
@@ -778,9 +715,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
