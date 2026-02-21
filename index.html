@@ -79,10 +79,41 @@
         .dynamic-text-top { color: var(--primary-color); font-weight: 700; font-size: 1.2rem; margin: 0; }
         .cursor-top { background-color: var(--primary-color); }
         
-        /* تنسيقات كارت الطبيب المتميز (الفاترينة) */
-        .premium-card { position: absolute; bottom: -30px; left: -20px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; padding: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 2px solid var(--accent-color); z-index: 10; display: flex; align-items: center; gap: 15px; width: 300px; animation: float 3s ease-in-out infinite; cursor: pointer; transition: 0.3s; }
+        /* تنسيقات كارت الطبيب المتميز (متجاوب مع الموبايل واللاب توب) */
+        .premium-card { 
+            position: absolute; 
+            bottom: -20px; 
+            left: 50%; 
+            transform: translateX(-50%); /* توسيط على الموبايل */
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            border-radius: 15px; 
+            padding: 15px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            border: 2px solid var(--accent-color); 
+            z-index: 10; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            width: 90%; 
+            max-width: 320px; 
+            animation: float-mobile 3s ease-in-out infinite; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        @media (min-width: 768px) {
+            .premium-card {
+                left: -20px;
+                bottom: -30px;
+                transform: none; /* إلغاء التوسيط على اللاب توب */
+                width: 300px;
+                animation: float-desktop 3s ease-in-out infinite;
+            }
+        }
         .premium-card:hover { transform: scale(1.05); border-color: var(--primary-color); animation: none; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        @keyframes float-mobile { 0% { transform: translate(-50%, 0px); } 50% { transform: translate(-50%, -10px); } 100% { transform: translate(-50%, 0px); } }
+        @keyframes float-desktop { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        
         .premium-badge { position: absolute; top: -15px; right: -15px; background: var(--accent-color); color: #000; font-weight: bold; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; box-shadow: 0 5px 10px rgba(255, 193, 7, 0.4); }
         .premium-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--accent-color); object-fit: cover; }
         .premium-info h5 { font-size: 1rem; font-weight: bold; margin: 0; color: #2c3e50; }
@@ -184,7 +215,7 @@
                 <div class="col-lg-6 text-center position-relative" data-aos="zoom-in">
                     <img src="tabibarabi_header.jpg" class="img-fluid rounded-4 shadow-lg border border-5 border-white" alt="تطبيق طبيب عربي" onerror="this.style.display='none'">
                     
-                    <div id="premiumDoctorContainer" class="premium-card d-none d-md-flex" onclick="">
+                    <div id="premiumDoctorContainer" class="premium-card" onclick="">
                         <div class="premium-badge"><i class="fas fa-crown me-1"></i> طبيب الأسبوع</div>
                         <img id="premiumImg" src="appicon.jpg" class="premium-img" alt="طبيب متميز">
                         <div class="premium-info text-start">
@@ -639,6 +670,7 @@
     </script>
 </body>
 </html>
+
 
 
 
