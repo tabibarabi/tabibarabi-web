@@ -63,6 +63,14 @@
         #imageViewer { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
         #imageViewer img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
         #imageViewer .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+        /* ========================================================= */
+        /* تأثير الآلة الكاتبة الديناميكي للرسائل التسويقية */
+        /* ========================================================= */
+        .typing-container { min-height: 60px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+        .dynamic-text { color: var(--accent-color); font-weight: 800; font-size: 1.3rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .typing-cursor { display: inline-block; width: 3px; height: 1.1em; background-color: var(--accent-color); margin-right: 5px; vertical-align: bottom; animation: blink 0.7s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
 <body>
@@ -239,11 +247,16 @@
 
     <section id="join" class="join-us text-center py-5" style="background-color: var(--dark-color); color: white;">
         <div class="container" data-aos="zoom-in">
-            <h2 class="fw-bold mb-4">جاهز تكون جزء من المستقبل؟</h2>
+            <h2 class="fw-bold mb-2">انضم لشركاء النجاح</h2>
+            
+            <div class="typing-container">
+                <p class="dynamic-text"><span id="typewriter-text"></span><span class="typing-cursor"></span></p>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="p-4 rounded-3 border border-secondary" style="background: rgba(255,255,255,0.05);">
-                        <p class="lead mb-4">أرسل بياناتك (الاسم - التخصص - العنوان - الهاتف) وسيب الباقي علينا.</p>
+                        <p class="lead mb-4">انضم لأكثر من <span class="fw-bold text-warning">1000 طبيب</span> اختاروا الرقمنة. أرسل بياناتك وسيب الباقي علينا.</p>
                         <div class="d-grid gap-2 d-md-block">
                             <a href="mailto:founder@tabibarabi.com?subject=تسجيل بيانات طبيب جديد&body=مرحباً فريق طبيب عربي،%0D%0A%0D%0Aأرجو إضافة بياناتي للتطبيق:%0D%0A---------------------------%0D%0Aالاسم:%20%0D%0Aالتخصص:%20%0D%0Aنبذة عن الطبيب:%20%0D%0Aالمحافظة:%20%0D%0Aالعنوان التفصيلي:%20%0D%0Aمواعيد الكشف:%20%0D%0Aرقم الواتساب:%20%0D%0Aرقم الاتصال:%20%0D%0Aرابط فيسبوك:%20%0D%0Aرابط جوجل مابس:%20%0D%0Aسعر الكشف:%20%0D%0A---------------------------%0D%0A%0D%0Aمرفق الصور (الشعار أو الصورة الشخصية)." class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-dark mb-2">
                                 <i class="fas fa-envelope me-2"></i> إرسال إيميل
@@ -260,12 +273,58 @@
 
     <footer class="text-center py-4 bg-dark border-top border-secondary text-secondary">
         <div class="container">
-            <div class="mb-2">
+            <div class="mb-3 d-flex justify-content-center align-items-center gap-4">
                 <a href="privacy.html" class="text-light text-decoration-underline small">سياسة الخصوصية والاستخدام</a>
+                <a href="https://www.facebook.com/profile.php?id=61585799724440" target="_blank" class="text-light fs-5 hover-opacity" title="صفحتنا على فيسبوك">
+                    <i class="fab fa-facebook"></i>
+                </a>
             </div>
             <p class="mb-0 small">&copy; 2026 Tabib Arabi. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = [
+                "هل أنت طبيب، معمل تحاليل، مركز أشعة، أو مستشفى؟",
+                "سواء كنت اسماً عريقاً أو تبدأ رحلة نجاحك.. مكانك هنا.",
+                "هل تسعى لمضاعفة حجوزاتك وتوسيع شبكة مرضاك؟",
+                "تميز وسط الآلاف، واجعل عيادتك الخيار الأول للمريض.",
+                "لا تفقد مرضاك بسبب غياب صورة عيادتك أو رقم حجزك!"
+            ];
+            
+            const textElement = document.getElementById("typewriter-text");
+            let messageIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+
+            function type() {
+                const currentMessage = messages[messageIndex];
+                
+                if (isDeleting) {
+                    textElement.textContent = currentMessage.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 40; // سرعة المسح
+                } else {
+                    textElement.textContent = currentMessage.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 80; // سرعة الكتابة
+                }
+
+                if (!isDeleting && charIndex === currentMessage.length) {
+                    isDeleting = true;
+                    typingSpeed = 3000; // وقت الانتظار لقراءة الجملة
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    messageIndex = (messageIndex + 1) % messages.length;
+                    typingSpeed = 500; // وقت الانتظار قبل الجملة التالية
+                }
+                setTimeout(type, typingSpeed);
+            }
+            setTimeout(type, 1000);
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -274,7 +333,6 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-        // استدعاء خدمة الإحصائيات (Google Analytics)
         import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
 
         // ⚠️ بياناتك الحقيقية
@@ -291,7 +349,7 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const analytics = getAnalytics(app); // تشغيل الإحصائيات الكلية
+        const analytics = getAnalytics(app);
         const doctorsRef = ref(db, 'doctors');
 
         let allDoctors = [];
@@ -304,7 +362,6 @@
         const searchBar = document.getElementById('searchBar');
         const noResults = document.getElementById('noResults');
 
-        // جلب البيانات
         onValue(doctorsRef, (snapshot) => {
             allDoctors = [];
             const now = Date.now();
@@ -317,7 +374,7 @@
                             if (doc && doc.isActive && doc.expiryDate && doc.expiryDate > now && doc.name) {
                                 doc.key = docNode.key;
                                 doc.city = cityNode.key;
-                                doc.country = countryNode.key; // إضافة مسار الدولة للإحصائيات
+                                doc.country = countryNode.key;
                                 allDoctors.push(doc);
                             }
                         });
@@ -341,7 +398,6 @@
             }
         });
 
-        // رسم الكروت
         function renderDoctors() {
             container.innerHTML = '';
             
@@ -425,15 +481,12 @@
             renderDoctors();
         });
 
-        // 📊 دالة الإحصائيات (تسجيل النقرات في القاعدة وفي Analytics)
         window.logAction = function(docKey, country, city, actionType) {
-            // 1. تسجيل الحدث في Google Analytics
             logEvent(analytics, 'doctor_interaction', {
                 action: actionType,
                 doctor_id: docKey
             });
 
-            // 2. تحديث العدادات في Firebase Realtime Database (لتظهر في تطبيق الأدمن)
             const updates = {};
             let statField = '';
             if(actionType === 'view') statField = 'statsViews';
@@ -447,12 +500,10 @@
             }
         };
 
-        // دالة فتح بروفايل الطبيب بكامل تفاصيله
         window.openProfile = function(docKey) {
             const doc = allDoctors.find(d => d.key === docKey);
             if (!doc) return;
 
-            // تسجيل "مشاهدة" في الإحصائيات بمجرد فتح النافذة
             logAction(doc.key, doc.country, doc.city, 'view');
 
             let imgSrc = doc.imageUrl && doc.imageUrl !== 'default' ? doc.imageUrl : 'appicon.jpg';
@@ -491,7 +542,6 @@
             let docPhone = doc.mobile ? doc.mobile.replace(/\s+/g, '') : '';
             let whatsLink = docPhone.startsWith('+') ? docPhone : '+2' + docPhone;
             
-            // ربط أزرار النافذة بنظام الإحصائيات
             const btnWhats = document.getElementById('modalBtnWhats');
             btnWhats.href = `https://wa.me/${whatsLink}`;
             btnWhats.onclick = () => logAction(doc.key, doc.country, doc.city, 'whatsapp');
@@ -533,4 +583,3 @@
     </script>
 </body>
 </html>
-
