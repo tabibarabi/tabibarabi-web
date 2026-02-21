@@ -55,22 +55,29 @@
         #searchBar:focus { border-color: var(--primary-color); box-shadow: 0 5px 20px rgba(13, 110, 253, 0.2); outline: none;}
         #btnLoadMore { border-radius: 50px; padding: 10px 30px; font-weight: bold; display: none; margin: 20px auto; }
 
-        /* تنسيق نافذة الطبيب وتكبير الصورة */
         .modal-doc-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); margin-top: -60px; background: white; cursor: zoom-in; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
         .modal-header-bg { height: 100px; background: linear-gradient(135deg, var(--primary-color) 0%, #005f92 100%); border-radius: calc(.3rem - 1px) calc(.3rem - 1px) 0 0; }
         
-        /* عارض الصورة بملء الشاشة */
         #imageViewer { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
         #imageViewer img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
         #imageViewer .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
 
         /* ========================================================= */
-        /* تأثير الآلة الكاتبة الديناميكي للرسائل التسويقية */
+        /* تأثيرات الآلة الكاتبة (للمرضى فوق، وللأطباء تحت) */
         /* ========================================================= */
-        .typing-container { min-height: 60px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
-        .dynamic-text { color: var(--accent-color); font-weight: 800; font-size: 1.3rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .typing-cursor { display: inline-block; width: 3px; height: 1.1em; background-color: var(--accent-color); margin-right: 5px; vertical-align: bottom; animation: blink 0.7s infinite; }
+        .typing-cursor { display: inline-block; width: 3px; height: 1.1em; margin-right: 5px; vertical-align: bottom; animation: blink 0.7s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        
+        /* تنسيق اللي تحت (للدكاترة) */
+        .typing-container-bottom { min-height: 60px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+        .dynamic-text-bottom { color: var(--accent-color); font-weight: 800; font-size: 1.3rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .cursor-bottom { background-color: var(--accent-color); }
+
+        /* تنسيق اللي فوق (للمرضى) */
+        .typing-container-top { min-height: 35px; margin-bottom: 25px; display: flex; justify-content: center; }
+        @media (min-width: 992px) { .typing-container-top { justify-content: flex-end; } }
+        .dynamic-text-top { color: var(--primary-color); font-weight: 700; font-size: 1.2rem; margin: 0; }
+        .cursor-top { background-color: var(--primary-color); }
     </style>
 </head>
 <body>
@@ -80,7 +87,7 @@
         <img id="fullScreenImage" src="">
     </div>
 
-    <div class="modal fade" id="doctorProfileModal" tabindex="-1" aria-labelledby="doctorProfileModalLabel" aria-hidden="true">
+    <div class="modal fade" id="doctorProfileModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header-bg position-relative">
@@ -143,15 +150,15 @@
         <div class="container">
             <div class="row align-items-center flex-row-reverse">
                 <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-end" data-aos="fade-left">
-                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> نغطي جميع محافظات مصر</span>
-                    <h1 class="display-4 fw-bolder mb-3">عيادتك أقرب للمريض<br><span class="text-primary">بخطوة واحدة</span></h1>
-                    <p class="lead text-muted mb-4">أول دليل طبي ذكي يربطك بالمريض مباشرة. اعرض خدماتك واستقبل الحجوزات عبر الواتساب بدون وسيط.</p>
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm"><i class="fas fa-map-marker-alt me-1"></i> دليلك الطبي الشامل</span>
+                    <h1 class="display-4 fw-bolder mb-3">صحتك وصحة أسرتك<br><span class="text-primary">تبدأ من هنا</span></h1>
+                    
+                    <div class="typing-container-top">
+                        <p class="dynamic-text-top"><span id="typewriter-top"></span><span class="typing-cursor cursor-top"></span></p>
+                    </div>
                     
                     <div class="d-flex gap-2 justify-content-center justify-content-lg-end mb-4">
-                        <a href="#search-section" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold">ابحث عن طبيب الآن</a>
-                        <a href="#how-it-works" class="btn btn-link text-dark text-decoration-none d-flex align-items-center">
-                            <i class="far fa-play-circle fa-2x me-2 text-primary"></i> كيف يعمل؟
-                        </a>
+                        <a href="#search-section" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold">ابحث عن طبيبك الآن</a>
                     </div>
                     
                     <div class="mt-4" data-aos="fade-up" data-aos-delay="300">
@@ -198,8 +205,7 @@
                 <h5 class="mt-3 text-muted">جاري تحميل بيانات الأطباء...</h5>
             </div>
 
-            <div class="row g-4" id="doctorsContainer">
-                </div>
+            <div class="row g-4" id="doctorsContainer"></div>
             
             <button id="btnLoadMore" class="btn btn-outline-primary mt-4">عرض المزيد <i class="fas fa-chevron-down ms-1"></i></button>
 
@@ -214,7 +220,7 @@
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">انضم إلينا في 3 خطوات بسيطة</h2>
-                <p class="text-muted">مش محتاج تكون خبير تكنولوجي، الموضوع أسهل مما تتخيل</p>
+                <p class="text-muted">مخصصة للأطباء والمنشآت الطبية فقط</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -249,8 +255,8 @@
         <div class="container" data-aos="zoom-in">
             <h2 class="fw-bold mb-2">انضم لشركاء النجاح</h2>
             
-            <div class="typing-container">
-                <p class="dynamic-text"><span id="typewriter-text"></span><span class="typing-cursor"></span></p>
+            <div class="typing-container-bottom">
+                <p class="dynamic-text-bottom"><span id="typewriter-bottom"></span><span class="typing-cursor cursor-bottom"></span></p>
             </div>
 
             <div class="row justify-content-center">
@@ -285,44 +291,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const messages = [
+            // بيانات الآلة الكاتبة العلوية (للمرضى)
+            const topMessages = [
+                "ابحث عن أشطر دكتور في تخصصك بسهولة..",
+                "اعرف مواعيد العيادة وأسعار الكشف قبل ما تروح..",
+                "تواصل مع عيادتك واحجز موعدك بضغطة زر.."
+            ];
+            
+            // بيانات الآلة الكاتبة السفلية (للأطباء)
+            const bottomMessages = [
                 "هل أنت طبيب، معمل تحاليل، مركز أشعة، أو مستشفى؟",
                 "سواء كنت اسماً عريقاً أو تبدأ رحلة نجاحك.. مكانك هنا.",
                 "هل تسعى لمضاعفة حجوزاتك وتوسيع شبكة مرضاك؟",
                 "تميز وسط الآلاف، واجعل عيادتك الخيار الأول للمريض.",
                 "لا تفقد مرضاك بسبب غياب صورة عيادتك أو رقم حجزك!"
             ];
-            
-            const textElement = document.getElementById("typewriter-text");
-            let messageIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
 
-            function type() {
-                const currentMessage = messages[messageIndex];
+            function initTypewriter(elementId, messages, writeSpeed, deleteSpeed, pauseTime) {
+                const textElement = document.getElementById(elementId);
+                if (!textElement) return;
                 
-                if (isDeleting) {
-                    textElement.textContent = currentMessage.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 40; // سرعة المسح
-                } else {
-                    textElement.textContent = currentMessage.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 80; // سرعة الكتابة
-                }
+                let messageIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let currentSpeed = writeSpeed;
 
-                if (!isDeleting && charIndex === currentMessage.length) {
-                    isDeleting = true;
-                    typingSpeed = 3000; // وقت الانتظار لقراءة الجملة
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    messageIndex = (messageIndex + 1) % messages.length;
-                    typingSpeed = 500; // وقت الانتظار قبل الجملة التالية
+                function type() {
+                    const currentMessage = messages[messageIndex];
+                    
+                    if (isDeleting) {
+                        textElement.textContent = currentMessage.substring(0, charIndex - 1);
+                        charIndex--;
+                        currentSpeed = deleteSpeed;
+                    } else {
+                        textElement.textContent = currentMessage.substring(0, charIndex + 1);
+                        charIndex++;
+                        currentSpeed = writeSpeed;
+                    }
+
+                    if (!isDeleting && charIndex === currentMessage.length) {
+                        isDeleting = true;
+                        currentSpeed = pauseTime; // الانتظار بعد اكتمال الجملة
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        currentSpeed = 500; // الانتظار قبل الجملة الجديدة
+                    }
+                    setTimeout(type, currentSpeed);
                 }
-                setTimeout(type, typingSpeed);
+                setTimeout(type, 1000);
             }
-            setTimeout(type, 1000);
+
+            // تشغيل الاثنين معاً
+            initTypewriter("typewriter-top", topMessages, 70, 30, 2500);
+            initTypewriter("typewriter-bottom", bottomMessages, 80, 40, 3000);
         });
     </script>
 
@@ -337,15 +359,15 @@
 
         // ⚠️ بياناتك الحقيقية
         const firebaseConfig = {
-  apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
-  authDomain: "tabibarabi.firebaseapp.com",
-  databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
-  projectId: "tabibarabi",
-  storageBucket: "tabibarabi.firebasestorage.app",
-  messagingSenderId: "588623616986",
-  appId: "1:588623616986:web:e95b644f1a64780817fee3",
-  measurementId: "G-475QDZWSGT"
-};
+            apiKey: "AIzaSyB4igFygw6l9K_hyr7QTjYfh1zZ5w8HclM",
+            authDomain: "tabibarabi.firebaseapp.com",
+            databaseURL: "https://tabibarabi-default-rtdb.firebaseio.com",
+            projectId: "tabibarabi",
+            storageBucket: "tabibarabi.firebasestorage.app",
+            messagingSenderId: "588623616986",
+            appId: "1:588623616986:web:e95b644f1a64780817fee3",
+            measurementId: "G-475QDZWSGT"
+        };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
@@ -482,11 +504,7 @@
         });
 
         window.logAction = function(docKey, country, city, actionType) {
-            logEvent(analytics, 'doctor_interaction', {
-                action: actionType,
-                doctor_id: docKey
-            });
-
+            logEvent(analytics, 'doctor_interaction', { action: actionType, doctor_id: docKey });
             const updates = {};
             let statField = '';
             if(actionType === 'view') statField = 'statsViews';
@@ -496,7 +514,7 @@
 
             if(statField && country && city) {
                 updates[`doctors/${country}/${city}/${docKey}/${statField}`] = increment(1);
-                update(ref(db), updates).catch(err => console.error("Error updating stats:", err));
+                update(ref(db), updates).catch(err => console.error("Error:", err));
             }
         };
 
