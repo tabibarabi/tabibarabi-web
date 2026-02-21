@@ -637,9 +637,11 @@
             }
 
             if (isLiked) {
-                likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
-                likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية (إلغاء)';
+                // الزر في حالة "تمت التوصية ويريد الإلغاء" (لون رمادي هادئ)
+                likeBtn.className = 'btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm';
+                likeBtn.innerHTML = '<i class="fas fa-undo me-1"></i> إلغاء التوصية بهذا الطبيب';
             } else {
+                // الزر في حالته الطبيعية "لم يوصِ بعد" (لون أخضر)
                 likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
                 likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
             }
@@ -729,3 +731,4 @@
     </script>
 </body>
 </html>
+
