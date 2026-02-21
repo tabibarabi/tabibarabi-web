@@ -63,17 +63,15 @@
         #imageViewer .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
 
         /* ========================================================= */
-        /* تأثيرات الآلة الكاتبة (للمرضى فوق، وللأطباء تحت) */
+        /* تأثيرات الآلة الكاتبة */
         /* ========================================================= */
         .typing-cursor { display: inline-block; width: 3px; height: 1.1em; margin-right: 5px; vertical-align: bottom; animation: blink 0.7s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
-        /* تنسيق اللي تحت (للدكاترة) */
         .typing-container-bottom { min-height: 60px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
         .dynamic-text-bottom { color: var(--accent-color); font-weight: 800; font-size: 1.3rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .cursor-bottom { background-color: var(--accent-color); }
 
-        /* تنسيق اللي فوق (للمرضى) */
         .typing-container-top { min-height: 35px; margin-bottom: 25px; display: flex; justify-content: center; }
         @media (min-width: 992px) { .typing-container-top { justify-content: flex-end; } }
         .dynamic-text-top { color: var(--primary-color); font-weight: 700; font-size: 1.2rem; margin: 0; }
@@ -84,7 +82,7 @@
             position: absolute; 
             bottom: -20px; 
             left: 50%; 
-            transform: translateX(-50%); /* توسيط على الموبايل */
+            transform: translateX(-50%); 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px); 
             border-radius: 15px; 
@@ -105,7 +103,7 @@
             .premium-card {
                 left: -20px;
                 bottom: -30px;
-                transform: none; /* إلغاء التوسيط على اللاب توب */
+                transform: none; 
                 width: 300px;
                 animation: float-desktop 3s ease-in-out infinite;
             }
@@ -474,18 +472,18 @@
 
                 document.getElementById('liveDoctorsCount').innerText = allDoctors.length;
                 document.getElementById('loader').classList.add('d-none');
+                
                 if (allDoctors.length > 0) {
-                    const topDoc = allDoctors[0]; // نأخذ الطبيب رقم 1 في القائمة
-                    
+                    const topDoc = allDoctors[0];
                     let premiumImgSrc = topDoc.imageUrl && topDoc.imageUrl !== 'default' ? topDoc.imageUrl : 'appicon.jpg';
                     document.getElementById('premiumImg').src = premiumImgSrc;
                     document.getElementById('premiumName').innerText = topDoc.name;
                     document.getElementById('premiumSpec').innerText = topDoc.speciality;
                     
-                    // جعل الكارت يفتح البروفايل الكامل عند الضغط عليه!
                     const premiumContainer = document.getElementById('premiumDoctorContainer');
                     premiumContainer.setAttribute('onclick', `openProfile('${topDoc.key}')`);
                 }
+                
                 currentDisplayedList = allDoctors;
                 displayLimit = BATCH_SIZE; 
                 renderDoctors();
@@ -590,33 +588,63 @@
             }
         };
 
-        window.likeDoctor = function(docKey, country, city) {
+        // 🌟 دالة اللايك الذكية المحدثة (Toggle & Debounce) 🌟
+        window.toggleLikeDoctor = function(docKey, country, city) {
+            const likeBtn = document.getElementById('modalBtnLike');
+            likeBtn.disabled = true; // منع الدبل كليك لمنع الزيادة المزدوجة
+
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
-            if (likedDocs.includes(docKey)) return;
-
-            likedDocs.push(docKey);
-            localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
-
+            const isLiked = likedDocs.includes(docKey);
+            
             const updates = {};
-            updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
-            update(ref(db), updates).then(() => {
-                const doc = allDoctors.find(d => d.key === docKey);
-                if(doc) {
-                    doc.statsLikes = (doc.statsLikes || 0) + 1;
-                    
-                    const likesContainer = document.getElementById('modalLikesContainer');
-                    likesContainer.classList.remove('d-none');
-                    document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
-                    
-                    const likeBtn = document.getElementById('modalBtnLike');
-                    likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
-                    likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
-                    likeBtn.disabled = true;
+            const doc = allDoctors.find(d => d.key === docKey);
+            if (!doc) return;
 
-                    renderDoctors();
-                }
-            }).catch(err => console.error("Error liking:", err));
+            if (isLiked) {
+                // المستخدم يريد الإلغاء
+                likedDocs = likedDocs.filter(id => id !== docKey);
+                localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
+                updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(-1);
+                
+                update(ref(db), updates).then(() => {
+                    doc.statsLikes = Math.max((doc.statsLikes || 0) - 1, 0); // إنقاص الرقم محلياً
+                    refreshModalLikeUI(doc, false, likeBtn);
+                    renderDoctors(); // تحديث الكروت بالخارج
+                }).catch(err => { console.error("Error unliking:", err); likeBtn.disabled = false; });
+                
+            } else {
+                // المستخدم يريد إضافة التوصية
+                likedDocs.push(docKey);
+                localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
+                updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
+                
+                update(ref(db), updates).then(() => {
+                    doc.statsLikes = (doc.statsLikes || 0) + 1; // زيادة الرقم محلياً
+                    refreshModalLikeUI(doc, true, likeBtn);
+                    renderDoctors(); // تحديث الكروت بالخارج
+                }).catch(err => { console.error("Error liking:", err); likeBtn.disabled = false; });
+            }
         };
+
+        // دالة تحديث شكل زر وعداد اللايك
+        function refreshModalLikeUI(doc, isLiked, likeBtn) {
+            const likesContainer = document.getElementById('modalLikesContainer');
+            if (doc.statsLikes > 0) {
+                likesContainer.classList.remove('d-none');
+                document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
+            } else {
+                likesContainer.classList.add('d-none');
+            }
+
+            if (isLiked) {
+                likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
+                likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية (إلغاء)';
+            } else {
+                likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
+                likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
+            }
+            likeBtn.disabled = false; // إعادة تفعيل الزر بعد انتهاء التحديث
+        }
 
         window.openProfile = function(docKey) {
             const doc = allDoctors.find(d => d.key === docKey);
@@ -630,27 +658,13 @@
             document.getElementById('modalSpec').innerText = doc.speciality;
             document.getElementById('modalDegree').innerText = doc.degree || '';
             
-            const likesContainer = document.getElementById('modalLikesContainer');
-            if (doc.statsLikes > 0) {
-                likesContainer.classList.remove('d-none');
-                document.getElementById('modalLikes').innerText = `${doc.statsLikes} توصية`;
-            } else {
-                likesContainer.classList.add('d-none');
-            }
-
+            // فحص حالة اللايك لضبط الزر عند فتح النافذة
             const likeBtn = document.getElementById('modalBtnLike');
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
-            if (likedDocs.includes(doc.key)) {
-                likeBtn.className = 'btn btn-success rounded-pill px-4 fw-bold shadow-sm';
-                likeBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i> تمت التوصية';
-                likeBtn.disabled = true;
-                likeBtn.onclick = null;
-            } else {
-                likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
-                likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
-                likeBtn.disabled = false;
-                likeBtn.onclick = () => window.likeDoctor(doc.key, doc.country, doc.city);
-            }
+            const isLiked = likedDocs.includes(doc.key);
+            
+            refreshModalLikeUI(doc, isLiked, likeBtn);
+            likeBtn.onclick = () => window.toggleLikeDoctor(doc.key, doc.country, doc.city);
 
             if(doc.bio && doc.bio.trim() !== "") {
                 document.getElementById('modalBioContainer').classList.remove('d-none');
