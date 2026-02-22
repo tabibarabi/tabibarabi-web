@@ -178,15 +178,20 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col-lg-3 mb-4">
-                <div class="specialty-menu">
-                    <h4>التخصصات الطبية</h4>
-                    <a href="#" class="specialty-link active" onclick="filterByCategory('all')"><i class="fas fa-notes-medical me-2"></i> جميع الأمراض</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('internal')"><i class="fas fa-heartbeat me-2"></i> باطنة وقلب</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('derma')"><i class="fas fa-spa me-2"></i> جلدية وتجميل</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('neuro')"><i class="fas fa-brain me-2"></i> مخ وأعصاب (قريباً)</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('uro')"><i class="fas fa-procedures me-2"></i> مسالك بولية (قريباً)</a>
-                </div>
-            </div>
+    <div class="specialty-menu">
+        <h4>التخصصات الطبية</h4>
+        <a href="#" class="specialty-link active" onclick="filterByCategory('all')"><i class="fas fa-notes-medical me-2"></i> جميع الأمراض</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('internal')"><i class="fas fa-heartbeat me-2"></i> باطنة وقلب</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('gastro')"><i class="fas fa-stomach me-2"></i> جهاز هضمي وكبد</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('derma')"><i class="fas fa-spa me-2"></i> جلدية وتجميل</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('neuro')"><i class="fas fa-brain me-2"></i> مخ وأعصاب</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('uro')"><i class="fas fa-procedures me-2"></i> مسالك بولية وذكورة</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('ortho')"><i class="fas fa-bone me-2"></i> عظام ومفاصل</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('obgyn')"><i class="fas fa-baby me-2"></i> نساء وتوليد</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('pedia')"><i class="fas fa-child me-2"></i> طب الأطفال</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('psych')"><i class="fas fa-user-md me-2"></i> طب نفسي</a>
+    </div>
+</div>
 
             <div class="col-lg-9">
                 <div class="accordion" id="diseasesAccordion">
@@ -331,6 +336,365 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="accordion-item disease-card" data-category="uro">
+    <h2 class="accordion-header" id="headingBPH">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBPH" aria-expanded="false" aria-controls="collapseBPH">
+            تضخم البروستاتا الحميد (BPH)
+        </button>
+    </h2>
+    <div id="collapseBPH" class="accordion-collapse collapse" aria-labelledby="headingBPH" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-secondary mb-3 px-3 py-2">مسالك بولية وذكورة</span>
+            <p class="med-text"><strong>نبذة:</strong> زيادة غير سرطانية في حجم غدة البروستاتا المحيطة بمجرى البول (الإحليل) لدى الرجال، تحدث غالباً مع التقدم في العمر وتؤدي إلى أعراض مزعجة في الجهاز البولي السفلي (LUTS).</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض الشائعة</h4>
+            <ul class="med-list med-text">
+                <li>كثرة التبول، خاصة أثناء الليل (Nocturia).</li>
+                <li>صعوبة وضعف في اندفاع تيار البول.</li>
+                <li>الشعور بعدم إفراغ المثانة بالكامل بعد التبول.</li>
+                <li>تقطع البول والتبول الإلحاحي.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والأدوية</h5>
+                <p class="med-text mb-2">يهدف العلاج الدوائي إلى إرخاء العضلات أو تقليص حجم الغدة:</p>
+                <ul class="med-list med-text">
+                    <li><strong>حاصرات ألفا (Alpha-blockers):</strong> مثل Tamsulosin و Alfuzosin. تعمل بسرعة على إرخاء عضلات عنق المثانة والبروستاتا لتسهيل التبول. (قد تسبب قذفاً مرتجعاً كعرض جانبي).</li>
+                    <li><strong>مثبطات إنزيم 5-ألفا ريدوكتاز (5-ARIs):</strong> مثل Finasteride و Dutasteride. تمنع تحول التستوستيرون إلى صورته النشطة (DHT)، مما يؤدي لتقليص حجم الغدة الفعلي بمرور الوقت (تحتاج من 3 إلى 6 أشهر لظهور نتائجها).</li>
+                    <li><strong>العلاج المزدوج (Combination Therapy):</strong> دمج كلا المجموعتين في كبسولة واحدة للحالات المتقدمة.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب مسالك بولية</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="uro">
+    <h2 class="accordion-header" id="headingStones">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStones" aria-expanded="false" aria-controls="collapseStones">
+            حصوات الكلى والمسالك البولية (Renal Stones)
+        </button>
+    </h2>
+    <div id="collapseStones" class="accordion-collapse collapse" aria-labelledby="headingStones" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-secondary mb-3 px-3 py-2">مسالك بولية</span>
+            <p class="med-text"><strong>نبذة:</strong> ترسبات صلبة من المعادن والأملاح تتشكل داخل الكلى وتنتقل عبر الحالب. وتعتبر من أكثر الحالات الطبية ألماً.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li><strong>المغص الكلوي:</strong> ألم حاد ومفاجئ في الخاصرة يمتد إلى أسفل البطن ومنطقة الفخذ.</li>
+                <li>ظهور دم في البول (Hematuria).</li>
+                <li>غثيان وقيء مصاحب للألم الشديد.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والتدخلات</h5>
+                <ul class="med-list med-text">
+                    <li><strong>تسكين الألم:</strong> مضادات الالتهاب غير الستيرويدية (NSAIDs) مثل Ketorolac أو Diclofenac حقناً هي الخط الأول لتسكين المغص الكلوي وتقليل ارتشاح الحالب.</li>
+                    <li><strong>العلاج التحفظي (لطرد الحصوة):</strong> استخدام حاصرات ألفا (Tamsulosin) لإرخاء الحالب وتسهيل نزول الحصوات التي يقل حجمها عن 10 مم، مع شرب كميات هائلة من الماء.</li>
+                    <li><strong>تفتيت الحصوات (ESWL):</strong> استخدام الموجات التصادمية من خارج الجسم لتفتيت الحصوات الكبيرة إلى رمال يسهل نزولها.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب مسالك بولية</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="neuro">
+    <h2 class="accordion-header" id="headingMigraine">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMigraine" aria-expanded="false" aria-controls="collapseMigraine">
+            الصداع النصفي (Migraine)
+        </button>
+    </h2>
+    <div id="collapseMigraine" class="accordion-collapse collapse" aria-labelledby="headingMigraine" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-info text-dark mb-3 px-3 py-2">مخ وأعصاب</span>
+            <p class="med-text"><strong>نبذة:</strong> اضطراب عصبي معقد يتسم بنوبات متكررة من الصداع النابض (غالباً في جانب واحد من الرأس)، مرتبط بتغيرات في الأوعية الدموية والمستقبلات العصبية في الدماغ.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض الشائعة</h4>
+            <ul class="med-list med-text">
+                <li>صداع نابض أو خافق يزداد سوءاً مع المجهود.</li>
+                <li>التحسس الشديد للضوء (Photophobia) والصوت (Phonophobia).</li>
+                <li>غثيان وقيء.</li>
+                <li><strong>الأورة (Aura):</strong> اضطرابات بصرية (ومضات ضوئية أو خطوط متعرجة) تسبق الصداع عند بعض المرضى.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي (إجهاض النوبة والوقاية)</h5>
+                <ul class="med-list med-text">
+                    <li><strong>علاج النوبة الحادة (Abortive):</strong> 
+                        <ul>
+                            <li>المسكنات القوية (NSAIDs) مثل Ibuprofen، والباراسيتامول مع الكافيين.</li>
+                            <li><strong>عائلة التريبتان (Triptans):</strong> مثل Sumatriptan و Zolmitriptan. أدوية متخصصة تقبض الأوعية الدموية في الدماغ وتوقف النوبة بفعالية (تُمنع لمرضى القلب والجلطات).</li>
+                        </ul>
+                    </li>
+                    <li><strong>العلاج الوقائي (Prophylactic):</strong> (لمن يعانون من أكثر من 4 نوبات شهرياً)
+                        <ul>
+                            <li>حاصرات بيتا (Propranolol).</li>
+                            <li>مضادات الاكتئاب ثلاثية الحلقات (Amitriptyline).</li>
+                            <li>مضادات التشنج (Topiramate).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب مخ وأعصاب</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="gastro">
+    <h2 class="accordion-header" id="headingIBS">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIBS" aria-expanded="false" aria-controls="collapseIBS">
+            متلازمة القولون العصبي (IBS)
+        </button>
+    </h2>
+    <div id="collapseIBS" class="accordion-collapse collapse" aria-labelledby="headingIBS" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2">جهاز هضمي وكبد</span>
+            <p class="med-text"><strong>نبذة:</strong> اضطراب وظيفي (ليس عضوياً) في الجهاز الهضمي يتميز بألم في البطن وتغيرات في عادات التبرز، ويرتبط بشدة بالحالة النفسية والتوتر.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض وعوامل الاستثارة</h4>
+            <ul class="med-list med-text">
+                <li>ألم ومغص في البطن يخف جزئياً بعد التبرز.</li>
+                <li>انتفاخ شديد وتراكم للغازات.</li>
+                <li>تناوب بين فترات من الإسهال (IBS-D) والإمساك (IBS-C).</li>
+                <li><strong>المهيجات:</strong> التوتر النفسي، البقوليات، منتجات الألبان، الكافيين، والأطعمة المليئة بالدهون.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> الإدارة الدوائية وتعديل نمط الحياة</h5>
+                <ul class="med-list med-text">
+                    <li><strong>مضادات التقلصات (Antispasmodics):</strong> مثل Mebeverine و Otilonium bromide لإرخاء عضلات الأمعاء الدقيقة والقولون.</li>
+                    <li><strong>منظمات حركة الأمعاء:</strong> مثل Trimebutine.</li>
+                    <li><strong>مضادات الانتفاخ:</strong> مثل Simethicone و مستخلصات زيت النعناع.</li>
+                    <li><strong>تعديل الحمية:</strong> اتباع نظام (FODMAP) قليل السكريات المتخمرة، والذي يقلل الانتفاخ بنسبة تصل لـ 70%.</li>
+                    <li>في الحالات المزمنة المرتبطة بالتوتر، قد يصف الطبيب جرعات منخفضة من مضادات الاكتئاب للتحكم في الإشارات العصبية للأمعاء.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب جهاز هضمي</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="gastro">
+    <h2 class="accordion-header" id="headingHPylori">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHPylori" aria-expanded="false" aria-controls="collapseHPylori">
+            جرثومة المعدة (Helicobacter Pylori)
+        </button>
+    </h2>
+    <div id="collapseHPylori" class="accordion-collapse collapse" aria-labelledby="headingHPylori" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2">جهاز هضمي وكبد</span>
+            <p class="med-text"><strong>نبذة:</strong> بكتيريا حلزونية تعيش وتتكاثر في الجدار المبطن للمعدة. وهي المسبب الرئيسي لالتهاب المعدة المزمن وقرحة المعدة والإثنى عشر.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض والمضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>ألم حارق في أعلى البطن، يزداد غالباً عندما تكون المعدة فارغة.</li>
+                <li>غثيان مستمر، كثرة التجشؤ، والشعور السريع بالشبع.</li>
+                <li>إذا تركت بدون علاج قد تسبب قرحة نازفة، وتزيد من خطر الإصابة بسرطان المعدة على المدى الطويل.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي (العلاج الثلاثي والرباعي)</h5>
+                <p class="med-text mb-2">الجرثومة شرسة وتتطلب خطة علاج مكثفة (لمدة 10 إلى 14 يوماً) للقضاء عليها:</p>
+                <ul class="med-list med-text">
+                    <li><strong>العلاج الثلاثي (Triple Therapy):</strong>
+                        <ul>
+                            <li>مثبطات مضخة البروتون (PPI) مثل Omeprazole أو Pantoprazole لتقليل حمض المعدة.</li>
+                            <li>مضاد حيوي (Clarithromycin).</li>
+                            <li>مضاد حيوي آخر (Amoxicillin أو Metronidazole).</li>
+                        </ul>
+                    </li>
+                    <li><strong>العلاج الرباعي (Quadruple Therapy):</strong> يُستخدم في حال فشل العلاج الثلاثي أو وجود مقاومة للمضادات الحيوية، ويُضاف إليه أملاح البزموت (Bismuth).</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب باطنة وجهاز هضمي</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="obgyn">
+    <h2 class="accordion-header" id="headingPCOS">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCOS" aria-expanded="false" aria-controls="collapsePCOS">
+            متلازمة تكيس المبايض (PCOS)
+        </button>
+    </h2>
+    <div id="collapsePCOS" class="accordion-collapse collapse" aria-labelledby="headingPCOS" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-danger mb-3 px-3 py-2">نساء وتوليد</span>
+            <p class="med-text"><strong>نبذة:</strong> اضطراب هرموني شائع بين النساء في سن الإنجاب، يتسم بزيادة هرمونات الذكورة (الأندروجين)، اضطراب التبويض، وتجمع حويصلات صغيرة حول المبيض.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض (بناءً على معايير روتردام)</h4>
+            <ul class="med-list med-text">
+                <li>عدم انتظام الدورة الشهرية (تأخرها أو انقطاعها لشهور).</li>
+                <li>زيادة نمو الشعر في الوجه والجسم (Hirsutism) وظهور حب الشباب المقاوم للعلاج.</li>
+                <li>زيادة الوزن وصعوبة فقدانه، وتساقط شعر الرأس (صلع ذكوري النمط).</li>
+                <li>صعوبة أو تأخر الحمل بسبب ضعف التبويض.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي المتكامل</h5>
+                <p class="med-text mb-2">يعتمد العلاج على شكوى المريضة (الرغبة في الإنجاب أم تنظيم الهرمونات):</p>
+                <ul class="med-list med-text">
+                    <li><strong>الخط الأول:</strong> فقدان الوزن (حتى 5-10% من الوزن) يحسن التبويض بشكل دراماتيكي.</li>
+                    <li><strong>حساسية الأنسولين:</strong> الميتفورمين (Metformin) يوصف بكثرة لتقليل مقاومة الأنسولين، مما يساهم في انتظام الهرمونات وتقليل الوزن.</li>
+                    <li><strong>لتنظيم الدورة وعلاج الشعر الزائد:</strong> حبوب منع الحمل المركبة (OCPs)، أو مضادات الأندروجين مثل Spironolactone.</li>
+                    <li><strong>لتحفيز الإباضة (للرغبات في الحمل):</strong> Clomiphene أو Letrozole تحت إشراف طبي دقيق.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب نساء وتوليد</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="ortho">
+    <h2 class="accordion-header" id="headingOA">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOA" aria-expanded="false" aria-controls="collapseOA">
+            خشونة المفاصل / الفُصال العظمي (Osteoarthritis)
+        </button>
+    </h2>
+    <div id="collapseOA" class="accordion-collapse collapse" aria-labelledby="headingOA" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-dark mb-3 px-3 py-2">عظام ومفاصل</span>
+            <p class="med-text"><strong>نبذة:</strong> أكثر أنواع التهاب المفاصل شيوعاً. يحدث نتيجة تآكل الغضروف الواقي الذي يغطي نهايات العظام، مما يؤدي لاحتكاك العظام ببعضها، وغالباً ما يصيب الركبتين والورك والعمود الفقري.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض والتطور</h4>
+            <ul class="med-list med-text">
+                <li>ألم عميق في المفصل يزداد مع الحركة ويقل بالراحة.</li>
+                <li>تيبس المفصل، خاصة عند الاستيقاظ صباحاً أو بعد فترة من عدم الحركة (يزول عادة خلال 30 دقيقة).</li>
+                <li>سماع صوت طقطقة أو صرير (Crepitus) عند ثني المفصل.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> إدارة الألم والبروتوكول العلاجي</h5>
+                <ul class="med-list med-text">
+                    <li><strong>الأساس:</strong> إنقاص الوزن لتخفيف الحمل الميكانيكي على الركبتين، والعلاج الطبيعي لتقوية العضلات المحيطة بالمفصل.</li>
+                    <li><strong>تسكين الألم:</strong> مسكنات موضعية، يليها الباراسيتامول، ثم مضادات الالتهاب غير الستيرويدية (NSAIDs) مثل Meloxicam و Celecoxib (تُستخدم بحذر لمرضى المعدة والقلب).</li>
+                    <li><strong>الحقن الموضعي:</strong> 
+                        <ul>
+                            <li>حقن الكورتيكوستيرويد: لتسكين الالتهاب الحاد بسرعة.</li>
+                            <li>حقن حمض الهيالورونيك (Hyaluronic Acid): لزيادة لزوجة السائل الزلالي وتسهيل الحركة.</li>
+                        </ul>
+                    </li>
+                    <li><strong>الجراحة:</strong> الاستبدال الكلي للمفصل (Joint Replacement) في الحالات المتأخرة جداً.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب جراحة عظام</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="pedia">
+    <h2 class="accordion-header" id="headingAsthma">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAsthma" aria-expanded="false" aria-controls="collapseAsthma">
+            الربو الشعبي وحساسية الصدر عند الأطفال (Pediatric Asthma)
+        </button>
+    </h2>
+    <div id="collapseAsthma" class="accordion-collapse collapse" aria-labelledby="headingAsthma" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-primary mb-3 px-3 py-2">طب الأطفال والحساسية</span>
+            <p class="med-text"><strong>نبذة:</strong> مرض تنفسي مزمن يتميز بالتهاب وتضيق ممرات الهواء (الشعب الهوائية) في الرئتين استجابةً لمثيرات بيئية، مما يؤدي لفرط إفراز المخاط وصعوبة التنفس.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض والمثيرات</h4>
+            <ul class="med-list med-text">
+                <li>سعال متكرر، خاصة أثناء الليل أو عند بذل مجهود (اللعب).</li>
+                <li>صوت أزيز أو تزييق (Wheezing) مسموع أثناء الزفير.</li>
+                <li>ضيق في التنفس وسرعة في معدل التنفس.</li>
+                <li><strong>المثيرات:</strong> الأتربة، حبوب اللقاح، الدخان، وبر الحيوانات الأليفة، والعدوى الفيروسية.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> أدوية الإنقاذ والوقاية</h5>
+                <p class="med-text mb-2">العلاج الحديث يعتمد على البخاخات (Inhalers) وليس الأدوية الشرابية، لأن البخاخ يصل للرئة مباشرة بأقل آثار جانبية:</p>
+                <ul class="med-list med-text">
+                    <li><strong>أدوية الإغاثة السريعة (SABA):</strong> مثل بخاخة الـ Salbutamol (فينتولين). تستخدم وقت الأزمة فقط لتوسيع الشعب الهوائية فوراً.</li>
+                    <li><strong>أدوية التحكم الوقائية (Controller):</strong> 
+                        <ul>
+                            <li><strong>الكورتيكوستيرويد المستنشق (ICS):</strong> مثل Fluticasone و Budesonide. هو حجر الزاوية في العلاج لمنع الالتهاب (آمن جداً للأطفال بالجرعات المحددة ولا يسبب سمنة أو توقف في النمو).</li>
+                            <li>مضادات مستقبلات الليكوترين (Montelukast): أكياس أو أقراص مضغ ليلاً للوقاية من تحسس الصدر والأنف.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أطفال وحساسية</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="neuro">
+    <h2 class="accordion-header" id="headingStroke">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStroke" aria-expanded="false" aria-controls="collapseStroke">
+            السكتة الدماغية / الجلطة (Stroke)
+        </button>
+    </h2>
+    <div id="collapseStroke" class="accordion-collapse collapse" aria-labelledby="headingStroke" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-info text-dark mb-3 px-3 py-2">مخ وأعصاب وطوارئ</span>
+            <p class="med-text"><strong>نبذة:</strong> حالة طوارئ طبية قصوى تحدث عندما ينقطع أو يقل إمداد الدم لجزء من الدماغ (جلطة إقفارية 85%)، أو عندما ينفجر وعاء دموي في الدماغ (سكتة نزفية 15%). الوقت هو الدماغ (Time is Brain).</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض (اختبار FAST السريع)</h4>
+            <ul class="med-list med-text">
+                <li><strong>F (Face):</strong> تدلي أو اعوجاج في نصف الوجه عند الابتسام.</li>
+                <li><strong>A (Arms):</strong> ضعف أو تنميل في ذراع واحد يمنع المريض من رفعه.</li>
+                <li><strong>S (Speech):</strong> ثقل في اللسان، صعوبة في الكلام أو عدم فهم ما يقال.</li>
+                <li><strong>T (Time):</strong> وقت الاتصال بالإسعاف فوراً (النافذة الذهبية للعلاج هي أول 4.5 ساعات).</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> التدخل الطبي الطارئ والأدوية</h5>
+                <ul class="med-list med-text">
+                    <li><strong>الطوارئ (في السكتة الإقفارية فقط):</strong> استخدام الأدوية المذيبة للجلطة (tPA / Alteplase) وريدياً، يجب إعطاؤها في غضون 4.5 ساعات من بداية الأعراض لإنقاذ الخلايا العصبية. (تُمنع تماماً في السكتة النزفية).</li>
+                    <li><strong>بعد استقرار الحالة:</strong> 
+                        <ul>
+                            <li>مضادات التخثر أو الصفائح الدموية: مثل Aspirin و Clopidogrel لمنع تكون جلطات جديدة.</li>
+                            <li>أدوية الكوليسترول (Statins): بجرعات عالية لتثبيت لويحات الشرايين.</li>
+                            <li>التحكم الصارم في ضغط الدم والسكر.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> ابحث عن أقرب مستشفى أو طبيب أعصاب</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="psych">
+    <h2 class="accordion-header" id="headingDepression">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDepression" aria-expanded="false" aria-controls="collapseDepression">
+            الاكتئاب الجسيم (Major Depressive Disorder)
+        </button>
+    </h2>
+    <div id="collapseDepression" class="accordion-collapse collapse" aria-labelledby="headingDepression" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-secondary mb-3 px-3 py-2">طب نفسي وعصبي</span>
+            <p class="med-text"><strong>نبذة:</strong> ليس مجرد "حزن عابر" أو ضعف في الشخصية، بل هو مرض طبي حقيقي ناتج عن خلل كيميائي في النواقل العصبية في الدماغ (مثل السيروتونين والدوبامين)، يؤثر بعمق على طريقة التفكير والشعور والسلوك.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض التشخيصية</h4>
+            <p class="med-text">يجب استمرار الأعراض لمدة أسبوعين على الأقل للتشخيص:</p>
+            <ul class="med-list med-text">
+                <li>مزاج مكتئب معظم اليوم، وانعدام تام للشغف والمتعة في الأنشطة المعتادة (Anhedonia).</li>
+                <li>تغيرات شديدة في الشهية (نقصان أو زيادة ملحوظة في الوزن).</li>
+                <li>اضطرابات النوم (أرق شديد أو نوم لساعات طويلة جداً).</li>
+                <li>فقدان الطاقة، والشعور المفرط بالذنب وانعدام القيمة.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي (الدوائي والسلوكي)</h5>
+                <ul class="med-list med-text">
+                    <li><strong>مضادات الاكتئاب (تحتاج من أسبوعين لـ 6 أسابيع لظهور مفعولها):</strong>
+                        <ul>
+                            <li><strong>مثبطات استرداد السيروتونين الانتقائية (SSRIs):</strong> مثل Fluoxetine و Sertraline و Escitalopram. هي الخط العلاجي الأول والأكثر أماناً.</li>
+                            <li><strong>مثبطات استرداد السيروتونين والنورإيبينفرين (SNRIs):</strong> مثل Venlafaxine و Duloxetine.</li>
+                        </ul>
+                    </li>
+                    <li><strong>العلاج النفسي:</strong> العلاج المعرفي السلوكي (CBT) لتغيير أنماط التفكير السلبية. دمج العلاج الدوائي مع الـ CBT يعطي أعلى نسب نجاح وشفاء.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أمراض نفسية</a></div>
+        </div>
+    </div>
+</div>
 
                     </div>
             </div>
