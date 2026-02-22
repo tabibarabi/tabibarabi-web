@@ -191,6 +191,7 @@
         <a href="#" class="specialty-link" onclick="filterByCategory('pedia')"><i class="fas fa-child me-2"></i> طب الأطفال</a>
         <a href="#" class="specialty-link" onclick="filterByCategory('psych')"><i class="fas fa-user-md me-2"></i> طب نفسي</a>
         <a href="#" class="specialty-link" onclick="filterByCategory('ophtha')"><i class="fas fa-user-md me-2"></i> رمد وعيون</a>
+        <a href="#" class="specialty-link" onclick="filterByCategory('ent')"><i class="fas fa-user-md me-2"></i> أنف وأذن وحنجرة</a>
     </div>
 </div>
 
@@ -1654,7 +1655,593 @@
         </div>
     </div>
 </div>
-                    
+ <div class="accordion-item disease-card" data-category="ophtha">
+    <h2 class="accordion-header" id="headingGlaucoma">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGlaucoma" aria-expanded="false" aria-controls="collapseGlaucoma">
+            الجلوكوما / المياه الزرقاء (Glaucoma)
+        </button>
+    </h2>
+    <div id="collapseGlaucoma" class="accordion-collapse collapse" aria-labelledby="headingGlaucoma" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-light text-dark border mb-3 px-3 py-2">طب وجراحة العيون</span>
+            <p class="med-text"><strong>نبذة:</strong> مجموعة من أمراض العين التي تؤدي إلى تلف العصب البصري (المسؤول عن نقل الصور للدماغ)، وغالباً ما يرتبط هذا التلف بارتفاع غير طبيعي في ضغط العين (IOP). تُعرف بـ "سارق البصر الصامت" لأنها لا تسبب أعراضاً في بدايتها.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-eye"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>تراكم السائل المائي (Aqueous humor) داخل العين نتيجة انسداد قنوات التصريف (الشبكة التربيقية).</li>
+                <li>التاريخ العائلي القوي للمرض يزيد الخطر بعد سن الأربعين.</li>
+                <li>قصر النظر الشديد، السكري، وارتفاع ضغط الدم.</li>
+                <li>الاستخدام العشوائي والمطول لقطرات الكورتيزون يرفع ضغط العين بشدة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li><strong>جلوكوما الزاوية المفتوحة (مزمنة):</strong> فقدان تدريجي للرؤية المحيطية (الجانبية) دون ألم، وتتطور إلى "الرؤية النفقية" في المراحل المتأخرة.</li>
+                <li><strong>جلوكوما الزاوية المغلقة (حادة وطارئة):</strong> ألم شديد ومفاجئ في العين، صداع نصفي، غثيان، احمرار العين، ورؤية هالات ملونة حول الأضواء.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>قياس ضغط العين (Tonometry).</li>
+                <li>فحص العصب البصري وقاع العين.</li>
+                <li>اختبار المجال البصري (Perimetry) لتحديد مدى تضرر الرؤية المحيطية.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>العمى الدائم الذي لا يمكن علاجه أو استرجاعه، لأن العصب البصري إذا تلف لا يتجدد.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>الفحص الشامل للعين كل سنة إلى سنتين بعد سن الـ 40 هو الحل الوحيد لاكتشافها قبل فقدان البصر.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي (القطرات والتدخلات)</h5>
+                <p class="med-text mb-2">العلاج يهدف فقط إلى خفض ضغط العين لمنع المزيد من التلف، وليس لاستعادة ما فُقد:</p>
+                <ul class="med-list med-text">
+                    <li><strong>نظائر البروستاجلاندين (Prostaglandin analogs):</strong> مثل Latanoprost. الخط الأول للعلاج، تزيد من تصريف السائل. (تُستخدم مرة واحدة ليلاً، وقد تسبب زيادة في طول الرموش وتصبغ القزحية).</li>
+                    <li><strong>حاصرات بيتا الموضعية (Beta blockers):</strong> مثل Timolol. تقلل من إنتاج السائل المائي. (يجب الحذر عند وصفها لمرضى الربو أو بطء ضربات القلب).</li>
+                    <li><strong>ناهضات ألفا (Alpha agonists) ومثبطات الأنهيدراز الكربونية:</strong> مثل Brimonidine و Dorzolamide كخطوط ثانية أو مساعدة.</li>
+                    <li><strong>الليزر والجراحة:</strong> رأب الترابيق بالليزر (SLT) لفتح قنوات التصريف، أو العمليات الجراحية لعمل مسار تصريف جديد للسائل.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب رمد وعيون</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="gastro">
+    <h2 class="accordion-header" id="headingUC">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUC" aria-expanded="false" aria-controls="collapseUC">
+            التهاب القولون التقرحي (Ulcerative Colitis)
+        </button>
+    </h2>
+    <div id="collapseUC" class="accordion-collapse collapse" aria-labelledby="headingUC" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2">جهاز هضمي ومناعة</span>
+            <p class="med-text"><strong>نبذة:</strong> أحد أمراض الأمعاء الالتهابية المزمنة (IBD). يتسبب في التهاب وتقرحات (قرح) في البطانة الداخلية للأمعاء الغليظة (القولون) والمستقيم، مما يؤدي إلى نوبات من النزيف والإسهال الشديد.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>استجابة مناعية ذاتية غير طبيعية؛ حيث يهاجم جهاز المناعة الخلايا المبطنة للقولون معتقداً أنها بكتيريا ضارة.</li>
+                <li>العامل الوراثي يلعب دوراً مهماً. يظهر غالباً قبل سن الثلاثين.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض (تأتي على هيئة هجمات)</h4>
+            <ul class="med-list med-text">
+                <li>إسهال مزمن، غالباً ما يكون مصحوباً بدم وصديد.</li>
+                <li>ألم وتقلصات شديدة في البطن.</li>
+                <li>ألم في المستقيم ورغبة ملحة في التبرز مع عدم القدرة على ذلك (الزحير).</li>
+                <li>فقدان الوزن السريع، التعب، والحمى.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li><strong>منظار القولون (Colonoscopy):</strong> المعيار الذهبي لرؤية التقرحات وأخذ خزعة (Biopsy) لاستبعاد مرض كرون أو السرطان.</li>
+                <li>تحاليل البراز للكشف عن العدوى أو دلالات الالتهاب (Calprotectin).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>تضخم القولون السمي (Toxic megacolon) وهو حالة طارئة.</li>
+                <li>أنيميا شديدة وجفاف.</li>
+                <li>زيادة خطر الإصابة بسرطان القولون بعد مرور سنوات طويلة على المرض.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>تجنب منتجات الألبان والأطعمة الغنية بالألياف أثناء الهجمة النشطة، والابتعاد التام عن الضغوط النفسية.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والأدوية المناعية</h5>
+                <ul class="med-list med-text">
+                    <li><strong>مركبات الأمينوساليسيلات (5-ASA):</strong> مثل Mesalamine و Sulfasalazine. الخط الأول لتقليل الالتهاب في الحالات الخفيفة إلى المتوسطة (تتوفر كأقراص أو تحاميل/لبوس).</li>
+                    <li><strong>الكورتيكوستيرويدات:</strong> مثل Prednisone. تُستخدم لفترات قصيرة جداً لإخماد الهجمات الشرسة.</li>
+                    <li><strong>مثبطات المناعة (Immunomodulators):</strong> مثل Azathioprine. تُستخدم للحفاظ على هدوء المرض (Remission) لفترات طويلة.</li>
+                    <li><strong>العلاجات البيولوجية (Biologics):</strong> طفرة للحالات المستعصية، مثل Infliximab (مثبط لـ TNF)، تعمل على إيقاف البروتينات المسببة للالتهاب المناعي بدقة.</li>
+                    <li><strong>الجراحة:</strong> الاستئصال الكامل للقولون والمستقيم كحل جذري ونهائي إذا فشلت كل الأدوية.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب جهاز هضمي ومناظير</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="internal">
+    <h2 class="accordion-header" id="headingCKD">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCKD" aria-expanded="false" aria-controls="collapseCKD">
+            مرض الكلى المزمن (Chronic Kidney Disease - CKD)
+        </button>
+    </h2>
+    <div id="collapseCKD" class="accordion-collapse collapse" aria-labelledby="headingCKD" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-primary mb-3 px-3 py-2">باطنة وكلى</span>
+            <p class="med-text"><strong>نبذة:</strong> الفقدان التدريجي لوظائف الكلى على مدار شهور أو سنوات. عندما تتلف الكلى، تتراكم الفضلات والسوائل والسموم في الجسم، مما يؤدي إلى فشل أجهزة أخرى.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li><strong>السكري وارتفاع ضغط الدم:</strong> هما المسببان لحوالي 70% من حالات الفشل الكلوي عالمياً (يدمران الأوعية الدموية الدقيقة في الكلى).</li>
+                <li>التهاب كبيبات الكلى (Glomerulonephritis).</li>
+                <li>الاستخدام المزمن والمفرط لمسكنات الألم (NSAIDs).</li>
+                <li>تكيس الكلى الوراثي.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض (لا تظهر إلا في مراحل متأخرة)</h4>
+            <ul class="med-list med-text">
+                <li>تورم ملحوظ في الكاحلين، القدمين، وحول العينين (احتباس السوائل).</li>
+                <li>تغيرات في كمية البول (زيادة أو نقصان) ووجود رغوة في البول (تسرب البروتين).</li>
+                <li>إرهاق شديد، حكة جلدية مستمرة، طعم معدني في الفم، وغثيان.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>تحليل الكرياتينين (Creatinine) في الدم وحساب معدل الترشيح الكبيبي (eGFR) لتحديد مرحلة المرض (من 1 إلى 5).</li>
+                <li>تحليل البول لاكتشاف تسرب الألبومين (الزلال).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>أمراض القلب والأوعية الدموية (السبب الأول للوفاة لدى مرضى الكلى).</li>
+                <li>الأنيميا الشديدة وضعف العظام (هشاشة الكلى) لعدم قدرة الكلى على تنشيط فيتامين د.</li>
+                <li>ارتفاع البوتاسيوم في الدم (قد يوقف القلب).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>التحكم الصارم جداً في السكر والضغط، وعدم تناول أي مسكنات إلا بوصفة طبية.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والأدوية الداعمة</h5>
+                <p class="med-text mb-2">الهدف هو إبطاء التدهور وعلاج المضاعفات، لأنه لا يمكن استرجاع ما تلف من الكلى:</p>
+                <ul class="med-list med-text">
+                    <li><strong>حماية الكلى (Nephroprotection):</strong> أدوية (ACEi) مثل Captopril أو (ARBs) مثل Valsartan. لا تُستخدم فقط للضغط، بل لتقليل الضغط داخل كبيبات الكلى ومنع تسرب البروتين.</li>
+                    <li><strong>الأدوية الحديثة (SGLT2 inhibitors):</strong> مثل Dapagliflozin. أثبتت فعالية مذهلة في إبطاء التدهور الكلوي حتى لغير مرضى السكر.</li>
+                    <li><strong>علاج المضاعفات:</strong> 
+                        <ul>
+                            <li>حقن الإريثروبويتين (Erythropoietin) لعلاج الأنيميا.</li>
+                            <li>مدرات البول العروية (Furosemide) للتخلص من السوائل الزائدة.</li>
+                            <li>رابطات الفوسفات (Phosphate binders) لمنع ترسب الكالسيوم في الأوعية.</li>
+                        </ul>
+                    </li>
+                    <li><strong>المرحلة النهائية (ESRD):</strong> الغسيل الكلوي (الديلزة) أو زراعة الكلى.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أمراض كلى</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="ent">
+    <h2 class="accordion-header" id="headingSinusitis">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSinusitis" aria-expanded="false" aria-controls="collapseSinusitis">
+            التهاب الجيوب الأنفية المزمن (Chronic Sinusitis)
+        </button>
+    </h2>
+    <div id="collapseSinusitis" class="accordion-collapse collapse" aria-labelledby="headingSinusitis" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-secondary mb-3 px-3 py-2">أنف وأذن وحنجرة</span>
+            <p class="med-text"><strong>نبذة:</strong> حالة تتورم وتلتهب فيها التجاويف المحيطة بالممرات الأنفية (الجيوب الأنفية) لمدة تستمر أكثر من 12 أسبوعاً، على الرغم من محاولات العلاج المتعددة، مما يمنع تصريف المخاط وتراكمه.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>الزوائد اللحمية الأنفية (Nasal polyps) التي تسد الممرات.</li>
+                <li>انحراف الحاجز الأنفي (Deviated septum).</li>
+                <li>الحساسية المستمرة (مثل حساسية الربيع أو الغبار) أو التهابات الفطريات والبكتيريا المزمنة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li>إفرازات أنفية سميكة متغيرة اللون (خضراء أو صفراء).</li>
+                <li>انسداد واحتقان شديد بالأنف يسبب صعوبة في التنفس.</li>
+                <li>ألم، تورم، وضغط حول العينين والوجنتين والأنف والجبهة.</li>
+                <li>ضعف أو فقدان حاستي الشم والتذوق، ورائحة فم كريهة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>التنظير الداخلي للأنف (Nasal endoscopy).</li>
+                <li>التصوير المقطعي (CT scan) للكشف عن عمق الالتهاب أو وجود لحميات.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>التهابات العين وضعف الرؤية إذا امتدت العدوى.</li>
+                <li>التهاب السحايا (Meningitis) في حالات نادرة جداً.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>تجنب المهيجات والتدخين، واستخدام أجهزة ترطيب الهواء في الشتاء.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والتدخلات</h5>
+                <ul class="med-list med-text">
+                    <li><strong>الغسيل الموضعي:</strong> استخدام بخاخات المحلول الملحي (Saline irrigation) لتنظيف وتفريغ الممرات الأنفية يومياً.</li>
+                    <li><strong>الكورتيكوستيرويدات الموضعية (Nasal Sprays):</strong> مثل Fluticasone أو Mometasone. تعتبر حجر الأساس لتقليل التورم والالتهاب المستمر.</li>
+                    <li><strong>المضادات الحيوية:</strong> لا توصف إلا إذا كان هناك اشتباه قوي بعدوى بكتيرية ثانوية (مثل Amoxicillin/Clavulanate) وتُعطى لمدد أطول من المعتاد.</li>
+                    <li><strong>الجراحة الوظيفية بالمنظار (FESS):</strong> تدخل جراحي دقيق لتوسيع فتحات الجيوب الأنفية وإزالة الزوائد اللحمية التي تسد مجرى التنفس.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أنف وأذن وحنجرة</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="derma">
+    <h2 class="accordion-header" id="headingVitiligo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitiligo" aria-expanded="false" aria-controls="collapseVitiligo">
+            البهاق (Vitiligo)
+        </button>
+    </h2>
+    <div id="collapseVitiligo" class="accordion-collapse collapse" aria-labelledby="headingVitiligo" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-success mb-3 px-3 py-2">أمراض جلدية ومناعة</span>
+            <p class="med-text"><strong>نبذة:</strong> مرض مكتسب يتميز بفقدان لون الجلد (التصبغ) على شكل بقع بيضاء واضحة. يحدث عندما تموت الخلايا الصبغية (Melanocytes) أو تتوقف عن إنتاج الميلانين. وهو مرض <strong>غير مُعدٍ تماماً</strong> ولا يؤثر على الصحة العضوية، لكن تأثيره النفسي كبير.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>يعتقد الطب الحديث بقوة أنه "اضطراب مناعي ذاتي"، حيث يهاجم الجهاز المناعي الخلايا الصبغية في الجلد ويدمرها.</li>
+                <li>التاريخ العائلي (الوراثة).</li>
+                <li>محفزات مثل: الإجهاد الشديد، حروق الشمس القوية، أو التعرض لمواد كيميائية صناعية.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li>ظهور بقع بيضاء حليبية على الجلد (تبدأ غالباً في الوجه، اليدين، أو المناطق المحيطة بفتحات الجسم).</li>
+                <li>ابيضاض مبكر لشعر الرأس، الرموش، الحواجب أو اللحية.</li>
+                <li>فقدان اللون في الأنسجة المبطنة لداخل الفم والأنف.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>الفحص السريري، واستخدام "مصباح وود" (Wood's lamp) الذي يجعل بقع البهاق تتوهج لتأكيد التشخيص واستبعاد الفطريات.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>حروق الشمس السهلة لأن البقع تفقد حمايتها الطبيعية (الميلانين).</li>
+                <li>ضيق نفسي واجتماعي (اكتئاب).</li>
+                <li>ارتباطه بأمراض مناعية أخرى (مثل مشاكل الغدة الدرقية).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>الاستخدام الإلزامي لواقي الشمس العالي (SPF 50+) لحماية البقع البيضاء وتجنب التباين اللوني الناتج عن اسمرار الجلد السليم.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي (استعادة التصبغ)</h5>
+                <p class="med-text mb-2">العلاج يتطلب صبراً طويلاً (شهور) ويعتمد على تهدئة المناعة الموضعية:</p>
+                <ul class="med-list med-text">
+                    <li><strong>الكريمات الموضعية:</strong>
+                        <ul>
+                            <li><strong>الكورتيكوستيرويدات:</strong> للسيطرة على الالتهاب المناعي في مراحله الأولى.</li>
+                            <li><strong>مثبطات الكالسينيورين (Calcineurin inhibitors):</strong> مثل Tacrolimus. ممتازة لبقع الوجه والرقبة ولا تسبب ترقق الجلد مثل الكورتيزون.</li>
+                        </ul>
+                    </li>
+                    <li><strong>العلاج الضوئي (Phototherapy):</strong> استخدام الأشعة فوق البنفسجية ضيقة النطاق (NB-UVB)، وهو من أكثر العلاجات فعالية لتحفيز الخلايا الصبغية المتبقية.</li>
+                    <li><strong>العلاجات الحديثة:</strong> كريمات مثبطات (JAK) مثل Ruxolitinib، حققت نتائج مبهرة في استعادة لون الجلد.</li>
+                    <li><strong>إزالة الصبغة (Depigmentation):</strong> للحالات الشاملة (أكثر من 80% من الجسم)، يتم استخدام مواد طبية لإزالة لون الجلد السليم المتبقي لتوحيد لون الجسم بالكامل للون الأبيض.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أمراض جلدية</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="ortho">
+    <h2 class="accordion-header" id="headingSLE">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSLE" aria-expanded="false" aria-controls="collapseSLE">
+            الذئبة الحمامية الجهازية (SLE)
+        </button>
+    </h2>
+    <div id="collapseSLE" class="accordion-collapse collapse" aria-labelledby="headingSLE" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-dark mb-3 px-3 py-2">روماتيزم ومناعة</span>
+            <p class="med-text"><strong>نبذة:</strong> مرض مناعي ذاتي جهازي ومعقد. يقوم فيه الجهاز المناعي بمهاجمة الأنسجة السليمة والأعضاء (المفاصل، الجلد، الكلى، خلايا الدم، المخ، القلب والرئتين). يصيب النساء بشكل كبير جداً مقارنة بالرجال (بنسبة 9 إلى 1).</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>خلل جيني وراثي محفز بعوامل بيئية.</li>
+                <li><strong>التعرض لأشعة الشمس:</strong> يمكن أن يحفز استجابة مناعية تسبب الطفح الجلدي وتهيج المرض.</li>
+                <li>التغيرات الهرمونية (تنشط الهجمات غالباً أثناء الحمل أو مع استخدام حبوب منع الحمل).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض (يُعرف بالمقلد العظيم)</h4>
+            <ul class="med-list med-text">
+                <li>إرهاق شديد، حمى غير مبررة، وآلام وتورم في المفاصل.</li>
+                <li><strong>طفح الفراشة (Butterfly rash):</strong> طفح جلدي مميز يغطي الخدين وجسر الأنف.</li>
+                <li>تحسس شديد لأشعة الشمس (Photosensitivity).</li>
+                <li>متلازمة رينود (تحول لون أصابع اليد والقدم للون الأبيض أو الأزرق عند التعرض للبرد أو التوتر).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>تحليل الأجسام المضادة للنواة (ANA)، وهو إيجابي في 95% من الحالات.</li>
+                <li>تحليل الأجسام المضادة للحمض النووي (Anti-dsDNA).</li>
+                <li>تحاليل وظائف الكلى (لمراقبة اعتلال الكلى الذئبي).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>الفشل الكلوي (Lupus nephritis)، وهو من أهم أسباب الوفاة في المرض.</li>
+                <li>التهاب أغشية القلب والرئتين، وزيادة خطر الجلطات الدموية.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>الحماية الصارمة من أشعة الشمس، وأخذ قسط وفير من الراحة لمنع الانتكاسات (Flares).</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي الدوائي (تثبيط المناعة)</h5>
+                <ul class="med-list med-text">
+                    <li><strong>مضادات الملاريا:</strong> مثل Hydroxychloroquine (Plaquenil). دواء أساسي لجميع مرضى الذئبة تقريباً، يقلل الهجمات ويحمي الأعضاء الداخلية. (يتطلب فحص قاع عين سنوي).</li>
+                    <li><strong>الكورتيكوستيرويدات:</strong> مثل Prednisone. لتهدئة الهجمات الشديدة بسرعة لإنقاذ الكلى أو المخ.</li>
+                    <li><strong>مثبطات المناعة (Immunosuppressants):</strong> مثل Azathioprine و Mycophenolate و Methotrexate. تستخدم في الحالات الشديدة لتقليل جرعة الكورتيزون.</li>
+                    <li><strong>العلاجات البيولوجية:</strong> مثل Belimumab. يُعطى وريدياً ويستهدف بروتينات مناعية معينة (B-cells) لتقليل نشاط المرض.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب روماتيزم ومناعة</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="ortho">
+    <h2 class="accordion-header" id="headingSciatica">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSciatica" aria-expanded="false" aria-controls="collapseSciatica">
+            عرق النسا (Sciatica)
+        </button>
+    </h2>
+    <div id="collapseSciatica" class="accordion-collapse collapse" aria-labelledby="headingSciatica" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-dark mb-3 px-3 py-2">عظام وأعصاب</span>
+            <p class="med-text"><strong>نبذة:</strong> ألم يمتد على طول مسار العصب الوركي (Sciatic nerve)، والذي يتفرع من أسفل الظهر مروراً بالوركين والأرداف وأسفل كل ساق. غالباً ما يؤثر على جانب واحد فقط من الجسم.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-bone"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li><strong>الانزلاق الغضروفي (Herniated disk):</strong> السبب الأكثر شيوعاً؛ حيث تضغط المادة الجيلاتينية للغضروف على جذور العصب.</li>
+                <li>تضيق القناة الشوكية (Spinal stenosis) أو النتوءات العظمية.</li>
+                <li>السمنة، الجلوس لفترات طويلة، وحمل الأوزان الثقيلة بطريقة خاطئة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li>ألم يشبه الصدمة الكهربائية، يبدأ من أسفل الظهر ويمتد خلف الفخذ والساق.</li>
+                <li>يزداد الألم سوءاً عند السعال أو العطس أو الجلوس لفترات طويلة.</li>
+                <li>تنميل (Numbness) أو وخز أو ضعف في العضلات في الساق أو القدم المصابة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>الفحص السريري (مثل اختبار رفع الساق المستقيمة - SLR).</li>
+                <li>أشعة الرنين المغناطيسي (MRI) لتحديد مكان الضغط على العصب بدقة.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>ضعف أو شلل دائم في الساق المصابة.</li>
+                <li>فقدان السيطرة على الأمعاء والمثانة (متلازمة ذيل الفرس - حالة طوارئ جراحية قصوى).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>ممارسة تمارين تقوية عضلات الجذع (Core muscles)، ورفع الأشياء باستخدام عضلات الفخذين وليس الظهر.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والعلاج الطبيعي</h5>
+                <ul class="med-list med-text">
+                    <li><strong>المسكنات القوية:</strong> مضادات الالتهاب (NSAIDs) لتخفيف الألم الحاد.</li>
+                    <li><strong>أدوية آلام الأعصاب:</strong> مثل Gabapentin أو Pregabalin، ومضادات الاكتئاب ثلاثية الحلقات التي تهدئ الإشارات العصبية المؤلمة.</li>
+                    <li><strong>مرخيات العضلات:</strong> مثل Cyclobenzaprine لفك التشنجات العضلية المصاحبة.</li>
+                    <li><strong>الحقن الموضعي:</strong> حقن الكورتيزون فوق الجافية (Epidural injection) حول جذر العصب الملتهب لتقليل التورم فوراً.</li>
+                    <li><strong>الجراحة:</strong> في حال فشل العلاج الدوائي لأكثر من 6 أسابيع أو وجود ضعف عصبي متزايد، يتم إجراء جراحة لاستئصال الجزء الغضروفي الضاغط (Microdiscectomy).</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب عظام وعمود فقري</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="gastro">
+    <h2 class="accordion-header" id="headingHemorrhoids">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHemorrhoids" aria-expanded="false" aria-controls="collapseHemorrhoids">
+            البواسير (Hemorrhoids)
+        </button>
+    </h2>
+    <div id="collapseHemorrhoids" class="accordion-collapse collapse" aria-labelledby="headingHemorrhoids" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2">جراحة عامة وجهاز هضمي</span>
+            <p class="med-text"><strong>نبذة:</strong> أوردة منتفخة ومحتقنة في أسفل المستقيم وفتحة الشرج، تشبه الدوالي. وتعتبر من أكثر المشاكل الصحية شيوعاً وإزعاجاً، وتُقسم إلى بواسير داخلية (داخل المستقيم) وخارجية (تحت الجلد حول الشرج).</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>الضغط الشديد المستمر على أوردة الحوض والمستقيم.</li>
+                <li><strong>الإمساك المزمن:</strong> والحزق الشديد أثناء التبرز.</li>
+                <li>الجلوس لفترات طويلة جداً، خاصة على المرحاض.</li>
+                <li>الحمل (بسبب ضغط الجنين والتغيرات الهرمونية).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض</h4>
+            <ul class="med-list med-text">
+                <li>نزيف غير مؤلم (دم أحمر فاتح على ورق التواليت أو في حوض المرحاض).</li>
+                <li>حكة وتهيج شديد في منطقة الشرج.</li>
+                <li>ألم وعدم راحة، خاصة مع البواسير الخارجية إذا تجلط فيها الدم (Thrombosed hemorrhoid).</li>
+                <li>تدلي نتوءات من فتحة الشرج (Prolapse).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>الفحص السريري الموضعي.</li>
+                <li>تنظير الشرج (Anoscopy) أو تنظير المستقيم المؤخرة لرؤية البواسير الداخلية بوضوح.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>الأنيميا نتيجة النزيف المزمن المستمر.</li>
+                <li>البواسير المختنقة (انقطاع الدم عن الباسور المتدلي) وتسبب ألماً مبرحاً.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>شرب كميات كبيرة من الماء وتناول طعام غني بالألياف (الخضار، الفاكهة، الشوفان) لتليين البراز.</li>
+                <li>عدم تأجيل الرغبة في التبرز إطلاقاً.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والجراحي</h5>
+                <ul class="med-list med-text">
+                    <li><strong>العلاجات الموضعية (Topical):</strong> كريمات أو تحاميل (لبوس) تحتوي على هيدروكورتيزون لتقليل الالتهاب، ومخدر موضعي (Lidocaine) لتسكين الألم.</li>
+                    <li><strong>الأدوية المقوية للأوردة (Phlebotonics):</strong> مثل مركبات (Diosmin/Hesperidin - Daflon). تزيد من توتر جدار الوريد وتقلل الاحتقان والنزيف.</li>
+                    <li><strong>الملينات (Laxatives):</strong> الملينات الكتلوية التي تزيد حجم البراز بالماء لتسهيل خروجه دون حزق.</li>
+                    <li><strong>التدخلات غير الجراحية:</strong> ربط البواسير بشريط مطاطي (Rubber band ligation) لقطع الدم عنها لتسقط.</li>
+                    <li><strong>الجراحة:</strong> استئصال البواسير (Hemorrhoidectomy) أو التدبيس في الحالات الكبيرة والمتقدمة (درجة ثالثة ورابعة).</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب جراحة عامة</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="internal">
+    <h2 class="accordion-header" id="headingSickleCell">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSickleCell" aria-expanded="false" aria-controls="collapseSickleCell">
+            أنيميا الخلايا المنجلية (Sickle Cell Anemia)
+        </button>
+    </h2>
+    <div id="collapseSickleCell" class="accordion-collapse collapse" aria-labelledby="headingSickleCell" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-primary mb-3 px-3 py-2">أمراض دم وباطنة</span>
+            <p class="med-text"><strong>نبذة:</strong> اضطراب وراثي شديد في الدم، يتسبب في تشوه خلايا الدم الحمراء لتصبح صلبة ولزجة وتأخذ شكل هلال (منجل). هذه الخلايا المشوهة تموت مبكراً مسببة فقر دم دائم، كما أنها تسد الأوعية الدموية الدقيقة وتمنع الأكسجين عن الأعضاء.</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>مرض وراثي بالكامل (طفرة في الجين المسؤول عن إنتاج الهيموجلوبين).</li>
+                <li>يجب أن يرث الطفل الجين المعيب من <strong>كلا الأبوين</strong> ليصاب بالمرض. إذا ورثه من أب واحد يصبح "حاملاً للمرض" (Sickle cell trait) ولا تظهر عليه الأعراض غالباً.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض (أزمات الانسداد الوعائي)</h4>
+            <ul class="med-list med-text">
+                <li><strong>نوبات الألم الحادة (Crises):</strong> ألم مبرح في العظام، الصدر، أو البطن نتيجة انسداد الأوعية.</li>
+                <li>فقر دم مزمن (تعب، شحوب، وتأخر في النمو عند الأطفال).</li>
+                <li>تورم مؤلم جداً في اليدين والقدمين (Dactylitis) لدى الرضع.</li>
+                <li>التهابات متكررة لتضرر الطحال المبكر.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>فحص الدم الروتيني (حديثي الولادة).</li>
+                <li>الترحيل الكهربائي للهيموجلوبين (Hemoglobin Electrophoresis) لتحديد نوع الهيموجلوبين المعيب (HbS).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>السكتة الدماغية (أشهر مضاعفات الأطفال).</li>
+                <li>متلازمة الصدر الحادة (Acute chest syndrome) وهي حالة رئوية مهددة للحياة.</li>
+                <li>تلف الأعضاء التدريجي (الكلى، الكبد، الطحال).</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>الفحص الطبي الشامل قبل الزواج للمقبلين عليه (أهم خطوة للحد من انتشار المرض).</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي الدوائي والجيني</h5>
+                <ul class="med-list med-text">
+                    <li><strong>هيدروكسي يوريا (Hydroxyurea):</strong> دواء سحري يؤخذ يومياً، يحفز الجسم لإنتاج "هيموجلوبين الجنين" (HbF) الذي يمنع تمنجل الخلايا، مما يقلل نوبات الألم والحاجة لنقل الدم بنسبة كبيرة.</li>
+                    <li><strong>العلاجات الحديثة (Voxelotor):</strong> يمنع تلاصق وتمنجل خلايا الدم ويزيد من مستوى الهيموجلوبين. ومادة (Crizanlizumab) الوريدية لتقليل نوبات الألم.</li>
+                    <li><strong>الوقاية من العدوى:</strong> البنسلين الوقائي للأطفال يومياً حتى سن الخامسة، وتحديث التطعيمات.</li>
+                    <li><strong>العلاج الجذري:</strong> زراعة نخاع العظم (الخلايا الجذعية). ومؤخراً تم اعتماد أول علاج جيني (CRISPR) يصحح الخطأ الوراثي ويعالج المرض نهائياً (Casgevy).</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أمراض دم</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion-item disease-card" data-category="neuro">
+    <h2 class="accordion-header" id="headingParkinson">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseParkinson" aria-expanded="false" aria-controls="collapseParkinson">
+            مرض باركنسون / الشلل الرعاش (Parkinson's Disease)
+        </button>
+    </h2>
+    <div id="collapseParkinson" class="accordion-collapse collapse" aria-labelledby="headingParkinson" data-bs-parent="#diseasesAccordion">
+        <div class="disease-content">
+            <span class="badge bg-info text-dark mb-3 px-3 py-2">مخ وأعصاب</span>
+            <p class="med-text"><strong>نبذة:</strong> اضطراب عصبي تنكسي يؤثر بشكل رئيسي على الجهاز الحركي. يحدث نتيجة الموت التدريجي للخلايا العصبية في منطقة الدماغ المسؤولة عن إنتاج ناقل عصبي حيوي يسمى "الدوبامين" (المسؤول عن سلاسة وتناسق الحركة).</p>
+
+            <h4 class="med-section-title"><i class="fas fa-virus"></i> الأسباب وعوامل الخطر</h4>
+            <ul class="med-list med-text">
+                <li>السبب غير معروف (Idiopathic)، يعتقد أنه تفاعل بين جينات معينة والتعرض للسموم البيئية (كالمبيدات الحشرية).</li>
+                <li>يظهر غالباً في سن متأخر (فوق 60 عاماً) ونادراً ما يصيب الشباب.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-head-side-cough"></i> الأعراض (الحركية وغير الحركية)</h4>
+            <ul class="med-list med-text">
+                <li><strong>الرعاش (Tremor):</strong> يبدأ غالباً في يد واحدة أثناء الراحة ويشبه حركة "لف الحبوب" بين الأصابع.</li>
+                <li><strong>بطء الحركة (Bradykinesia):</strong> خطوات قصيرة جداً (جرجرة القدمين)، وصعوبة في بدء الحركة.</li>
+                <li><strong>تصلب العضلات (Rigidity):</strong> تيبس مؤلم في عضلات الأطراف والرقبة.</li>
+                <li>فقدان الحركات التلقائية (عدم تأرجح الذراعين أثناء المشي، قلة رمش العين، وجه خالٍ من التعابير "الوجه المقنع").</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-microscope"></i> طرق التشخيص</h4>
+            <ul class="med-list med-text">
+                <li>لا يوجد تحليل دم أو أشعة تؤكد المرض. التشخيص يعتمد كلياً على فحص طبيب الأعصاب للأعراض السريرية واستجابة المريض لأدوية الدوبامين.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات</h4>
+            <ul class="med-list med-text">
+                <li>صعوبة البلع والتحدث بصوت خافت جداً.</li>
+                <li>اكتئاب حاد واضطرابات في النوم، ومشاكل في التحكم بالمثانة.</li>
+                <li>الخرف (Parkinson's disease dementia) في المراحل المتأخرة جداً.</li>
+            </ul>
+
+            <h4 class="med-section-title"><i class="fas fa-shield-alt"></i> الوقاية</h4>
+            <ul class="med-list med-text">
+                <li>لا توجد وقاية مؤكدة، لكن التمارين الرياضية المستمرة واستهلاك الكافيين أظهرا ارتباطاً بتقليل خطر الإصابة.</li>
+            </ul>
+
+            <div class="pharma-box">
+                <h5><i class="fas fa-pills"></i> البروتوكول العلاجي الدوائي والجراحي</h5>
+                <p class="med-text mb-2">الأدوية تعمل على تعويض النقص في الدوبامين أو إبطاء تكسيره:</p>
+                <ul class="med-list med-text">
+                    <li><strong>ليفودوبا (Levodopa / Carbidopa):</strong> الدواء الأقوى والأكثر فعالية. الليفودوبا تدخل الدماغ وتتحول إلى دوبامين، والكاربيدوبا يمنع تحللها قبل وصولها للدماغ لتقليل الغثيان (الآثار الجانبية).</li>
+                    <li><strong>ناهضات الدوبامين (Dopamine Agonists):</strong> مثل Pramipexole و Ropinirole. لا تتحول لدوبامين ولكنها تخدع الدماغ بأنها دوبامين (تُستخدم لتأخير البدء بالليفودوبا).</li>
+                    <li><strong>مثبطات (MAO-B) و (COMT):</strong> مثل Selegiline و Entacapone. تمنع الإنزيمات التي تكسر الدوبامين في الدماغ لتدوم فعاليته لفترة أطول.</li>
+                    <li><strong>الجراحة:</strong> التحفيز العميق للدماغ (DBS) للمرضى الذين لم تعد الأدوية تفيدهم. يتم زرع أقطاب كهربائية في الدماغ لتقليل الرعشة والتصلب.</li>
+                </ul>
+            </div>
+            <div class="mt-4 text-end"><a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب مخ وأعصاب</a></div>
+        </div>
+    </div>
+</div>                   
                     
 
                     </div>
