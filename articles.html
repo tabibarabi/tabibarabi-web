@@ -3,321 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المدونة الطبية | دليل طبيب عربي</title>
-    <meta name="description" content="اقرأ أحدث المقالات الطبية الموثوقة. دليلك الشامل للتخسيس، علاج السكر والضغط، صحة الرجل، مناعة الأطفال، والعناية بالبشرة والشعر. مراجعة من نخبة الأطباء.">
-    <meta name="keywords" content="طبيب عربي, مقالات طبية, تخسيس البطن, علاج السكر, علاج الضغط, الضعف الجنسي, مناعة الأطفال, تساقط الشعر, القولون العصبي, نصائح طبية">
+    <title>الموسوعة الطبية الشاملة | طبيب عربي</title>
+    <meta name="description" content="الدليل الطبي الشامل لجميع الأمراض، الأعراض، التشخيص، وبروتوكولات العلاج الحديثة. مرجعك الطبي الموثوق من أطباء مصر.">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
             --primary-color: #0d6efd;
+            --secondary-color: #005f92;
             --accent-color: #ffc107;
-            --dark-color: #212529;
-            --text-color: #334155;
             --bg-color: #f8fafc;
+            --text-color: #334155;
+            --disease-bg: #ffffff;
         }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+        }
+
+        /* تنسيق الهيدر */
+        .encyclopedia-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        /* مربع البحث الذكي */
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            transform: translateY(20px);
+        }
+        .search-box input {
+            width: 100%;
+            padding: 20px 25px;
+            padding-right: 55px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .search-box input:focus { outline: none; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3); }
+        .search-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* تنسيق الأقسام الجانبية (التخصصات) */
+        .specialty-menu {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 80px;
+        }
+        .specialty-menu h4 {
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .specialty-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-bottom: 5px;
+        }
+        .specialty-link:hover, .specialty-link.active {
+            background: #eff6ff;
+            color: var(--primary-color);
+        }
+
+        /* تنسيق محتوى المرض (الأكورديون) */
+        .accordion-item {
+            border: none;
+            background: var(--disease-bg);
+            border-radius: 15px !important;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+        .accordion-button {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0f172a;
+            padding: 25px 30px;
+            background: transparent;
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            color: var(--primary-color);
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .accordion-button::after { margin-right: auto; margin-left: 0; }
         
-        .navbar { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(0,0,0,0.05); }
+        /* تنسيق الداتا الطبية الداخلية */
+        .disease-content { padding: 30px; }
+        .med-section-title {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .med-text { line-height: 1.8; font-size: 1.05rem; color: #475569; }
+        .med-list li { margin-bottom: 10px; line-height: 1.7; }
+        .med-list strong { color: #1e293b; }
         
-        .blog-header { background: linear-gradient(135deg, var(--primary-color) 0%, #005f92 100%); color: white; padding: 70px 0 50px; text-align: center; margin-bottom: 50px; border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.2); }
+        /* القسم الدوائي (للمتخصصين) */
+        .pharma-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 5px solid #22c55e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .pharma-box h5 { color: #166534; font-weight: 800; margin-bottom: 15px; }
         
-        .post-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.06); margin-bottom: 50px; transition: transform 0.3s; border: 1px solid #e2e8f0; }
-        .post-card:hover { transform: translateY(-5px); border-color: #cbd5e1; }
-        .post-img { width: 100%; height: 400px; object-fit: cover; border-bottom: 4px solid var(--accent-color); }
-        .post-content { padding: 40px; }
-        
-        .post-category { display: inline-block; padding: 6px 18px; background: #eff6ff; color: var(--primary-color); border-radius: 30px; font-size: 0.95rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 0.5px; }
-        .post-category i { margin-left: 5px; }
-        
-        .post-title { font-weight: 900; font-size: 2.2rem; color: #0f172a; margin-bottom: 20px; line-height: 1.4; }
-        .post-meta { color: #64748b; font-size: 0.95rem; margin-bottom: 30px; display: flex; gap: 20px; align-items: center; font-weight: 600; }
-        
-        .post-text { font-size: 1.15rem; line-height: 1.9; color: #475569; }
-        .post-text h4 { color: #1e293b; font-weight: 800; font-size: 1.4rem; margin-top: 35px; margin-bottom: 15px; position: relative; padding-right: 15px; border-right: 4px solid var(--primary-color); }
-        .post-text p { margin-bottom: 20px; }
-        .post-text ul { padding-right: 20px; margin-bottom: 25px; }
-        .post-text li { margin-bottom: 12px; position: relative; }
-        .post-text li::marker { color: var(--primary-color); font-weight: bold; }
-        
-        /* تصميم الاقتباس (نصيحة الطبيب) */
-        .doctor-advice { background: #fffbeb; border: 2px dashed #bfdbfe; padding: 25px; border-radius: 15px; margin: 30px 0; position: relative; }
-        .doctor-advice::before { content: '\f0f1'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-color); font-size: 2rem; position: absolute; top: -15px; right: 25px; background: #fffbeb; padding: 0 10px; }
-        .doctor-advice p { margin: 0; font-weight: 700; color: #1e3a8a; font-size: 1.1rem; }
-        
-        .author-box { display: flex; align-items: center; gap: 15px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 40px; }
-        .author-box img { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .author-info h5 { margin: 0 0 5px 0; font-weight: 800; color: #0f172a; }
-        .author-info p { margin: 0; font-size: 0.95rem; color: #64748b; font-weight: 600; }
-        
-        /* زر الحجز في نهاية كل مقال */
-        .book-btn { display: inline-block; background-color: var(--primary-color); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; margin-top: 20px; transition: 0.3s; box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3); }
-        .book-btn:hover { background-color: #0b5ed7; color: white; transform: scale(1.05); }
+        .book-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .book-btn:hover { background-color: var(--secondary-color); color: white; }
+
+        /* حالة عدم وجود نتائج للبحث */
+        #noResults { display: none; text-align: center; padding: 50px; color: #64748b; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="appicon.jpg" alt="Logo" width="45" height="45" class="d-inline-block align-text-top rounded-circle" onerror="this.src='https://via.placeholder.com/45'">
-                <div class="d-flex flex-column flex-md-row align-items-md-center gap-1">
-                    <span class="fw-bold text-primary" style="font-size: 1.2rem;">طبيب عربي</span>
-                </div>
-            </a>
-            <div>
-                <a href="index.html" class="btn btn-outline-primary rounded-pill fw-bold px-4 shadow-sm">
-                    <i class="fas fa-search me-1"></i> ابحث عن طبيب
-                </a>
+    <header class="encyclopedia-header text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bolder mb-3">الموسوعة الطبية | طبيب عربي</h1>
+            <p class="lead mb-4">مرجعك الشامل للأمراض، الأعراض، وبروتوكولات العلاج الحديثة</p>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="diseaseSearch" placeholder="ابحث عن مرض، عرض، أو تخصص (مثال: السكر، تساقط الشعر)..." onkeyup="filterDiseases()">
             </div>
         </div>
-    </nav>
-
-    <div class="blog-header">
-        <div class="container">
-            <h1 class="display-4 fw-bolder mb-3" data-aos="fade-up">الموسوعة الطبية الشاملة</h1>
-            <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100">أحدث الأبحاث والنصائح الطبية الموثوقة لحياة أكثر صحة، بإشراف نخبة من أطباء مصر.</p>
-        </div>
-    </div>
+    </header>
 
     <div class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="specialty-menu">
+                    <h4>التخصصات الطبية</h4>
+                    <a href="#" class="specialty-link active" onclick="filterByCategory('all')"><i class="fas fa-notes-medical me-2"></i> جميع الأمراض</a>
+                    <a href="#" class="specialty-link" onclick="filterByCategory('internal')"><i class="fas fa-heartbeat me-2"></i> باطنة وقلب</a>
+                    <a href="#" class="specialty-link" onclick="filterByCategory('derma')"><i class="fas fa-spa me-2"></i> جلدية وتجميل</a>
+                    <a href="#" class="specialty-link" onclick="filterByCategory('neuro')"><i class="fas fa-brain me-2"></i> مخ وأعصاب (قريباً)</a>
+                    <a href="#" class="specialty-link" onclick="filterByCategory('uro')"><i class="fas fa-procedures me-2"></i> مسالك بولية (قريباً)</a>
+                </div>
+            </div>
 
-                <article class="post-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1522844990619-4951c40f7eda?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="post-img" alt="التخسيس والنحافة">
-                    <div class="post-content">
-                        <span class="post-category"><i class="fas fa-weight"></i> تغذية وسمنة ونحافة</span>
-                        <h2 class="post-title">أسرار التخسيس واكتساب الوزن: الدليل العلمي لكسر ثبات الوزن بدون حرمان</h2>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> تم التحديث مؤخراً</span>
-                            <span><i class="far fa-clock"></i> 5 دقائق قراءة</span>
-                        </div>
-                        <div class="post-text">
-                            <p>سواء كنت تسعى للتخلص من الدهون العنيدة في منطقة البطن (الكرش)، أو تعاني من النحافة الشديدة وترغب في بناء كتلة عضلية، فإن الاعتماد على "أنظمة الإنترنت العشوائية" هو أول طريق للفشل. الطب الحديث يتعامل مع الوزن باعتباره هرمونات وليس مجرد سعرات حرارية.</p>
-                            
-                            <h4>1. لمن يعانون من السمنة وثبات الوزن:</h4>
-                            <ul>
-                                <li><strong>مقاومة الأنسولين (العدو الخفي):</strong> إذا كنت تأكل قليلاً ولا تفقد الوزن، فالمشكلة غالباً في الأنسولين. تناول السكريات والدقيق الأبيض يجعل البنكرياس يفرز الأنسولين بكثرة، مما يغلق خلايا حرق الدهون. <em>الحل: الصيام المتقطع (16/8) وتقليل النشويات.</em></li>
-                                <li><strong>النوم والكورتيزول:</strong> السهر والتوتر يرفعان هرمون الكورتيزول، الذي يقوم بتخزين الدهون مباشرة في منطقة البطن. بدون نوم عميق لـ 7 ساعات، لن يحرق جسمك الدهون.</li>
-                                <li><strong>قاعدة الـ 80/20:</strong> التزم بالأكل الصحي (بروتين، ألياف، دهون صحية) بنسبة 80%، وتناول ما تشتهيه بنسبة 20%. الحرمان التام يؤدي إلى الشراهة (Binge Eating).</li>
-                            </ul>
+            <div class="col-lg-9">
+                <div class="accordion" id="diseasesAccordion">
+                    
+                    <div id="noResults">
+                        <i class="fas fa-search-minus fa-3x mb-3"></i>
+                        <h4>لم يتم العثور على نتائج مطابقة لبحثك</h4>
+                        <p>حاول البحث بكلمات أخرى أو تصفح التخصصات.</p>
+                    </div>
 
-                            <h4>2. لمن يعانون من النحافة الشديدة:</h4>
-                            <ul>
-                                <li><strong>السبب الطبي أولاً:</strong> قبل تناول مكملات زيادة الوزن، يجب فحص نشاط الغدة الدرقية، تحليل براز (للتأكد من عدم وجود ديدان أو طفيليات تعيق الامتصاص)، وفحص جرثومة المعدة.</li>
-                                <li><strong>السعرات الذكية:</strong> لا تكتسب وزناً بتناول الحلويات والدهون الضارة، بل اعتمد على الأطعمة "كثيفة السعرات" ومفيدة صحياً مثل: زبدة الفول السوداني، المكسرات، الأفوكادو، التمر، والشوفان.</li>
-                                <li><strong>تمارين المقاومة:</strong> رفع الأثقال الخفيفة يفتح الشهية ويضمن أن الوزن المكتسب هو "عضلات وشكل متناسق" وليس دهوناً ضارة.</li>
-                            </ul>
-                            
-                            <div class="doctor-advice">
-                                <p>نصيحة فريق طبيب عربي: الأدوية المجهولة للتخسيس التي تباع على الإنترنت قد تدمر صمامات القلب، وأدوية النحافة التي تحتوي على الكورتيزون تدمر العظام والمناعة. استشر طبيب تغذية علاجية لعمل تحليل (InBody) وتصميم خطة تناسب طبيعة جسمك.</p>
-                            </div>
-                            
-                            <div class="text-center">
-                                <a href="index.html" class="book-btn"><i class="fas fa-search me-2"></i> ابحث عن دكتور تغذية في منطقتك</a>
-                            </div>
-                        </div>
-                        <div class="author-box">
-                            <img src="appicon.jpg" alt="الفريق الطبي" onerror="this.src='https://via.placeholder.com/60'">
-                            <div class="author-info">
-                                <h5>اللجنة الطبية | طبيب عربي</h5>
-                                <p>تمت المراجعة من قبل استشاريي التغذية العلاجية.</p>
+                    <div class="accordion-item disease-card" data-category="internal">
+                        <h2 class="accordion-header" id="headingDiabetes">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiabetes" aria-expanded="false" aria-controls="collapseDiabetes">
+                                مرض السكري من النوع الثاني (Type 2 Diabetes Mellitus)
+                            </button>
+                        </h2>
+                        <div id="collapseDiabetes" class="accordion-collapse collapse" aria-labelledby="headingDiabetes" data-bs-parent="#diseasesAccordion">
+                            <div class="disease-content">
+                                <span class="badge bg-primary mb-3 px-3 py-2">باطنة وغدد صماء</span>
+                                
+                                <p class="med-text"><strong>نبذة:</strong> اضطراب أيضي مزمن يتميز بارتفاع مستويات السكر في الدم نتيجة لمقاومة الخلايا لعمل هرمون الأنسولين، وضعف إفراز الأنسولين من خلايا بيتا في البنكرياس تدريجياً.</p>
+
+                                <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض الشائعة</h4>
+                                <ul class="med-list med-text">
+                                    <li><strong>كثرة التبول (Polyuria):</strong> خاصة في الليل، نتيجة محاولة الكلى طرد الجلوكوز الزائد.</li>
+                                    <li><strong>العطش الشديد (Polydipsia):</strong> لتعويض السوائل المفقودة.</li>
+                                    <li><strong>الجوع المفرط (Polyphagia):</strong> لعدم قدرة الجلوكوز على دخول الخلايا لإنتاج الطاقة.</li>
+                                    <li><strong>زغللة الرؤية:</strong> بسبب تغير كمية السوائل في عدسة العين.</li>
+                                    <li><strong>تأخر التئام الجروح:</strong> لضعف الدورة الدموية الدقيقة وتأثير السكر على المناعة.</li>
+                                </ul>
+
+                                <h4 class="med-section-title"><i class="fas fa-microscope"></i> التشخيص والمعايير القياسية</h4>
+                                <ul class="med-list med-text">
+                                    <li>السكر الصائم (Fasting Plasma Glucose): أكبر من أو يساوي 126 مجم/ديسيلتر.</li>
+                                    <li>السكر التراكمي (HbA1c): أكبر من أو يساوي 6.5%.</li>
+                                    <li>السكر العشوائي (Random Plasma Glucose): أكبر من 200 مجم/ديسيلتر مع وجود أعراض.</li>
+                                </ul>
+
+                                <h4 class="med-section-title"><i class="fas fa-exclamation-triangle"></i> المضاعفات (إذا لم يُعالج)</h4>
+                                <p class="med-text">اعتلال الشبكية السكري (قد يؤدي للعمى)، اعتلال الكلى السكري (فشل كلوي)، اعتلال الأعصاب الطرفية (القدم السكري)، وأمراض القلب التاجية.</p>
+
+                                <div class="pharma-box">
+                                    <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والأدوية (Pharmacotherapy)</h5>
+                                    <p class="med-text mb-2">تحديثات الأدلة الإرشادية الطبية تؤكد على ضرورة تغيير نمط الحياة (الحمية وتقليل الكربوهيدرات) بالتزامن مع العلاج الدوائي:</p>
+                                    <ul class="med-list med-text">
+                                        <li><strong>الميتفورمين (Metformin):</strong> خط العلاج الأول. يعمل على تقليل إنتاج الجلوكوز من الكبد وزيادة حساسية العضلات للأنسولين. (لا يسبب هبوطاً في السكر).</li>
+                                        <li><strong>مثبطات SGLT2 (مثل Dapagliflozin و Empagliflozin):</strong> طفرة علاجية حديثة. تمنع إعادة امتصاص الجلوكوز في الكلى وتطرده في البول. ممتازة لحماية القلب والكلى والمساعدة في التخسيس.</li>
+                                        <li><strong>منبهات مستقبلات GLP-1 (مثل Semaglutide - Ozempic/Wegovy):</strong> حقن أسبوعية تزيد إفراز الأنسولين بذكاء وقت الأكل، وتبطئ إفراغ المعدة وتسد الشهية بقوة (تستخدم للسكر ولعلاج السمنة).</li>
+                                        <li><strong>مثبطات DPP-4 (مثل Sitagliptin):</strong> أدوية آمنة تزيد من مستوى هرمون الإنكريتين الداخلي.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-4 text-end">
+                                    <a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب باطنة وسكر</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </article>
 
-                <article class="post-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="post-img" alt="الضغط والسكر">
-                    <div class="post-content">
-                        <span class="post-category"><i class="fas fa-heartbeat"></i> أمراض الباطنة والقلب</span>
-                        <h2 class="post-title">التعايش الآمن مع السكر والضغط: كيف تحمي قلبك وكليتيك من المضاعفات؟</h2>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> تم التحديث مؤخراً</span>
-                            <span><i class="far fa-clock"></i> 6 دقائق قراءة</span>
-                        </div>
-                        <div class="post-text">
-                            <p>يُطلق على ارتفاع ضغط الدم ومرض السكري اسم "القتلة الصامتة" لأنهما يعملان في صمت لسنوات قبل ظهور الأعراض. ولكن، مع التطور الطبي المذهل، أصبح من الممكن لمريض السكر والضغط أن يعيش حياة طبيعية وطويلة جداً خالية من أي مضاعفات، بشرط الالتزام بـ "المثلث الذهبي" للعلاج.</p>
-                            
-                            <h4>المثلث الذهبي للسيطرة على الأمراض المزمنة:</h4>
-                            <ul>
-                                <li><strong>1. الالتزام الصارم بالأدوية:</strong> أكبر خطأ يقع فيه المريض هو التوقف عن تناول دواء الضغط أو السكر بمجرد أن تصبح قراءاته طبيعية! الدواء هو ما جعل القراءات طبيعية، وإيقافه يسبب انتكاسة وعواصف في الأوعية الدموية قد تؤدي لجلطات.</li>
-                                <li><strong>2. المراقبة المنزلية الدورية:</strong> يجب أن تمتلك جهاز قياس ضغط (يفضل الديجيتال المعتمد للذراع وليس المعصم) وجهاز قياس سكر. السكر التراكمي (HbA1c) يجب قياسه كل 3 أشهر للتأكد من أنه أقل من 7%.</li>
-                                <li><strong>3. الحركة وتقليل "السموم البيضاء":</strong> المشي السريع لمدة 30 دقيقة، 5 أيام في الأسبوع، يعمل كالسحر في تحسين استجابة الخلايا للأنسولين وتوسيع الشرايين.</li>
-                            </ul>
+                    <div class="accordion-item disease-card" data-category="internal">
+                        <h2 class="accordion-header" id="headingHyper">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHyper" aria-expanded="false" aria-controls="collapseHyper">
+                                ارتفاع ضغط الدم (Hypertension)
+                            </button>
+                        </h2>
+                        <div id="collapseHyper" class="accordion-collapse collapse" aria-labelledby="headingHyper" data-bs-parent="#diseasesAccordion">
+                            <div class="disease-content">
+                                <span class="badge bg-primary mb-3 px-3 py-2">قلب وأوعية دموية</span>
+                                
+                                <p class="med-text"><strong>نبذة:</strong> يُعرف بـ "القاتل الصامت". حالة مرضية تزداد فيها قوة دفع الدم ضد جدران الشرايين باستمرار، مما يجهد عضلة القلب ويؤدي لتصلب الشرايين.</p>
 
-                            <h4>احذر "الملح الخفي" و"السكر المخفي":</h4>
-                            <p>بالنسبة لمريض الضغط، الخطر ليس في الملح الذي يضاف للطعام فقط، بل في (المعلبات، مكعبات المرق، اللحوم المصنعة، المخللات). وبالنسبة لمريض السكر، العصائر الجاهزة والمخبوزات ترفع السكر في الدم بشكل أسرع من السكر المباشر.</p>
-                            
-                            <div class="doctor-advice">
-                                <p>نصيحة فريق طبيب عربي: مريض السكر يجب أن يفحص قاع العين، ووظائف الكلى (الزلال الدقيق)، وقدميه بانتظام مرة كل عام على الأقل. الاكتشاف المبكر لأي خلل يسهل علاجه بنسبة 99%.</p>
-                            </div>
+                                <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأسباب وعوامل الخطر</h4>
+                                <ul class="med-list med-text">
+                                    <li><strong>ضغط الدم الأولي (95% من الحالات):</strong> مجهول السبب بدقة، لكنه مرتبط بالوراثة، التقدم في العمر، السمنة، كثرة الملح (الصوديوم) في الطعام، التدخين، والتوتر المستمر.</li>
+                                    <li><strong>ضغط الدم الثانوي (5% من الحالات):</strong> ناتج عن مرض آخر مثل: أمراض الكلى، نشاط الغدة الدرقية، أو أورام الغدة الكظرية.</li>
+                                </ul>
 
-                            <div class="text-center">
-                                <a href="index.html" class="book-btn"><i class="fas fa-search me-2"></i> احجز كشف باطنة وقلب الآن</a>
-                            </div>
-                        </div>
-                        <div class="author-box">
-                            <img src="appicon.jpg" alt="الفريق الطبي" onerror="this.src='https://via.placeholder.com/60'">
-                            <div class="author-info">
-                                <h5>اللجنة الطبية | طبيب عربي</h5>
-                                <p>تمت المراجعة من قبل استشاريي الباطنة والقلب.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                                <h4 class="med-section-title"><i class="fas fa-heartbeat"></i> الأعراض</h4>
+                                <p class="med-text">في الغالب <strong>لا توجد أعراض</strong> لسنوات. ولكن في حالات الارتفاع الشديد (أزمة ضغط الدم) قد يحدث: صداع خلفي نابض، طنين في الأذن، نزيف من الأنف (رعاف)، ضيق في التنفس، وزغللة.</p>
 
-                <article class="post-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="post-img" alt="صحة الرجل">
-                    <div class="post-content">
-                        <span class="post-category"><i class="fas fa-mars"></i> صحة الرجل وأمراض الذكورة</span>
-                        <h2 class="post-title">الضعف الجنسي والبروستاتا: كسر حاجز الصمت والحلول الطبية الجذرية</h2>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> تم التحديث مؤخراً</span>
-                            <span><i class="far fa-clock"></i> 5 دقائق قراءة</span>
-                        </div>
-                        <div class="post-text">
-                            <p>يعاني نسبة كبيرة من الرجال فوق سن الأربعين (وحتى الشباب مؤخراً) من مشاكل تتعلق بالصحة الجنسية أو تضخم البروستاتا. الخجل الاجتماعي يمنع الكثيرين من زيارة العيادة، مما يدفعهم لاستخدام "وصفات العطارين" أو الأدوية المهربة التي قد تنهي حياتهم.</p>
-                            
-                            <h4>الضعف الجنسي: عضوي أم نفسي؟</h4>
-                            <ul>
-                                <li><strong>الأسباب العضوية:</strong> غالباً ما تكون جرس إنذار مبكر لمشاكل في القلب! انسداد الأوعية الدموية الدقيقة نتيجة التدخين، ارتفاع الكوليسترول، أو السكري غير المنتظم، يمنع تدفق الدم. أيضاً، انخفاض هرمون التستوستيرون مع التقدم في العمر يلعب دوراً كبيراً.</li>
-                                <li><strong>الأسباب النفسية:</strong> شائعة جداً بين الشباب. ضغوط العمل، القلق من الأداء، أو الاكتئاب تؤدي لإفراز الأدرينالين الذي يعيق العملية الجنسية تماماً.</li>
-                            </ul>
+                                <div class="pharma-box">
+                                    <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والأدوية (Antihypertensive Drugs)</h5>
+                                    <p class="med-text mb-2">يعتمد اختيار الدواء على سن المريض والأمراض المصاحبة له:</p>
+                                    <ul class="med-list med-text">
+                                        <li><strong>مثبطات الإنزيم المحول للأنجيوتنسين (ACE Inhibitors):</strong> مثل Captopril و Ramipril. ممتازة لمرضى السكر لأنها تحمي الكلى. (قد تسبب سعالاً جافاً كعرض جانبي).</li>
+                                        <li><strong>حاصرات مستقبلات الأنجيوتنسين (ARBs):</strong> مثل Valsartan و Losartan. بديل ممتاز ومريح لمن يعاني من السعال بسبب الـ ACEi.</li>
+                                        <li><strong>حاصرات قنوات الكالسيوم (CCBs):</strong> مثل Amlodipine. تعمل على إرخاء الأوعية الدموية وتوسيعها. (فعالة جداً لكبار السن).</li>
+                                        <li><strong>مدرات البول (Diuretics):</strong> مثل Hydrochlorothiazide. تساعد الكلى على طرد الصوديوم والماء الزائد، وتقليل حجم الدم.</li>
+                                        <li><strong>حاصرات بيتا (Beta Blockers):</strong> مثل Bisoprolol. تبطئ ضربات القلب وتقلل قوة انقباضه (تستخدم غالباً إذا كان هناك مشاكل مصاحبة في الشرايين التاجية).</li>
+                                    </ul>
+                                </div>
 
-                            <h4>احتقان البروستاتا الحميد (BPH):</h4>
-                            <p>إذا كنت تعاني من كثرة التبول ليلاً، ضعف اندفاع البول، أو الشعور بعدم إفراغ المثانة بالكامل، فهذه علامات واضحة لتضخم البروستاتا. الطب الحديث يعالج هذه المشكلة بأدوية بسيطة تعمل على إرخاء العضلات وتقليص حجم الغدة دون الحاجة لجراحة في معظم الحالات.</p>
-                            
-                            <div class="doctor-advice">
-                                <p>نصيحة فريق طبيب عربي: تناول المنشطات الجنسية مجهولة المصدر، أو تناولها مع أدوية علاج ذبحة القلب (مجموعة النيترات) يؤدي إلى هبوط حاد ومميت في الدورة الدموية. الحلول الطبية الآمنة والمصرح بها موجودة وفعالة جداً، لا تتردد في زيارة الطبيب.</p>
-                            </div>
-
-                            <div class="text-center">
-                                <a href="index.html" class="book-btn"><i class="fas fa-search me-2"></i> استشر دكتور أمراض ذكورة ومسالك</a>
-                            </div>
-                        </div>
-                        <div class="author-box">
-                            <img src="appicon.jpg" alt="الفريق الطبي" onerror="this.src='https://via.placeholder.com/60'">
-                            <div class="author-info">
-                                <h5>اللجنة الطبية | طبيب عربي</h5>
-                                <p>تمت المراجعة من قبل أطباء جراحة المسالك والذكورة.</p>
+                                <div class="mt-4 text-end">
+                                    <a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب قلب وأوعية دموية</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </article>
 
-                <article class="post-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="post-img" alt="مناعة الأطفال">
-                    <div class="post-content">
-                        <span class="post-category"><i class="fas fa-baby"></i> طب الأطفال وحديثي الولادة</span>
-                        <h2 class="post-title">المضادات الحيوية ومناعة طفلك: متى تكون الحرارة خطراً حقيقياً؟</h2>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> تم التحديث مؤخراً</span>
-                            <span><i class="far fa-clock"></i> 4 دقائق قراءة</span>
-                        </div>
-                        <div class="post-text">
-                            <p>من أكثر الأخطاء الكارثية التي تدمر مناعة الأطفال هي "الاستخدام العشوائي للمضادات الحيوية" مع كل دور برد أو ارتفاع في درجة الحرارة. يجب أن تدرك كل أم أن 80% من التهابات الحلق ونزلات البرد عند الأطفال هي <strong>عدوى فيروسية</strong>، والمضاد الحيوي لا يقتل الفيروسات، بل يقتل البكتيريا النافعة في معدة الطفل ويدمر مناعته المستقبلية!</p>
-                            
-                            <h4>كيف نتعامل مع الحرارة؟</h4>
-                            <ul>
-                                <li>الحرارة بحد ذاتها ليست مرضاً، بل هي دليل على أن جهاز مناعة طفلك قوي ويعمل على محاربة الميكروب.</li>
-                                <li>استخدمي خافض حرارة آمن (مثل الباراسيتامول أو الإيبوبروفين) بالجرعة التي يحددها الطبيب بناءً على وزن الطفل، وليس عمره.</li>
-                                <li>الكمادات هي الحل الأسرع (توضع على الرقبة، تحت الإبطين، وبين الفخذين)، وليست على الجبهة فقط.</li>
-                            </ul>
+                    <div class="accordion-item disease-card" data-category="derma">
+                        <h2 class="accordion-header" id="headingAcne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcne" aria-expanded="false" aria-controls="collapseAcne">
+                                حب الشباب (Acne Vulgaris)
+                            </button>
+                        </h2>
+                        <div id="collapseAcne" class="accordion-collapse collapse" aria-labelledby="headingAcne" data-bs-parent="#diseasesAccordion">
+                            <div class="disease-content">
+                                <span class="badge bg-success mb-3 px-3 py-2">أمراض جلدية</span>
+                                
+                                <p class="med-text"><strong>نبذة:</strong> مرض جلدي التهابي مزمن يصيب بصيلات الشعر والغدد الدهنية. ينتشر غالباً في الوجه، الظهر، والصدر، ويعد من أكثر الأمراض الجلدية شيوعاً بين المراهقين والشباب.</p>
 
-                            <h4>علامات الخطر (التي تستدعي زيارة الطبيب فوراً):</h4>
-                            <p>إذا كان عمر الطفل أقل من 3 شهور وحرارته مرتفعة، إذا صاحب الحرارة تشنجات، نهجان وصعوبة في التنفس، قيء مستمر، أو طفح جلدي لا يختفي عند الضغط عليه.</p>
-                            
-                            <div class="doctor-advice">
-                                <p>نصيحة فريق طبيب عربي: التغذية السليمة، الرضاعة الطبيعية، تطعيمات وزارة الصحة، وإعطاء الطفل فيتامين (د) بانتظام هي حجر الأساس لمناعة لا تُقهر.</p>
-                            </div>
+                                <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأسباب الفسيولوجية</h4>
+                                <ul class="med-list med-text">
+                                    <li><strong>فرط إفراز الدهون (Sebum):</strong> نتيجة لزيادة هرمونات الأندروجين خلال فترة البلوغ أو التغيرات الهرمونية.</li>
+                                    <li><strong>انسداد المسام:</strong> تراكم الخلايا الجلدية الميتة مع الدهون يسد مسام الجلد، مكوناً الرؤوس السوداء (مفتوحة) أو البيضاء (مغلقة).</li>
+                                    <li><strong>النشاط البكتيري:</strong> بكتيريا (Propionibacterium acnes) تعيش طبيعياً على الجلد، ولكنها تتكاثر بشراهة داخل المسام المسدودة مسببة الالتهاب والصديد.</li>
+                                </ul>
 
-                            <div class="text-center">
-                                <a href="index.html" class="book-btn"><i class="fas fa-search me-2"></i> احجزي أقرب دكتور أطفال لطفلك</a>
-                            </div>
-                        </div>
-                        <div class="author-box">
-                            <img src="appicon.jpg" alt="الفريق الطبي" onerror="this.src='https://via.placeholder.com/60'">
-                            <div class="author-info">
-                                <h5>اللجنة الطبية | طبيب عربي</h5>
-                                <p>تمت المراجعة من قبل أطباء الأطفال المبتسرين.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                                <div class="pharma-box">
+                                    <h5><i class="fas fa-pills"></i> البروتوكول العلاجي والعناية (Dermatological Treatment)</h5>
+                                    <p class="med-text mb-2">العلاج يعتمد على شدة الحالة (بسيط، متوسط، تكيسي شديد):</p>
+                                    <ul class="med-list med-text">
+                                        <li><strong>العلاجات الموضعية (Topical Therapy):</strong>
+                                            <ul>
+                                                <li><strong>الريتينويدات (Retinoids):</strong> مثل Adapalene و Tretinoin. تعتبر حجر الأساس، تعمل على تقشير الجلد ومنع انسداد المسام. (تستخدم ليلاً فقط لتجنب التحسس الضوئي).</li>
+                                                <li><strong>بيروكسيد البنزويل (Benzoyl Peroxide):</strong> قاتل قوي للبكتيريا ويقلل الالتهاب، ولا يسبب مقاومة بكتيرية كالمضادات الحيوية.</li>
+                                                <li><strong>حمض الساليسيليك (Salicylic Acid):</strong> يستخدم في الغسولات لتذويب الدهون داخل المسام.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>العلاجات الفموية (Systemic Therapy):</strong>
+                                            <ul>
+                                                <li><strong>المضادات الحيوية (Doxycycline):</strong> للحالات المتوسطة الملتهبة لتقليل البكتيريا (تستخدم لفترة محدودة).</li>
+                                                <li><strong>الآيزوتريتينوين (Isotretinoin - Roaccutane):</strong> العلاج السحري والنهائي للحالات الشديدة والمُتكيّسة. يقلل حجم الغدد الدهنية نهائياً. <em>(يمنع منعاً باتاً للحوامل ويحتاج لمتابعة إنزيمات الكبد والدهون).</em></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                <article class="post-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="post-img" alt="البشرة والشعر">
-                    <div class="post-content">
-                        <span class="post-category"><i class="fas fa-spa"></i> جلدية وتجميل</span>
-                        <h2 class="post-title">التساقط المستمر للشباب والفتيات: أسباب طبية تتجاهلها إعلانات الشامبو!</h2>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> تم التحديث مؤخراً</span>
-                            <span><i class="far fa-clock"></i> 5 دقائق قراءة</span>
-                        </div>
-                        <div class="post-text">
-                            <p>إنفاق آلاف الجنيهات على زيوت وشامبوهات مكافحة تساقط الشعر دون جدوى؟ السبب بسيط: الشعر ينمو من الداخل، وما يظهر على فروة الرأس هو مجرد انعكاس لصحة جسمك الداخلية.</p>
-                            
-                            <h4>الفحوصات الطبية المطلوبة قبل أي علاج:</h4>
-                            <ul>
-                                <li><strong>مخزون الحديد (Ferritin):</strong> الأنيميا ونقص مخزون الحديد هو السبب رقم 1 لتساقط الشعر عند النساء.</li>
-                                <li><strong>فيتامين د (Vitamin D):</strong> نقص هذا الفيتامين يؤدي إلى تساقط الشعر، الإرهاق الدائم، وضعف الحرق.</li>
-                                <li><strong>وظائف الغدة الدرقية:</strong> الكسل أو النشاط المفرط للغدة يؤثر مباشرة على كثافة الشعر ونضارة البشرة.</li>
-                                <li><strong>الصلع الوراثي:</strong> يصيب الرجال والنساء، وسببه هرموني. علاجه المبكر بمواد مثل "المينوكسيديل" (تحت إشراف طبي) ينقذ البصيلات قبل موتها.</li>
-                            </ul>
-
-                            <h4>عن حب الشباب (Acne):</h4>
-                            <p>ظهور الحبوب ليس مرتبطاً فقط بسن المراهقة. التغيرات الهرمونية، تكيسات المبايض عند النساء، وتناول السكريات ومنتجات الألبان بكثرة، يهيج الغدد الدهنية. غسيل الوجه المتكرر جداً بالصابون القاسي يزيد من إفراز الدهون كعذر دفاعي للبشرة.</p>
-                            
-                            <div class="doctor-advice">
-                                <p>نصيحة فريق طبيب عربي: حقن البلازما (PRP) والميزوثيراپي من التقنيات الحديثة الفعالة جداً لإنبات الشعر، ولكنها لا تنجح إذا كان جسمك يفتقر للفيتامينات الأساسية. عالج الداخل أولاً.</p>
-                            </div>
-
-                            <div class="text-center">
-                                <a href="index.html" class="book-btn"><i class="fas fa-search me-2"></i> استشر دكتور أمراض جلدية وتجميل</a>
-                            </div>
-                        </div>
-                        <div class="author-box">
-                            <img src="appicon.jpg" alt="الفريق الطبي" onerror="this.src='https://via.placeholder.com/60'">
-                            <div class="author-info">
-                                <h5>اللجنة الطبية | طبيب عربي</h5>
-                                <p>تمت المراجعة من قبل أطباء الأمراض الجلدية والليزر.</p>
+                                <div class="mt-4 text-end">
+                                    <a href="index.html" class="book-btn"><i class="fas fa-user-md me-1"></i> احجز طبيب أمراض جلدية</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </article>
 
+                    </div>
             </div>
         </div>
     </div>
 
-    <footer class="text-center py-5 bg-dark text-secondary border-top border-secondary">
-        <div class="container">
-            <div class="mb-4">
-                <a href="index.html" class="text-light text-decoration-none fs-4 fw-bold">طبيب عربي</a>
-            </div>
-            <div class="mb-4 d-flex justify-content-center align-items-center gap-4 flex-wrap">
-                <a href="index.html" class="text-light text-decoration-none fw-semibold">الرئيسية والبحث</a>
-                <a href="privacy.html" class="text-light text-decoration-none fw-semibold">سياسة الخصوصية</a>
-                <a href="https://www.facebook.com/profile.php?id=61585799724440" target="_blank" class="text-primary fs-4" title="صفحتنا على فيسبوك">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/201026485012" target="_blank" class="text-success fs-4" title="تواصل معنا عبر واتساب">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-            <p class="mb-0 small text-muted">جميع المعلومات الطبية الواردة في المدونة هي للتثقيف الصحي ولا تغني عن استشارة الطبيب المختص.</p>
-            <p class="mb-0 mt-2 small text-muted">&copy; 2026 Tabib Arabi. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
+    <script>
+        // دالة البحث بالنص
+        function filterDiseases() {
+            let input = document.getElementById('diseaseSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.disease-card');
+            let hasResults = false;
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = "block";
+                    hasResults = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // إظهار أو إخفاء رسالة عدم وجود نتائج
+            document.getElementById('noResults').style.display = hasResults ? "none" : "block";
+            
+            // إلغاء تفعيل أزرار القائمة الجانبية أثناء البحث النصي
+            document.querySelectorAll('.specialty-link').forEach(link => link.classList.remove('active'));
+        }
+
+        // دالة الفلترة بالتخصص (القائمة الجانبية)
+        function filterByCategory(category) {
+            // تفريغ مربع البحث
+            document.getElementById('diseaseSearch').value = '';
+            document.getElementById('noResults').style.display = "none";
+
+            let cards = document.querySelectorAll('.disease-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // تفعيل الزر المضغوط عليه
+            document.querySelectorAll('.specialty-link').forEach(link => link.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
