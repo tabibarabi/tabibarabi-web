@@ -20,6 +20,8 @@
             --disease-bg: #ffffff;
         }
 
+        
+
         body { 
             font-family: 'Cairo', sans-serif; 
             background-color: var(--bg-color); 
@@ -162,6 +164,24 @@
     </style>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(0,0,0,0.05); z-index: 1030;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="appicon.jpg" alt="طبيب عربي" width="45" height="45" class="d-inline-block align-text-top rounded-circle" onerror="this.src='https://via.placeholder.com/45'">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">طبيب عربي</span>
+            </a>
+            
+            <div>
+                <a href="index.html" class="btn btn-outline-primary rounded-pill fw-bold px-4 shadow-sm d-none d-md-inline-block">
+                    <i class="fas fa-search me-1"></i> ابحث عن طبيب
+                </a>
+                <a href="index.html" class="btn btn-primary rounded-circle shadow-sm d-md-none" style="width: 45px; height: 45px; line-height: 33px; text-align: center;">
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <header class="encyclopedia-header text-center">
         <div class="container">
@@ -3928,6 +3948,29 @@
             </div>
         </div>
     </div>
+
+
+    <footer class="text-center py-5 bg-dark text-secondary mt-5 border-top border-primary border-4">
+        <div class="container">
+            <div class="mb-4">
+                <a href="index.html" class="text-light text-decoration-none fs-4 fw-bold d-flex justify-content-center align-items-center gap-2">
+                    <img src="appicon.jpg" width="30" height="30" class="rounded-circle" onerror="this.src='https://via.placeholder.com/30'">
+                    طبيب عربي
+                </a>
+            </div>
+            <div class="mb-4 d-flex justify-content-center align-items-center gap-4 flex-wrap">
+                <a href="index.html" class="text-light text-decoration-none fw-semibold"><i class="fas fa-home me-1"></i> الرئيسية</a>
+                <a href="https://www.facebook.com/profile.php?id=61585799724440" target="_blank" class="text-primary fs-3" title="صفحتنا على فيسبوك">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://wa.me/201026485012" target="_blank" class="text-success fs-3" title="تواصل معنا عبر واتساب">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <p class="mb-0 small text-muted">جميع المعلومات الطبية الواردة في هذه الموسوعة هي للتثقيف الصحي ولا تغني عن استشارة الطبيب المختص.</p>
+            <p class="mb-0 mt-2 small text-light">&copy; 2026 دليل طبيب عربي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
 
     <script>
         // دالة البحث بالنص
