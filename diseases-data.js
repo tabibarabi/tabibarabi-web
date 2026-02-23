@@ -912,7 +912,6 @@ const diseasesDB = {
             </ul>
         `
     },
-
     "hemorrhoids": {
         title: "البواسير (Hemorrhoids)",
         categoryId: "gastro",
@@ -999,7 +998,7 @@ const diseasesDB = {
             <ul class="med-list med-text">
                 <li><strong>إذابة دوائية:</strong> (Ursofalk) لحصوات الكوليسترول الصغيرة جداً (يستغرق وقتاً طويلاً ومعدل رجوع الحصوات عالي).</li>
                 <li><strong>المسكنات القوية:</strong> ومضادات التقلص وقت المغص.</li>
-                <li><strong>الجراحة:</strong> استئصال المرارة بالمنظار هو المعيار الذهبي והحل الجذري.</li>
+                <li><strong>الجراحة:</strong> استئصال المرارة بالمنظار هو المعيار الذهبي والحل الجذري.</li>
             </ul>
         `
     },
@@ -1142,7 +1141,7 @@ const diseasesDB = {
     "ocd": {
         title: "الوسواس القهري (OCD)",
         categoryId: "psych",
-        category: "طب نفسي ועصبي",
+        category: "طب نفسي وعصبي",
         badgeClass: "bg-secondary",
         overview: "اضطراب يتميز بوجود هواجس (أفكار مزعجة متطفلة) تدفع المريض للقيام بأفعال قهرية (سلوكيات متكررة) لتقليل التوتر.",
         content: `
@@ -1256,7 +1255,7 @@ const diseasesDB = {
             <h4 class="med-section-title"><i class="fas fa-clipboard-list"></i> الأعراض والكشف المبكر</h4>
             <ul class="med-list med-text">
                 <li>المراحل المتأخرة: نزيف مهبلي غير طبيعي، إفرازات كريهة، وألم بالحوض.</li>
-                <li><strong>مسحة عنق الرحم (Pap Smear):</strong> הפحص الأهم دورياً لكشف الخلايا قبل تحولها لسرطان.</li>
+                <li><strong>مسحة عنق الرحم (Pap Smear):</strong> الفحص الأهم دورياً لكشف الخلايا قبل تحولها لسرطان.</li>
             </ul>
         `,
         pharmaTitle: "البروتوكول العلاجي والوقاية",
@@ -1271,7 +1270,7 @@ const diseasesDB = {
     "schizo": {
         title: "الفصام (Schizophrenia)",
         categoryId: "psych",
-        category: "طب نفسي ועصبي",
+        category: "طب نفسي وعصبي",
         badgeClass: "bg-secondary",
         overview: "اضطراب عقلي شديد يؤدي لانفصال المريض عن الواقع، سببه خلل كيميائي في الدماغ (زيادة نشاط الدوبامين).",
         content: `
@@ -1308,7 +1307,7 @@ const diseasesDB = {
             <ul class="med-list med-text">
                 <li><strong>التحكم بالنبض (Rate Control):</strong> حاصرات بيتا (Bisoprolol) لتنظيم سرعة القلب.</li>
                 <li><strong>التحكم بالإيقاع:</strong> أدوية كـ (Amiodarone) لاستعادة النبض الطبيعي.</li>
-                <li><strong>الوقاية الحتمية من الجلطات:</strong> مضادات التخثر الحديثة (DOACs - Apixaban) هي الخيار الآمن والفعال לمنع جلطات المخ.</li>
+                <li><strong>الوقاية الحتمية من الجلطات:</strong> مضادات التخثر الحديثة (DOACs - Apixaban) هي الخيار الآمن والفعال لمنع جلطات المخ.</li>
             </ul>
         `
     },
@@ -1471,7 +1470,7 @@ const diseasesDB = {
     "bipolar": {
         title: "اضطراب ثنائي القطب (Bipolar Disorder)",
         categoryId: "psych",
-        category: "طب نفسي ועصبي",
+        category: "طب نفسي وعصبي",
         badgeClass: "bg-secondary",
         overview: "اضطراب نفسي يتميز بتقلبات شديدة في المزاج. يتأرجح المريض بين قطبي: الهوس (النشاط المفرط) والاكتئاب العميق.",
         content: `
