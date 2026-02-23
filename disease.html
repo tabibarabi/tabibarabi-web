@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المرض | طبيب عربي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --primary-color: #0d6efd; --text-color: #334155; --bg-color: #f8fafc; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .disease-header { background: linear-gradient(135deg, var(--primary-color) 0%, #005f92 100%); color: white; padding: 60px 0; margin-bottom: 40px; }
+        .disease-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .med-section-title { color: var(--primary-color); font-weight: 800; margin-top: 25px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .med-text { line-height: 1.8; font-size: 1.1rem; color: #475569; }
+        .pharma-box { background: #f0fdf4; border-right: 5px solid #22c55e; padding: 25px; border-radius: 10px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">طبيب عربي</a>
+            <a href="encyclopedia.html" class="btn btn-outline-secondary btn-sm">العودة للموسوعة</a>
+        </div>
+    </nav>
+
+    <div class="disease-header text-center">
+        <div class="container">
+            <span id="page-badge" class="badge mb-3 px-3 py-2 fs-6">جاري التحميل...</span>
+            <h1 id="page-title" class="display-5 fw-bolder">...</h1>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="disease-container">
+                    <p id="page-overview" class="med-text fw-bold border-bottom pb-3 mb-4"></p>
+                    
+                    <div id="page-content">
+                        </div>
+
+                    <div class="pharma-box">
+                        <h5 id="page-pharma-title" style="color: #166534; font-weight: 800; margin-bottom: 15px;"><i class="fas fa-pills"></i> </h5>
+                        <div id="page-pharma-content">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="diseases-data.js"></script>
+    <script>
+        // 1. قراءة اسم المرض من الرابط (مثال: ?id=diabetes)
+        const urlParams = new URLSearchParams(window.location.search);
+        const diseaseId = urlParams.get('id');
+
+        // 2. البحث عن المرض في قاعدة البيانات
+        if (diseaseId && diseasesDB[diseaseId]) {
+            const data = diseasesDB[diseaseId];
+            
+            // 3. حقن البيانات في عناصر HTML
+            document.title = data.title + " | طبيب عربي";
+            document.getElementById('page-title').innerText = data.title;
+            
+            const badge = document.getElementById('page-badge');
+            badge.innerText = data.category;
+            badge.classList.add(data.badgeClass);
+            
+            document.getElementById('page-overview').innerHTML = "<strong>نبذة:</strong> " + data.overview;
+            document.getElementById('page-content').innerHTML = data.content;
+            document.getElementById('page-pharma-title').innerHTML += data.pharmaTitle;
+            document.getElementById('page-pharma-content').innerHTML = data.pharmaContent;
+        } else {
+            // إذا كان الرابط خاطئاً
+            document.getElementById('page-title').innerText = "المرض غير موجود";
+            document.getElementById('page-overview').innerText = "عذراً، لم نتمكن من العثور على المعلومات المطلوبة.";
+            document.querySelector('.pharma-box').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
