@@ -129,22 +129,22 @@
             container.innerHTML = '';
             // المرور على كل مرض في قاعدة البيانات
             for (const [id, data] of Object.entries(diseasesDB)) {
-                const cardHTML = \`
-                    <div class="col-md-6 mb-4 disease-card" data-category="\${data.categoryId}">
+                const cardHTML = `
+                    <div class="col-md-6 mb-4 disease-card" data-category="${data.categoryId}">
                         <div class="card h-100 shadow-sm bg-white disease-card-ui">
                             <div class="card-body">
-                                <span class="badge \${data.badgeClass} mb-3 px-3 py-2">\${data.category}</span>
-                                <h4 class="card-title fw-bold" style="color: #0f172a; font-size: 1.3rem;">\${data.title}</h4>
-                                <p class="card-text text-muted line-clamp" style="font-size: 0.95rem;">\${data.overview}</p>
+                                <span class="badge ${data.badgeClass} mb-3 px-3 py-2">${data.category}</span>
+                                <h4 class="card-title fw-bold" style="color: #0f172a; font-size: 1.3rem;">${data.title}</h4>
+                                <p class="card-text text-muted line-clamp" style="font-size: 0.95rem;">${data.overview}</p>
                             </div>
                             <div class="card-footer bg-transparent border-0 pb-4 pt-0 text-center">
-                                <a href="disease.html?id=\${id}" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
+                                <a href="disease.html?id=${id}" class="btn btn-outline-primary w-100 rounded-pill fw-bold">
                                     <i class="fas fa-book-medical me-1"></i> اقرأ الملف الكامل
                                 </a>
                             </div>
                         </div>
                     </div>
-                \`;
+                `;
                 container.innerHTML += cardHTML;
             }
         }
