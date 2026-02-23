@@ -54,8 +54,9 @@
     </div>
 
     <script src="diseases-data.js"></script>
+   <script src="diseases-data.js"></script>
     <script>
-        // 1. قراءة اسم المرض من الرابط (مثال: ?id=diabetes)
+        // 1. قراءة اسم المرض من الرابط 
         const urlParams = new URLSearchParams(window.location.search);
         const diseaseId = urlParams.get('id');
 
@@ -69,11 +70,13 @@
             
             const badge = document.getElementById('page-badge');
             badge.innerText = data.category;
-            badge.classList.add(data.badgeClass);
+            
+            // 🚀 (هنا كان الخطأ وتم إصلاحه) استخدام className بدلاً من classList.add
+            badge.className = "badge mb-3 px-3 py-2 fs-6 " + data.badgeClass;
             
             document.getElementById('page-overview').innerHTML = "<strong>نبذة:</strong> " + data.overview;
             document.getElementById('page-content').innerHTML = data.content;
-            document.getElementById('page-pharma-title').innerHTML += data.pharmaTitle;
+            document.getElementById('page-pharma-title').innerHTML = '<i class="fas fa-pills me-2"></i>' + data.pharmaTitle;
             document.getElementById('page-pharma-content').innerHTML = data.pharmaContent;
         } else {
             // إذا كان الرابط خاطئاً
