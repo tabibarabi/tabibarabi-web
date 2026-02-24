@@ -24,7 +24,8 @@
         /* الهيدر والبحث */
         .encyclopedia-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white; padding: 60px 0; margin-bottom: 40px; border-bottom: 5px solid var(--accent-color);
+            color: white; padding: 60px 0; margin-bottom: 0; /* تم إزالة الهامش السفلي ليلتصق بشريط الأقسام */
+            border-bottom: 5px solid var(--accent-color);
         }
         .search-box { position: relative; max-width: 600px; margin: 0 auto; transform: translateY(20px); }
         .search-box input {
@@ -34,16 +35,63 @@
         .search-box input:focus { outline: none; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3); }
         .search-box i { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--primary-color); font-size: 1.5rem; }
 
-        /* القائمة الجانبية */
-        .specialty-menu { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 100px; }
-        .specialty-menu h4 { font-weight: 800; color: #0f172a; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
-        .specialty-link { display: block; padding: 10px 15px; color: var(--text-color); text-decoration: none; font-weight: 600; border-radius: 8px; transition: 0.3s; margin-bottom: 5px; }
-        .specialty-link:hover, .specialty-link.active { background: #eff6ff; color: var(--primary-color); }
-
         /* البطاقات الذكية (Cards) */
         .disease-card-ui { transition: transform 0.3s, box-shadow 0.3s; border-radius: 15px; border: 1px solid #e2e8f0; }
         .disease-card-ui:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; border-color: #cbd5e1; }
         .line-clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* شريط التخصصات العلوي القابل للتمرير (الجديد) */
+        .specialty-tabs-container {
+            background-color: white;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 75px; /* يثبت تحت الـ Navbar عند النزول */
+            z-index: 1020;
+        }
+
+        .specialty-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none; /* إخفاء شريط التمرير في فايرفوكس */
+            -ms-overflow-style: none; /* إخفاء شريط التمرير في IE */
+            padding-bottom: 5px;
+        }
+        
+        .specialty-tabs::-webkit-scrollbar {
+            display: none; /* إخفاء شريط التمرير في كروم وسفاري */
+        }
+
+        .tab-btn {
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            border: 1px solid #cbd5e1;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap; /* يمنع نزول النص لسطرين */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -76,35 +124,34 @@
         </div>
     </header>
 
-    <div class="container mb-5">
-        <div class="row">
-            <div class="col-lg-3 mb-4">
-                <div class="specialty-menu">
-                    <h4>التخصصات الطبية</h4>
-                    <a href="#" class="specialty-link active" onclick="filterByCategory('all')"><i class="fas fa-notes-medical me-2"></i> جميع الأمراض</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('internal')"><i class="fas fa-heartbeat me-2"></i> باطنة وقلب</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('gastro')"><i class="fas fa-stomach me-2"></i> جهاز هضمي وكبد</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('derma')"><i class="fas fa-spa me-2"></i> جلدية وتجميل</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('neuro')"><i class="fas fa-brain me-2"></i> مخ وأعصاب</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('uro')"><i class="fas fa-procedures me-2"></i> مسالك بولية</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('ortho')"><i class="fas fa-bone me-2"></i> عظام ومفاصل</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('obgyn')"><i class="fas fa-baby me-2"></i> نساء وتوليد</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('pedia')"><i class="fas fa-child me-2"></i> طب الأطفال</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('psych')"><i class="fas fa-user-md me-2"></i> طب نفسي</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('ophtha')"><i class="fas fa-eye me-2"></i> رمد وعيون</a>
-                    <a href="#" class="specialty-link" onclick="filterByCategory('ent')"><i class="fas fa-ear-deaf me-2"></i> أنف وأذن وحنجرة</a>
-                </div>
-            </div>
-
-            <div class="col-lg-9">
-                <div id="noResults" style="display: none; text-align: center; padding: 50px; color: #64748b;">
-                    <i class="fas fa-search-minus fa-3x mb-3"></i>
-                    <h4>لم يتم العثور على نتائج</h4>
-                </div>
-                
-                <div class="row" id="diseases-container"></div>
+    <div class="specialty-tabs-container">
+        <div class="container">
+            <div class="specialty-tabs" id="categoryTabs">
+                <button class="tab-btn active" onclick="filterByCategory('all', this)"><i class="fas fa-layer-group"></i> جميع الأمراض</button>
+                <button class="tab-btn" onclick="filterByCategory('firstaid', this)"><i class="fas fa-medkit"></i> إسعافات وطوارئ</button>
+                <button class="tab-btn" onclick="filterByCategory('internal', this)"><i class="fas fa-heartbeat"></i> باطنة وقلب</button>
+                <button class="tab-btn" onclick="filterByCategory('gastro', this)"><i class="fas fa-stomach"></i> جهاز هضمي</button>
+                <button class="tab-btn" onclick="filterByCategory('pedia', this)"><i class="fas fa-child"></i> طب الأطفال</button>
+                <button class="tab-btn" onclick="filterByCategory('obgyn', this)"><i class="fas fa-baby"></i> نساء وتوليد</button>
+                <button class="tab-btn" onclick="filterByCategory('ortho', this)"><i class="fas fa-bone"></i> عظام ومفاصل</button>
+                <button class="tab-btn" onclick="filterByCategory('neuro', this)"><i class="fas fa-brain"></i> مخ وأعصاب</button>
+                <button class="tab-btn" onclick="filterByCategory('derma', this)"><i class="fas fa-spa"></i> جلدية وتجميل</button>
+                <button class="tab-btn" onclick="filterByCategory('uro', this)"><i class="fas fa-procedures"></i> مسالك بولية</button>
+                <button class="tab-btn" onclick="filterByCategory('ophtha', this)"><i class="fas fa-eye"></i> رمد وعيون</button>
+                <button class="tab-btn" onclick="filterByCategory('ent', this)"><i class="fas fa-ear-deaf"></i> أنف وأذن</button>
+                <button class="tab-btn" onclick="filterByCategory('psych', this)"><i class="fas fa-user-md"></i> طب نفسي</button>
             </div>
         </div>
+    </div>
+
+    <div class="container mb-5">
+        <div id="noResults" style="display: none; text-align: center; padding: 50px; color: #64748b;">
+            <i class="fas fa-search-minus fa-3x mb-3 text-muted"></i>
+            <h4 class="fw-bold">لم يتم العثور على نتائج تطابق بحثك</h4>
+            <p>حاول البحث بكلمات أخرى أو تصفح الأقسام من الشريط العلوي.</p>
+        </div>
+        
+        <div class="row" id="diseases-container"></div>
     </div>
 
     <footer class="text-center py-5 bg-dark text-secondary mt-5 border-top border-primary border-4">
@@ -129,12 +176,13 @@
             container.innerHTML = '';
             // المرور على كل مرض في قاعدة البيانات
             for (const [id, data] of Object.entries(diseasesDB)) {
+                // استخدام col-md-4 أو col-lg-4 لجعلها 3 بطاقات في الصف الواحد (لأن المساحة كبرت)
                 const cardHTML = `
-                    <div class="col-md-6 mb-4 disease-card" data-category="${data.categoryId}">
+                    <div class="col-md-6 col-lg-4 mb-4 disease-card" data-category="${data.categoryId}">
                         <div class="card h-100 shadow-sm bg-white disease-card-ui">
                             <div class="card-body">
                                 <span class="badge ${data.badgeClass} mb-3 px-3 py-2">${data.category}</span>
-                                <h4 class="card-title fw-bold" style="color: #0f172a; font-size: 1.3rem;">${data.title}</h4>
+                                <h4 class="card-title fw-bold" style="color: #0f172a; font-size: 1.2rem;">${data.title}</h4>
                                 <p class="card-text text-muted line-clamp" style="font-size: 0.95rem;">${data.overview}</p>
                             </div>
                             <div class="card-footer bg-transparent border-0 pb-4 pt-0 text-center">
@@ -158,6 +206,10 @@
             let cards = document.querySelectorAll('.disease-card');
             let hasResults = false;
 
+            // إرجاع تفعيل زر "الكل" عند البحث
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.tab-btn').classList.add('active');
+
             cards.forEach(card => {
                 let title = card.querySelector('.card-title').innerText.toLowerCase();
                 let desc = card.querySelector('.card-text').innerText.toLowerCase();
@@ -170,15 +222,17 @@
             });
 
             document.getElementById('noResults').style.display = hasResults ? "none" : "block";
-            document.querySelectorAll('.specialty-link').forEach(link => link.classList.remove('active'));
         }
 
-        // 3. دالة الفلترة الجانبية مع التمرير السلس
-        function filterByCategory(category) {
+        // 3. دالة الفلترة الجانبية المحسنة للشريط العلوي
+        function filterByCategory(category, clickedButton) {
             if (window.event) window.event.preventDefault();
+            
+            // إفراغ مربع البحث
             document.getElementById('diseaseSearch').value = '';
             document.getElementById('noResults').style.display = "none";
 
+            // إظهار وإخفاء البطاقات حسب القسم
             let cards = document.querySelectorAll('.disease-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -188,14 +242,19 @@
                 }
             });
 
-            document.querySelectorAll('.specialty-link').forEach(link => link.classList.remove('active'));
-            if (window.event && window.event.currentTarget) {
-                 window.event.currentTarget.classList.add('active');
+            // إزالة اللون من كل الأزرار ووضعه على الزر المضغوط فقط
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+                
+                // تمرير الشريط العلوي أوتوماتيكياً ليصبح الزر المضغوط في المنتصف (للهواتف)
+                clickedButton.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             }
 
+            // تمرير الشاشة قليلاً للأعلى لرؤية البطاقات (تعديل المسافة لتناسب الشريط الجديد)
             const containerNode = document.getElementById('diseases-container');
             if (containerNode) {
-                const yOffset = -100;
+                const yOffset = -130; 
                 const y = containerNode.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
