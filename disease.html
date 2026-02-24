@@ -233,7 +233,7 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const diseaseId = urlParams.get('id');
-        let articleTextToRead = ""; // متغير لتخزين النص النظيف للقراءة
+        let articleTextToRead = ""; 
 
         if (diseaseId && diseasesDB[diseaseId]) {
             const data = diseasesDB[diseaseId];
@@ -251,7 +251,7 @@
             document.getElementById('page-pharma-title').innerHTML = '<i class="fas fa-pills me-2"></i>' + data.pharmaTitle;
             document.getElementById('page-pharma-content').innerHTML = data.pharmaContent;
 
-            // 🚀 تجهيز النص للقراءة (إزالة أكواد الـ HTML لكي لا يقرأها البوت)
+            // تجهيز النص للقراءة (إزالة أكواد HTML)
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = data.title + ". " + data.overview + " " + data.content + " " + data.pharmaTitle + ". " + data.pharmaContent;
             articleTextToRead = tempDiv.textContent || tempDiv.innerText || "";
@@ -261,22 +261,34 @@
             document.getElementById('page-badge').style.display = 'none';
             document.getElementById('page-overview').innerText = "قد يكون الرابط غير صحيح أو تم نقل المقال.";
             document.querySelector('.pharma-box').style.display = 'none';
-            document.getElementById('listenBtn').style.display = 'none'; // إخفاء زر الاستماع
+            document.getElementById('listenBtn').style.display = 'none'; 
         }
 
         // ==========================================
-        // 🔊 محرك القراءة الصوتية (Text-to-Speech)
+        // 🔊 محرك القراءة الصوتية (Text-to-Speech) المحسن للعربية
         // ==========================================
         let isPlaying = false;
         const synth = window.speechSynthesis;
         let utterance;
+        let arabicVoice = null;
+
+        // دالة للبحث عن أفضل صوت عربي متاح في جهاز المستخدم
+        function loadArabicVoice() {
+            const voices = synth.getVoices();
+            // البحث عن صوت يحتوي على 'ar' أو 'Arabic'
+            arabicVoice = voices.find(voice => voice.lang.includes('ar') || voice.name.includes('Arabic'));
+        }
+
+        // تحميل الأصوات قد يستغرق لحظات في بعض المتصفحات، لذا ننتظر الحدث
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadArabicVoice;
+        }
 
         function toggleSpeech() {
             const btn = document.getElementById('listenBtn');
             const icon = btn.querySelector('i');
             const textSpan = btn.querySelector('span');
 
-            // إذا كان المتصفح لا يدعم الخاصية
             if (!('speechSynthesis' in window)) {
                 alert("عذراً، متصفحك لا يدعم ميزة القراءة الصوتية.");
                 return;
@@ -292,11 +304,33 @@
             } else {
                 // بدء القراءة
                 utterance = new SpeechSynthesisUtterance(articleTextToRead);
-                utterance.lang = 'ar-SA'; // تعيين اللغة العربية
-                utterance.rate = 0.9;     // سرعة القراءة (مريحة للسمع)
+                
+                // التأكد من تحميل الأصوات إذا لم تكن قد حُملت
+                if (!arabicVoice) loadArabicVoice();
 
-                // عند انتهاء القراءة أوتوماتيكياً
+                if (arabicVoice) {
+                    utterance.voice = arabicVoice;
+                } else {
+                    // إذا لم يجد صوتاً عربياً، سيستخدم الافتراضي مع إجبار اللغة
+                    utterance.lang = 'ar-SA'; 
+                    // تنبيه بسيط للمستخدم (يمكنك إزالته لاحقاً)
+                    console.warn("لم يتم العثور على حزمة صوت عربي أصلية، سيتم استخدام محرك المتصفح الافتراضي.");
+                }
+
+                utterance.rate = 0.85; // إبطاء السرعة قليلاً للوضوح
+                utterance.pitch = 1;
+
                 utterance.onend = function() {
+                    isPlaying = false;
+                    btn.classList.remove('playing');
+                    icon.className = 'fas fa-volume-up';
+                    textSpan.innerText = 'استمع للمقال';
+                };
+
+                // التعامل مع خطأ في بعض المتصفحات حيث تتوقف القراءة الطويلة
+                utterance.onerror = function(e) {
+                    console.error("Speech error: ", e);
+                    synth.cancel();
                     isPlaying = false;
                     btn.classList.remove('playing');
                     icon.className = 'fas fa-volume-up';
@@ -311,7 +345,6 @@
             }
         }
         
-        // إيقاف الصوت تلقائياً إذا خرج المستخدم من الصفحة
         window.onbeforeunload = function () {
             synth.cancel();
         };
