@@ -121,23 +121,59 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label"><i class="fas fa-prescription-bottle-alt me-2 text-success"></i> المادة الفعالة والتركيز (الشراب)</label>
-                            <select id="drugSelect" class="form-select" required>
+                            <label class="form-label"><i class="fas fa-prescription-bottle-alt me-2 text-success"></i> المادة الفعالة والتركيز (الشراب والنقط)</label>
+                            <select id="drugSelect" class="form-select" required style="font-size: 0.95rem;">
                                 <option value="" disabled selected>-- اختر الدواء من القائمة --</option>
-                                <optgroup label="خافض حرارة ومسكنات">
-                                    <option value="para_120">باراسيتامول (سيتال/بارامول) - تركيز 120 مجم / 5 مل</option>
-                                    <option value="para_250">باراسيتامول (سيتال/بارامول) - تركيز 250 مجم / 5 مل</option>
-                                    <option value="ibu_100">إيبوبروفين (بروفين/ميجافين) - تركيز 100 مجم / 5 مل</option>
+                                
+                                <optgroup label="خافض حرارة ومسكنات (Analgesics)">
+                                    <option value="para_drops_100">سيتال / بيرال نقط (Paracetamol Drops) - 100 مجم/1 مل</option>
+                                    <option value="para_syrup_120">سيتال / بارامول / تمبورال شراب - 120 مجم/5 مل</option>
+                                    <option value="para_syrup_250">سيتال / بارامول / أبيمول شراب - 250 مجم/5 مل</option>
+                                    <option value="ibu_100">بروفين / ميجافين / ماركوفين / كونتاففر شراب (Ibuprofen) - 100 مجم/5 مل</option>
+                                    <option value="diclo_2">كاتافلاي / رومافين شراب (Diclofenac) - 2 مجم/1 مل</option>
                                 </optgroup>
-                                <optgroup label="مضادات حيوية">
-                                    <option value="amox_clav_228">أموكسيسيلين+كلافولانات (أوجمنتين/هايبيوتيك) - تركيز 228 مجم / 5 مل</option>
-                                    <option value="amox_clav_457">أموكسيسيلين+كلافولانات (أوجمنتين/هايبيوتيك) - تركيز 457 مجم / 5 مل</option>
-                                    <option value="azithro_200">أزيثروميسين (زيثروماكس) - تركيز 200 مجم / 5 مل</option>
-                                    <option value="metro_125">ميترونيدازول (فلاجيل/أميزار) - تركيز 125 مجم / 5 مل</option>
+
+                                <optgroup label="مضادات حيوية - بنسيلين (Penicillins)">
+                                    <option value="amox_250">أموكسيل / إيبياموكس / أوسباموكس (Amoxicillin) - 250 مجم/5 مل</option>
+                                    <option value="amoxclav_156">أوجمنتين / هايبيوتيك / ميجاموكس / كيورام - 156 مجم/5 مل</option>
+                                    <option value="amoxclav_228">أوجمنتين / هايبيوتيك / ميجاموكس / إيموكسكلاف - 228 مجم/5 مل</option>
+                                    <option value="amoxclav_312">أوجمنتين / هايبيوتيك / ميجاموكس / كيورام - 312 مجم/5 مل</option>
+                                    <option value="amoxclav_457">أوجمنتين / هايبيوتيك / ميجاموكس / إيموكسكلاف - 457 مجم/5 مل</option>
+                                    <option value="amoxclav_600">أوجمنتين ES / هايبيوتيك / ميجاموكس / كيورام - 600 مجم/5 مل</option>
                                 </optgroup>
-                                <optgroup label="مضادات حساسية وكورتيزون">
-                                    <option value="loratadine_5">لوراتادين (كلاريتين) - تركيز 5 مجم / 5 مل</option>
-                                    <option value="prednisolone_15">بريدنيزولون (زيلون/بيديكورت) - تركيز 15 مجم / 5 مل</option>
+
+                                <optgroup label="مضادات حيوية - سيفالوسبورين (Cephalosporins)">
+                                    <option value="cefadroxil_250">إيبيسيف / كيوريسيف / ديوريسيف (Cefadroxil) - 250 مجم/5 مل</option>
+                                    <option value="cefadroxil_500">إيبيسيف / كيوريسيف / ديوريسيف (Cefadroxil) - 500 مجم/5 مل</option>
+                                    <option value="cephradine_250">فيلوسيف / سيفاردين (Cephradine) - 250 مجم/5 مل</option>
+                                    <option value="cefaclor_250">سيفاكلور / باكتيكلور (Cefaclor) - 250 مجم/5 مل</option>
+                                    <option value="cefixime_100">سوبراكس / زيماكسيف / ماجناسيف (Cefixime) - 100 مجم/5 مل</option>
+                                    <option value="cefdinir_125">أومنيسيف / دينر (Cefdinir) - 125 مجم/5 مل</option>
+                                    <option value="cefdinir_250">أومنيسيف / دينر (Cefdinir) - 250 مجم/5 مل</option>
+                                    <option value="cefpodoxime_40">أوريلوكس / سيفبودوكسيم (Cefpodoxime) - 40 مجم/5 مل</option>
+                                </optgroup>
+
+                                <optgroup label="مضادات حيوية - ماكروليدات وغيرها">
+                                    <option value="azithro_200">زيثروماكس / زيثرون / أزروليد (Azithromycin) - 200 مجم/5 مل</option>
+                                    <option value="clarithro_125">كلاسيد / كلاريكان (Clarithromycin) - 125 مجم/5 مل</option>
+                                    <option value="clarithro_250">كلاسيد / كلاريكان (Clarithromycin) - 250 مجم/5 مل</option>
+                                    <option value="metro_125">فلاجيل / أمريزول / دوموزول (Metronidazole) - 125 مجم/5 مل</option>
+                                    <option value="septrin_240">سبترين / سوتريم / كوتريموكسازول (Co-trimoxazole) - 240 مجم/5 مل</option>
+                                </optgroup>
+
+                                <optgroup label="مضادات حساسية وكورتيزون (Allergy & Steroids)">
+                                    <option value="pred_15">زيلون / بيديكورت / سولوبريد (Prednisolone) - 15 مجم/5 مل</option>
+                                    <option value="dexa_05">أبيدون / ديكسازون / فينادون (Dexamethasone) - 0.5 مجم/5 مل</option>
+                                    <option value="cetirizine_5">زيرتيك / توميكس / ألريد (Cetirizine) - 5 مجم/5 مل</option>
+                                    <option value="levocetirizine_25">ليفوهيستام / إليرج (Levocetirizine) - 2.5 مجم/5 مل</option>
+                                    <option value="loratadine_5">كلاريتين / موسيدين (Loratadine) - 5 مجم/5 مل</option>
+                                    <option value="desloratadine_25">إيريوس / ديسلورات (Desloratadine) - 2.5 مجم/5 مل</option>
+                                </optgroup>
+
+                                <optgroup label="مضادات القيء والمغص والطفيليات">
+                                    <option value="domperidone_5">موتيليوم / موتينورم / جاسترموتيل (Domperidone) - 5 مجم/5 مل</option>
+                                    <option value="ondansetron_4">زوفران / دانسيت (Ondansetron) - 4 مجم/5 مل</option>
+                                    <option value="nitazoxanide_100">نانازوكسيد / كريبتوناز (Nitazoxanide) - 100 مجم/5 مل</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -171,76 +207,75 @@
 
     <script>
         // قاعدة بيانات الأدوية: جرعة الكيلو (للمرة الواحدة)، التركيز بالمليجرام، الحجم بالمل، والتكرار
+        // قاعدة بيانات الأدوية المصرية الشاملة
+        // dosePerKgPerDose: الجرعة للمرة الواحدة بالكيلوجرام بناءً على المراجع الطبية
         const drugsDB = {
-            "para_120": { 
-                dosePerKgPerDose: 15, // 15 مجم لكل كجم في الجرعة الواحدة
-                concMg: 120, 
-                concMl: 5, 
-                frequency: "كل 6 ساعات (عند اللزوم)",
-                maxDoseMg: 500
-            },
-            "para_250": { 
-                dosePerKgPerDose: 15, 
-                concMg: 250, 
-                concMl: 5, 
-                frequency: "كل 6 ساعات (عند اللزوم)",
-                maxDoseMg: 500
-            },
-            "ibu_100": { 
-                dosePerKgPerDose: 10, // 10 مجم لكل كجم في الجرعة الواحدة
-                concMg: 100, 
-                concMl: 5, 
-                frequency: "كل 8 ساعات (بعد الأكل)",
-                maxDoseMg: 400
-            },
-            "amox_clav_228": { 
-                // أوجمنتين 228 (جرعة 90 مجم/كجم/يوم مقسمة على مرتين) = 45 مجم/كجم/جرعة
-                dosePerKgPerDose: 45, 
-                concMg: 200, // نحسب على أساس الأموكسيسيلين فقط (200 أموكسيسيلين + 28 كلافولانات)
-                concMl: 5, 
-                frequency: "كل 12 ساعة (لمدة 7-10 أيام)",
-                maxDoseMg: 1000
-            },
-            "amox_clav_457": { 
-                // أوجمنتين 457 (جرعة عالية 90 مجم/كجم/يوم)
-                dosePerKgPerDose: 45, 
-                concMg: 400, // نحسب على أساس 400 مجم أموكسيسيلين
-                concMl: 5, 
-                frequency: "كل 12 ساعة (لمدة 7-10 أيام)",
-                maxDoseMg: 1000
-            },
-            "azithro_200": { 
-                dosePerKgPerDose: 10, // 10 مجم لكل كجم يومياً
-                concMg: 200, 
-                concMl: 5, 
-                frequency: "مرة واحدة يومياً (لمدة 3 أيام فقط)",
-                maxDoseMg: 500
-            },
-            "metro_125": { 
-                // فلاجيل (جرعة 30 مجم/كجم/يوم مقسمة على 3 مرات) = 10 مجم/كجم/جرعة
-                dosePerKgPerDose: 10, 
-                concMg: 125, 
-                concMl: 5, 
-                frequency: "كل 8 ساعات",
-                maxDoseMg: 500
-            },
-            "prednisolone_15": { 
-                // زيلون (1-2 مجم/كجم/يوم). سنحسب على 1 مجم/كجم/جرعة مقسمة على مرتين للربو
-                dosePerKgPerDose: 1, 
-                concMg: 15, 
-                concMl: 5, 
-                frequency: "كل 12 ساعة (بعد الأكل - لفترة قصيرة يحددها الطبيب)",
-                maxDoseMg: 30
-            },
-            "loratadine_5": { 
-                // كلاريتين. غالباً جرعة ثابتة للأطفال فوق سنتين، ولكن للحساب الدقيق: 0.2 مجم/كجم/جرعة
-                dosePerKgPerDose: 0.2, 
-                concMg: 5, 
-                concMl: 5, 
-                frequency: "مرة واحدة يومياً (مساءً)",
-                maxDoseMg: 10
-            }
+            // === مسكنات وخوافض حرارة ===
+            "para_drops_100": { dosePerKgPerDose: 15, concMg: 100, concMl: 1, frequency: "كل 6 ساعات (عند اللزوم)", maxDoseMg: 500 },
+            "para_syrup_120": { dosePerKgPerDose: 15, concMg: 120, concMl: 5, frequency: "كل 6 ساعات (عند اللزوم)", maxDoseMg: 500 },
+            "para_syrup_250": { dosePerKgPerDose: 15, concMg: 250, concMl: 5, frequency: "كل 6 ساعات (عند اللزوم)", maxDoseMg: 500 },
+            "ibu_100": { dosePerKgPerDose: 10, concMg: 100, concMl: 5, frequency: "كل 8 ساعات (بعد الأكل)", maxDoseMg: 400 },
+            "diclo_2": { dosePerKgPerDose: 1, concMg: 2, concMl: 1, frequency: "كل 8 ساعات (بعد الأكل)", maxDoseMg: 50 },
+
+            // === مضادات حيوية: بنسيلين ===
+            // أموكسيسيلين: الجرعة العالية 80 مجم/كجم/يوم مقسمة كل 12 ساعة = 40 مجم/كجم/جرعة
+            "amox_250": { dosePerKgPerDose: 40, concMg: 250, concMl: 5, frequency: "كل 12 ساعة (لمدة 7-10 أيام)", maxDoseMg: 1000 },
+            
+            // أوجمنتين: الحساب يعتمد على تركيز الأموكسيسيلين فقط. 
+            // التراكيز (156 و 312) تُعطى كل 8 ساعات بجرعة 15 مجم/كجم/جرعة
+            "amoxclav_156": { dosePerKgPerDose: 15, concMg: 125, concMl: 5, frequency: "كل 8 ساعات", maxDoseMg: 500 },
+            "amoxclav_312": { dosePerKgPerDose: 15, concMg: 250, concMl: 5, frequency: "كل 8 ساعات", maxDoseMg: 500 },
+            
+            // التراكيز (228 و 457 و 600) تُعطى كل 12 ساعة بجرعة 45 مجم/كجم/جرعة (للالتهابات الشديدة كالأذن)
+            "amoxclav_228": { dosePerKgPerDose: 45, concMg: 200, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 1000 },
+            "amoxclav_457": { dosePerKgPerDose: 45, concMg: 400, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 1000 },
+            "amoxclav_600": { dosePerKgPerDose: 45, concMg: 600, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 1000 },
+
+            // === مضادات حيوية: سيفالوسبورين ===
+            // سيفادروكسيل وسيفاكلور (30 مجم/كجم/يوم) = 15 مجم/كجم/جرعة
+            "cefadroxil_250": { dosePerKgPerDose: 15, concMg: 250, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            "cefadroxil_500": { dosePerKgPerDose: 15, concMg: 500, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            "cefaclor_250": { dosePerKgPerDose: 15, concMg: 250, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            // سيفرادين (50 مجم/كجم/يوم) = 25 مجم/كجم/جرعة
+            "cephradine_250": { dosePerKgPerDose: 25, concMg: 250, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            // سيفيكسيم (8 مجم/كجم/يوم) = 4 مجم/كجم/جرعة كل 12 ساعة
+            "cefixime_100": { dosePerKgPerDose: 4, concMg: 100, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 200 },
+            // سيفدينير (14 مجم/كجم/يوم) = 7 مجم/كجم/جرعة كل 12 ساعة
+            "cefdinir_125": { dosePerKgPerDose: 7, concMg: 125, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 300 },
+            "cefdinir_250": { dosePerKgPerDose: 7, concMg: 250, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 300 },
+            // سيفبودوكسيم (8 مجم/كجم/يوم) = 4 مجم/كجم/جرعة
+            "cefpodoxime_40": { dosePerKgPerDose: 4, concMg: 40, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 200 },
+
+            // === مضادات حيوية: ماكروليدات وغيرها ===
+            // أزيثروميسين (10 مجم/كجم مرة يومياً)
+            "azithro_200": { dosePerKgPerDose: 10, concMg: 200, concMl: 5, frequency: "مرة واحدة يومياً (لمدة 3 أيام فقط)", maxDoseMg: 500 },
+            // كلاريثروميسين (15 مجم/كجم/يوم) = 7.5 مجم/كجم/جرعة
+            "clarithro_125": { dosePerKgPerDose: 7.5, concMg: 125, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            "clarithro_250": { dosePerKgPerDose: 7.5, concMg: 250, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 500 },
+            // ميترونيدازول (30 مجم/كجم/يوم) = 10 مجم/كجم/جرعة كل 8 ساعات
+            "metro_125": { dosePerKgPerDose: 10, concMg: 125, concMl: 5, frequency: "كل 8 ساعات", maxDoseMg: 500 },
+            // سبترين: الحساب على التريميثوبريم (8 مجم/كجم/يوم) = 4 مجم/كجم/جرعة. تركيز الـ TMP هو 40 مجم.
+            "septrin_240": { dosePerKgPerDose: 4, concMg: 40, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 160 },
+
+            // === كورتيزون وحساسية ===
+            // بريدنيزولون للربو والالتهابات الشديدة (1 مجم/كجم/جرعة)
+            "pred_15": { dosePerKgPerDose: 1, concMg: 15, concMl: 5, frequency: "كل 12 ساعة (بعد الأكل لأيام محددة)", maxDoseMg: 30 },
+            // ديكساميثازون للكحة الخانقة (0.15 مجم/كجم/جرعة)
+            "dexa_05": { dosePerKgPerDose: 0.15, concMg: 0.5, concMl: 5, frequency: "كل 12 ساعة", maxDoseMg: 4 },
+            "cetirizine_5": { dosePerKgPerDose: 0.25, concMg: 5, concMl: 5, frequency: "مرة واحدة مساءً", maxDoseMg: 10 },
+            "levocetirizine_25": { dosePerKgPerDose: 0.125, concMg: 2.5, concMl: 5, frequency: "مرة واحدة مساءً", maxDoseMg: 5 },
+            "loratadine_5": { dosePerKgPerDose: 0.2, concMg: 5, concMl: 5, frequency: "مرة واحدة يومياً", maxDoseMg: 10 },
+            "desloratadine_25": { dosePerKgPerDose: 0.1, concMg: 2.5, concMl: 5, frequency: "مرة واحدة يومياً", maxDoseMg: 5 },
+
+            // === قيء ومغص وطفيليات ===
+            // دومبيريدون (0.25 مجم/كجم/جرعة)
+            "domperidone_5": { dosePerKgPerDose: 0.25, concMg: 5, concMl: 5, frequency: "كل 8 ساعات (قبل الأكل بـ 15 دقيقة)", maxDoseMg: 10 },
+            // أوندانسيترون للقيء الشديد (0.15 مجم/كجم/جرعة)
+            "ondansetron_4": { dosePerKgPerDose: 0.15, concMg: 4, concMl: 5, frequency: "كل 8 ساعات", maxDoseMg: 8 },
+            // نيتازوكسانيد للإسهال والطفيليات (7.5 مجم/كجم/جرعة)
+            "nitazoxanide_100": { dosePerKgPerDose: 7.5, concMg: 100, concMl: 5, frequency: "كل 12 ساعة (لمدة 3 أيام)", maxDoseMg: 500 }
         };
+        
 
         function calculateDose(event) {
             event.preventDefault(); // منع إعادة تحميل الصفحة
