@@ -67,6 +67,38 @@
         .med-text { line-height: 1.9; font-size: 1.15rem; color: #475569; text-align: justify; }
         .med-list li { margin-bottom: 12px; }
 
+        /* زر الاستماع الصوتي */
+        .speech-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            border: 1px solid #cbd5e1;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .speech-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .speech-btn.playing {
+            background-color: #10b981; /* أخضر عند التشغيل */
+            color: white;
+            border-color: #10b981;
+            animation: pulsePulse 2s infinite;
+        }
+        @keyframes pulsePulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
         /* صندوق الأدوية المميز */
         .pharma-box { 
             background: #f0fdf4; 
@@ -145,6 +177,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-9">
                 <article class="disease-container">
+                    
+                    <div class="text-start">
+                        <button id="listenBtn" class="speech-btn" onclick="toggleSpeech()">
+                            <i class="fas fa-volume-up"></i> <span>استمع للمقال</span>
+                        </button>
+                    </div>
+
                     <div class="d-flex align-items-start gap-3 border-bottom pb-4 mb-4">
                         <div class="bg-primary bg-opacity-10 p-3 rounded-circle text-primary d-none d-sm-block">
                             <i class="fas fa-info-circle fa-2x"></i>
@@ -194,6 +233,7 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const diseaseId = urlParams.get('id');
+        let articleTextToRead = ""; // متغير لتخزين النص النظيف للقراءة
 
         if (diseaseId && diseasesDB[diseaseId]) {
             const data = diseasesDB[diseaseId];
@@ -210,12 +250,71 @@
             document.getElementById('page-content').innerHTML = data.content;
             document.getElementById('page-pharma-title').innerHTML = '<i class="fas fa-pills me-2"></i>' + data.pharmaTitle;
             document.getElementById('page-pharma-content').innerHTML = data.pharmaContent;
+
+            // 🚀 تجهيز النص للقراءة (إزالة أكواد الـ HTML لكي لا يقرأها البوت)
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = data.title + ". " + data.overview + " " + data.content + " " + data.pharmaTitle + ". " + data.pharmaContent;
+            articleTextToRead = tempDiv.textContent || tempDiv.innerText || "";
+            
         } else {
             document.getElementById('page-title').innerText = "عذراً، لم يتم العثور على المقال";
             document.getElementById('page-badge').style.display = 'none';
             document.getElementById('page-overview').innerText = "قد يكون الرابط غير صحيح أو تم نقل المقال.";
             document.querySelector('.pharma-box').style.display = 'none';
+            document.getElementById('listenBtn').style.display = 'none'; // إخفاء زر الاستماع
         }
+
+        // ==========================================
+        // 🔊 محرك القراءة الصوتية (Text-to-Speech)
+        // ==========================================
+        let isPlaying = false;
+        const synth = window.speechSynthesis;
+        let utterance;
+
+        function toggleSpeech() {
+            const btn = document.getElementById('listenBtn');
+            const icon = btn.querySelector('i');
+            const textSpan = btn.querySelector('span');
+
+            // إذا كان المتصفح لا يدعم الخاصية
+            if (!('speechSynthesis' in window)) {
+                alert("عذراً، متصفحك لا يدعم ميزة القراءة الصوتية.");
+                return;
+            }
+
+            if (isPlaying) {
+                // إيقاف القراءة
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.remove('playing');
+                icon.className = 'fas fa-volume-up';
+                textSpan.innerText = 'استمع للمقال';
+            } else {
+                // بدء القراءة
+                utterance = new SpeechSynthesisUtterance(articleTextToRead);
+                utterance.lang = 'ar-SA'; // تعيين اللغة العربية
+                utterance.rate = 0.9;     // سرعة القراءة (مريحة للسمع)
+
+                // عند انتهاء القراءة أوتوماتيكياً
+                utterance.onend = function() {
+                    isPlaying = false;
+                    btn.classList.remove('playing');
+                    icon.className = 'fas fa-volume-up';
+                    textSpan.innerText = 'استمع للمقال';
+                };
+
+                synth.speak(utterance);
+                isPlaying = true;
+                btn.classList.add('playing');
+                icon.className = 'fas fa-stop-circle';
+                textSpan.innerText = 'إيقاف القراءة';
+            }
+        }
+        
+        // إيقاف الصوت تلقائياً إذا خرج المستخدم من الصفحة
+        window.onbeforeunload = function () {
+            synth.cancel();
+        };
     </script>
 </body>
 </html>
