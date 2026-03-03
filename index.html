@@ -26,9 +26,7 @@
         .step-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; position: relative; z-index: 1; border: none; height: 100%;}
         .step-card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--primary-color); }
         .step-number { font-size: 4rem; font-weight: 800; color: #f1f3f5; position: absolute; top: 10px; left: 20px; z-index: -1; }
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: var(--whatsapp-color); color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: white; }
-
+        
         /* تصميمات كروت الأطباء */
         .doctor-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; cursor: pointer;}
         .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--primary-color);}
@@ -62,9 +60,7 @@
         #imageViewer img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
         #imageViewer .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
 
-        /* ========================================================= */
         /* تأثيرات الآلة الكاتبة */
-        /* ========================================================= */
         .typing-cursor { display: inline-block; width: 3px; height: 1.1em; margin-right: 5px; vertical-align: bottom; animation: blink 0.7s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
@@ -77,7 +73,7 @@
         .dynamic-text-top { color: var(--primary-color); font-weight: 700; font-size: 1.2rem; margin: 0; }
         .cursor-top { background-color: var(--primary-color); }
         
-        /* تنسيقات كارت الطبيب المتميز (متجاوب مع الموبايل واللاب توب) */
+        /* تنسيقات كارت الطبيب المتميز */
         .premium-card { 
             position: absolute; 
             bottom: -20px; 
@@ -117,82 +113,84 @@
         .premium-info h5 { font-size: 1rem; font-weight: bold; margin: 0; color: #2c3e50; }
         .premium-info p { font-size: 0.8rem; margin: 0; color: var(--primary-color); font-weight: 600; }
         .premium-stars { color: var(--accent-color); font-size: 0.8rem; margin-top: 3px; }
+
         /* تأثير زر التحميل */
         .btn-store {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .btn-store:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
-        border-color: var(--primary-color) !important;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+            border-color: var(--primary-color) !important;
         }
 
         /* تنسيق نافذة تحميل التطبيق المنبثقة */
-.app-popup {
-    position: fixed;
-    bottom: -100%; /* مخفية تحت الشاشة في البداية */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    border: 2px solid var(--primary-color);
-    padding: 20px;
-    text-align: center;
-    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة نطاطة جميلة */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
+        .app-popup {
+            position: fixed;
+            bottom: -100%; /* مخفية تحت الشاشة في البداية */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-.app-popup.show {
-    bottom: 20px; /* مكان الظهور */
-}
+        .app-popup.show {
+            bottom: 20px; /* مكان الظهور */
+        }
 
-.popup-close {
-    position: absolute;
-    top: 10px;
-    left: 10px; /* الزر على اليسار لأن الموقع عربي */
-    background: #f1f1f1;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #555;
-    transition: 0.3s;
-}
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            left: 10px; /* يسار الكارت للعربية */
+            background: #f1f1f1;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+            transition: 0.3s;
+            z-index: 10001; /* تأكيد الظهور فوق العناصر */
+        }
 
-.popup-close:hover {
-    background: #ff4d4d;
-    color: white;
-}
+        .popup-close:hover {
+            background: #ff4d4d;
+            color: white;
+        }
 
-.google-btn-popup {
-    background: #000;
-    color: white;
-    text-decoration: none;
-    padding: 8px 20px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-    width: 100%;
-    justify-content: center;
-}
+        .google-btn-popup {
+            background: #000;
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            width: 100%;
+            justify-content: center;
+        }
 
-.google-btn-popup:hover {
-    background: #333;
-    transform: scale(1.02);
-    color: white;
-}
+        .google-btn-popup:hover {
+            background: #333;
+            transform: scale(1.02);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -200,6 +198,24 @@
     <div id="imageViewer">
         <span class="close-btn" onclick="closeImageViewer()">&times;</span>
         <img id="fullScreenImage" src="">
+    </div>
+
+    <div id="appInstallPopup" class="app-popup">
+        <button class="popup-close" onclick="closePopup()">×</button>
+        <div class="d-flex align-items-center gap-3 w-100 text-start" style="direction: rtl;">
+            <img src="appicon.jpg" style="width: 60px; height: 60px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Tabib Arabi">
+            <div>
+                <h5 class="fw-bold mb-0 text-primary">تجربة أسرع وأسهل! 🚀</h5>
+                <p class="text-muted small mb-0" style="font-size: 0.85rem;">حمل تطبيق طبيب عربي واحتفظ بروشتاتك على موبايلك.</p>
+            </div>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.tabibarabi.tabibarabi" target="_blank" class="google-btn-popup mt-2">
+            <i class="fab fa-google-play text-success fa-lg"></i>
+            <div class="text-start" style="line-height: 1.1;">
+                <span style="font-size: 0.7rem; display: block; color: #ccc;">GET IT ON</span>
+                <span style="font-weight: bold; font-size: 1.1rem;">Google Play</span>
+            </div>
+        </a>
     </div>
 
     <div class="modal fade" id="doctorProfileModal" tabindex="-1" aria-hidden="true">
@@ -264,7 +280,7 @@
                     <i class="fas fa-book-medical text-primary me-1"></i> المدونة
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.tabibarabi.tabibarabi" target="_blank" class="btn btn-dark btn-sm rounded-pill fw-bold px-3 d-none d-lg-block ms-2">
-    <i class="fab fa-google-play text-success me-1"></i> حمل التطبيق
+                    <i class="fab fa-google-play text-success me-1"></i> حمل التطبيق
                 </a>
                 <a href="#join" class="btn btn-outline-primary rounded-pill fw-bold px-4 shadow-sm">
                     <i class="fas fa-user-md me-1"></i> سجل كطبيب
@@ -284,21 +300,20 @@
                         <p class="dynamic-text-top"><span id="typewriter-top"></span><span class="typing-cursor cursor-top"></span></p>
                     </div>
                     
-                    <div class="d-flex gap-2 justify-content-center justify-content-lg-end mb-4">
-                        <a href="#search-section" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold">ابحث عن طبيبك الآن</a>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-end mt-4">
+                        <a href="#search-section" class="btn btn-primary btn-lg rounded-pill shadow px-5 fw-bold d-flex align-items-center">ابحث عن طبيبك الآن</a>
+                        
+                        <a href="https://play.google.com/store/apps/details?id=com.tabibarabi.tabibarabi" target="_blank" class="text-decoration-none">
+                            <div class="btn-store d-inline-flex align-items-center bg-dark text-white rounded-4 px-4 py-2 shadow border border-secondary" style="height: 50px;">
+                                <i class="fab fa-google-play fa-xl text-success me-3"></i>
+                                <div class="text-start" style="line-height: 1.1;">
+                                    <small class="d-block text-white-50" style="font-size: 0.65rem;">حمل التطبيق من</small>
+                                    <span class="fw-bold font-monospace" style="font-size: 1rem;">Google Play</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    
-                    <div class="mt-4 d-flex gap-3 justify-content-center justify-content-lg-end" data-aos="fade-up" data-aos-delay="300">
-    <a href="https://play.google.com/store/apps/details?id=com.tabibarabi.tabibarabi" target="_blank" class="text-decoration-none">
-        <div class="btn-store d-inline-flex align-items-center bg-dark text-white rounded-4 px-4 py-2 shadow border border-secondary">
-            <i class="fab fa-google-play fa-2x text-success me-3"></i>
-            <div class="text-start" style="line-height: 1.2;">
-                <small class="d-block text-white-50" style="font-size: 0.75rem;">حمل التطبيق من</small>
-                <span class="fw-bold fs-5 font-monospace">Google Play</span>
-            </div>
-        </div>
-    </a>
-</div>
+                </div>
             
                 <div class="col-lg-6 text-center position-relative" data-aos="zoom-in">
                     <img src="tabibarabi_header.jpg" class="img-fluid rounded-4 shadow-lg border border-5 border-white" alt="تطبيق طبيب عربي" onerror="this.style.display='none'">
@@ -435,7 +450,12 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+
     <script>
+        // سكربت الآلة الكاتبة ونافذة التحميل
         document.addEventListener('DOMContentLoaded', () => {
             const topMessages = [
                 "ابحث عن أشطر دكتور في جميع التخصصات بسهولة..",
@@ -488,12 +508,32 @@
 
             initTypewriter("typewriter-top", topMessages, 70, 30, 2500);
             initTypewriter("typewriter-bottom", bottomMessages, 80, 40, 3000);
-        });
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+            // منطق ظهور نافذة التطبيق
+            const isPopupClosed = localStorage.getItem('tabibPopupClosed');
+            if (!isPopupClosed) {
+                setTimeout(() => {
+                    const popup = document.getElementById('appInstallPopup');
+                    if(popup) popup.classList.add('show');
+                }, 4000);
+            }
+        });
+
+        // دالة إغلاق النافذة (تم التأكد من وضعها في النطاق العام)
+        function closePopup() {
+            const popup = document.getElementById('appInstallPopup');
+            if (popup) popup.classList.remove('show');
+            localStorage.setItem('tabibPopupClosed', 'true');
+        }
+
+        window.openImageViewer = function(src) {
+            document.getElementById('fullScreenImage').src = src;
+            document.getElementById('imageViewer').style.display = 'flex';
+        };
+        window.closeImageViewer = function() {
+            document.getElementById('imageViewer').style.display = 'none';
+        };
+    </script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -672,10 +712,9 @@
             }
         };
 
-        // 🌟 دالة اللايك الذكية المحدثة (Toggle & Debounce) 🌟
         window.toggleLikeDoctor = function(docKey, country, city) {
             const likeBtn = document.getElementById('modalBtnLike');
-            likeBtn.disabled = true; // منع الدبل كليك لمنع الزيادة المزدوجة
+            likeBtn.disabled = true;
 
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
             const isLiked = likedDocs.includes(docKey);
@@ -685,32 +724,29 @@
             if (!doc) return;
 
             if (isLiked) {
-                // المستخدم يريد الإلغاء
                 likedDocs = likedDocs.filter(id => id !== docKey);
                 localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
                 updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(-1);
                 
                 update(ref(db), updates).then(() => {
-                    doc.statsLikes = Math.max((doc.statsLikes || 0) - 1, 0); // إنقاص الرقم محلياً
+                    doc.statsLikes = Math.max((doc.statsLikes || 0) - 1, 0);
                     refreshModalLikeUI(doc, false, likeBtn);
-                    renderDoctors(); // تحديث الكروت بالخارج
+                    renderDoctors();
                 }).catch(err => { console.error("Error unliking:", err); likeBtn.disabled = false; });
                 
             } else {
-                // المستخدم يريد إضافة التوصية
                 likedDocs.push(docKey);
                 localStorage.setItem('tabib_liked_doctors', JSON.stringify(likedDocs));
                 updates[`doctors/${country}/${city}/${docKey}/statsLikes`] = increment(1);
                 
                 update(ref(db), updates).then(() => {
-                    doc.statsLikes = (doc.statsLikes || 0) + 1; // زيادة الرقم محلياً
+                    doc.statsLikes = (doc.statsLikes || 0) + 1;
                     refreshModalLikeUI(doc, true, likeBtn);
-                    renderDoctors(); // تحديث الكروت بالخارج
+                    renderDoctors();
                 }).catch(err => { console.error("Error liking:", err); likeBtn.disabled = false; });
             }
         };
 
-        // دالة تحديث شكل زر وعداد اللايك
         function refreshModalLikeUI(doc, isLiked, likeBtn) {
             const likesContainer = document.getElementById('modalLikesContainer');
             if (doc.statsLikes > 0) {
@@ -721,15 +757,13 @@
             }
 
             if (isLiked) {
-                // الزر في حالة "تمت التوصية ويريد الإلغاء" (لون رمادي هادئ)
                 likeBtn.className = 'btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm';
                 likeBtn.innerHTML = '<i class="fas fa-undo me-1"></i> إلغاء التوصية بهذا الطبيب';
             } else {
-                // الزر في حالته الطبيعية "لم يوصِ بعد" (لون أخضر)
                 likeBtn.className = 'btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm';
                 likeBtn.innerHTML = '<i class="far fa-thumbs-up me-1"></i> أوصي بهذا الطبيب';
             }
-            likeBtn.disabled = false; // إعادة تفعيل الزر بعد انتهاء التحديث
+            likeBtn.disabled = false;
         }
 
         window.openProfile = function(docKey) {
@@ -744,7 +778,6 @@
             document.getElementById('modalSpec').innerText = doc.speciality;
             document.getElementById('modalDegree').innerText = doc.degree || '';
             
-            // فحص حالة اللايك لضبط الزر عند فتح النافذة
             const likeBtn = document.getElementById('modalBtnLike');
             let likedDocs = JSON.parse(localStorage.getItem('tabib_liked_doctors')) || [];
             const isLiked = likedDocs.includes(doc.key);
@@ -804,55 +837,6 @@
             const modal = new bootstrap.Modal(document.getElementById('doctorProfileModal'));
             modal.show();
         };
-
-        // دوال التحكم في نافذة التطبيق المنبثقة
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. نتأكد هل المستخدم أغلق النافذة من قبل أم لا؟
-    const isPopupClosed = localStorage.getItem('tabibPopupClosed');
-    
-    // 2. إذا لم يغلقها، نعرضها بعد 4 ثواني من فتح الموقع
-    if (!isPopupClosed) {
-        setTimeout(() => {
-            document.getElementById('appInstallPopup').classList.add('show');
-        }, 4000); // تظهر بعد 4000 مللي ثانية (4 ثواني)
-    }
-});
-
-function closePopup() {
-    const popup = document.getElementById('appInstallPopup');
-    popup.classList.remove('show'); // إخفاء النافذة
-    
-    // تسجيل أن المستخدم أغلقها حتى لا تظهر له مرة أخرى (لمدة يوم مثلاً)
-    // أو نكتفي بتسجيلها للأبد إذا أردت
-    localStorage.setItem('tabibPopupClosed', 'true');
-}
-
-        window.openImageViewer = function(src) {
-            document.getElementById('fullScreenImage').src = src;
-            document.getElementById('imageViewer').style.display = 'flex';
-        };
-        window.closeImageViewer = function() {
-            document.getElementById('imageViewer').style.display = 'none';
-        };
     </script>
-    <div id="appInstallPopup" class="app-popup">
-    <button class="popup-close" onclick="closePopup()">×</button>
-    <div class="d-flex align-items-center gap-3 w-100 text-start" style="direction: rtl;">
-        <img src="appicon.jpg" style="width: 60px; height: 60px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Tabib Arabi">
-        <div>
-            <h5 class="fw-bold mb-0 text-primary">تجربة أسرع وأسهل! 🚀</h5>
-            <p class="text-muted small mb-0" style="font-size: 0.85rem;">حمل تطبيق طبيب عربي واحتفظ بروشتاتك على موبايلك.</p>
-        </div>
-    </div>
-    <a href="https://play.google.com/store/apps/details?id=com.tabibarabi.tabibarabi" target="_blank" class="google-btn-popup mt-2">
-        <i class="fab fa-google-play text-success fa-lg"></i>
-        <div class="text-start" style="line-height: 1.1;">
-            <span style="font-size: 0.7rem; display: block; color: #ccc;">GET IT ON</span>
-            <span style="font-weight: bold; font-size: 1.1rem;">Google Play</span>
-        </div>
-    </a>
-</div>
 </body>
 </html>
-
-
